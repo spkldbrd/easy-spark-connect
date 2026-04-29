@@ -67,6 +67,9 @@ function HomePage() {
           style={{ backgroundImage: `url(${networkBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
           aria-hidden
         />
+        <HexPattern className="absolute inset-0 h-full w-full text-white/[0.07]" />
+        <HexOutline className="absolute -right-32 -top-32 h-[28rem] w-[28rem] text-cyan/20" strokeWidth={1.5} />
+        <HexOutline className="absolute -bottom-40 left-1/3 h-80 w-80 text-white/10" strokeWidth={1} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/40" aria-hidden />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:py-28">
           <div className="lg:col-span-7">
