@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ArrowRight, Shield, Cloud, Phone, HardDrive, Brain, Server, Check, Star, Clock, Award, Users, Building2, Stethoscope, Scale, GraduationCap, ShoppingBag, Factory } from "lucide-react";
+import { HexMark, HexPattern, HexOutline } from "@/components/site/HexMark";
 import heroTeam from "@/assets/hero-team.jpg";
 import networkBg from "@/assets/network-bg.jpg";
 import t1 from "@/assets/testimonial-1.jpg";
