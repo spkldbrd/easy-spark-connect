@@ -297,6 +297,9 @@ function HomePage() {
             style={{ backgroundImage: `url(${networkBg})`, backgroundSize: "cover" }}
             aria-hidden
           />
+          <HexPattern className="absolute inset-0 h-full w-full text-white/[0.08]" />
+          <HexMark className="absolute -right-16 -bottom-16 h-72 w-72 text-cyan/25" strokeWidth={2} />
+          <HexMark className="absolute -left-20 -top-20 h-56 w-56 text-white/10" strokeWidth={1.5} />
           <div className="relative mx-auto max-w-2xl text-center">
             <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
               Ready to stop fighting your IT?
