@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHero } from "@/components/site/PageHero";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
 
@@ -20,13 +21,11 @@ function ContactPage() {
 
   return (
     <SiteShell>
-      <section className="bg-gradient-hero text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-cyan">Contact</span>
-          <h1 className="mt-3 font-display text-5xl font-bold tracking-tight sm:text-6xl">Talk to a human.</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">Tell us a bit about your business and we'll get back to you within one business hour.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title={<>Talk to a human.</>}
+        subtitle="Tell us a bit about your business and we'll get back to you within one business hour."
+      />
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
