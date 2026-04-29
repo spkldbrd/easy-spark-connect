@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHero } from "@/components/site/PageHero";
 import { ArrowRight, Heart, Compass, Wrench } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
 
@@ -24,13 +25,11 @@ const values = [
 function AboutPage() {
   return (
     <SiteShell>
-      <section className="bg-gradient-hero text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-cyan">About us</span>
-          <h1 className="mt-3 font-display text-5xl font-bold tracking-tight sm:text-6xl">A local SLO team. 27 years. Counting.</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">We started Digital Solution in 1997 with a simple idea: small businesses deserve IT support that's friendly, fast and honest. We've never wavered.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About us"
+        title={<>A local SLO team. 27 years. Counting.</>}
+        subtitle="We started Digital Solution in 1997 with a simple idea: small businesses deserve IT support that's friendly, fast and honest. We've never wavered."
+      />
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <img src={heroTeam} alt="Our team in San Luis Obispo" loading="lazy" width={1600} height={1024} className="aspect-[4/3] w-full rounded-3xl object-cover shadow-soft" />

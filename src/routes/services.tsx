@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHero } from "@/components/site/PageHero";
 import { Server, Shield, Cloud, Phone, HardDrive, Brain, ArrowRight, Check } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
@@ -26,13 +27,11 @@ const services = [
 function ServicesPage() {
   return (
     <SiteShell>
-      <section className="bg-gradient-hero text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-cyan">Services</span>
-          <h1 className="mt-3 font-display text-5xl font-bold tracking-tight sm:text-6xl">Everything your business needs from IT.</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">One local partner for support, security, cloud, voice and AI — so you can focus on growing the business.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Services"
+        title={<>Everything your business needs from IT.</>}
+        subtitle="One local partner for support, security, cloud, voice and AI — so you can focus on growing the business."
+      />
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-8 lg:grid-cols-2">
           {services.map((s) => (

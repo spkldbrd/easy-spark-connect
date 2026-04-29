@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { HexMark } from "./HexMark";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -16,11 +17,11 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-brand text-white shadow-glow">
-            <Zap className="h-5 w-5" strokeWidth={2.5} />
+        <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight">
+          <HexMark className="h-9 w-9 text-brand" />
+          <span className="uppercase tracking-[0.18em] text-foreground">
+            Digital <span className="text-gradient-brand">Solution</span>
           </span>
-          <span>Digital<span className="text-gradient-brand">Solution</span></span>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (

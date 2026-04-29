@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHero } from "@/components/site/PageHero";
 import { Stethoscope, Scale, Building2, GraduationCap, ShoppingBag, Factory, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/industries")({
@@ -26,13 +27,11 @@ const items = [
 function IndustriesPage() {
   return (
     <SiteShell>
-      <section className="bg-gradient-hero text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-cyan">Industries</span>
-          <h1 className="mt-3 font-display text-5xl font-bold tracking-tight sm:text-6xl">We speak your industry's language.</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">Compliance, workflows, vendors — we've done it before. You won't pay us to learn on the job.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Industries"
+        title={<>We speak your industry's language.</>}
+        subtitle="Compliance, workflows, vendors — we've done it before. You won't pay us to learn on the job."
+      />
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((i) => (

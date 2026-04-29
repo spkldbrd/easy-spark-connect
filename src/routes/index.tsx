@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { ArrowRight, Shield, Cloud, Phone, HardDrive, Brain, Server, Check, Star, Clock, Award, Users, Building2, Stethoscope, Scale, GraduationCap, ShoppingBag, Factory } from "lucide-react";
+import { HexMark, HexPattern, HexOutline } from "@/components/site/HexMark";
 import heroTeam from "@/assets/hero-team.jpg";
 import networkBg from "@/assets/network-bg.jpg";
 import t1 from "@/assets/testimonial-1.jpg";
@@ -66,6 +67,9 @@ function HomePage() {
           style={{ backgroundImage: `url(${networkBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
           aria-hidden
         />
+        <HexPattern className="absolute inset-0 h-full w-full text-white/[0.07]" />
+        <HexOutline className="absolute -right-32 -top-32 h-[28rem] w-[28rem] text-cyan/20" strokeWidth={1.5} />
+        <HexOutline className="absolute -bottom-40 left-1/3 h-80 w-80 text-white/10" strokeWidth={1} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/40" aria-hidden />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:py-28">
           <div className="lg:col-span-7">
@@ -293,6 +297,9 @@ function HomePage() {
             style={{ backgroundImage: `url(${networkBg})`, backgroundSize: "cover" }}
             aria-hidden
           />
+          <HexPattern className="absolute inset-0 h-full w-full text-white/[0.08]" />
+          <HexMark className="absolute -right-16 -bottom-16 h-72 w-72 text-cyan/25" strokeWidth={2} />
+          <HexMark className="absolute -left-20 -top-20 h-56 w-56 text-white/10" strokeWidth={1.5} />
           <div className="relative mx-auto max-w-2xl text-center">
             <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
               Ready to stop fighting your IT?

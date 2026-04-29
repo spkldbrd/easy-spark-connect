@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
+import { PageHero } from "@/components/site/PageHero";
 import { Check, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/pricing")({
@@ -30,13 +31,11 @@ const faqs = [
 function PricingPage() {
   return (
     <SiteShell>
-      <section className="bg-gradient-hero text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-cyan">Pricing</span>
-          <h1 className="mt-3 font-display text-5xl font-bold tracking-tight sm:text-6xl">Transparent. Predictable. Yours.</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/75">Flat per-user pricing means you'll never get a surprise invoice. Pick the plan that fits today — scale tomorrow.</p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Pricing"
+        title={<>Transparent. Predictable. Yours.</>}
+        subtitle="Flat per-user pricing means you'll never get a surprise invoice. Pick the plan that fits today — scale tomorrow."
+      />
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-6 lg:grid-cols-3">
           {tiers.map((t) => (
