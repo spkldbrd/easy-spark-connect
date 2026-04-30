@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import willAction from "@/assets/will-action.jpg";
 import jahleelHero from "@/assets/jahleel-hero.jpg";
+import micahHero from "@/assets/micah-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
 
 export const Route = createFileRoute("/home-4")({
@@ -122,6 +123,30 @@ const heroSlides: HeroSlide[] = [
     captionEyebrow: "Field Engineer",
     captionName: "Jahleel Roberts",
     captionMetaTop: "Photo · Downtown Paso Robles",
+    captionMetaBottom: "Spring 2026",
+  },
+  {
+    issue: "Issue №06",
+    location: "Off-grid · Los Padres",
+    headline: (
+      <>
+        Steady hands.
+        <br />
+        <span className="italic text-cyan">Wild</span> weekends.
+      </>
+    ),
+    body: "Meet Micah — our lead technician. The one quietly architecting the fixes that keep your network humming Monday through Friday. When he's not solving computer problems, you'll find him deep in the backcountry with his Jeep, chasing dirt roads and big skies. Same calm focus, different terrain.",
+    primaryCta: { label: "Meet the team", to: "/about" },
+    secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
+    pullQuote:
+      "“Good infrastructure is like a good trail — you only notice it when something goes wrong. My job is to make sure you never notice.”",
+    pullAttribution: "— Micah, lead technician",
+    image: micahHero,
+    imageAlt:
+      "Micah, lead technician at Digital Solution, leaning against his lifted purple Jeep on a backcountry overlook",
+    captionEyebrow: "Lead Technician",
+    captionName: "Micah Steffenauer",
+    captionMetaTop: "Photo · Los Padres Backcountry",
     captionMetaBottom: "Spring 2026",
   },
 ];
