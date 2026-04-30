@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { HexMark } from "./HexMark";
+import logoWordmark from "@/assets/logo-wordmark.png";
+import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
   { to: "/services", label: "Services" },
@@ -10,6 +11,9 @@ const nav = [
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
+const PHONE_DISPLAY = "805-466-4722";
+const PHONE_HREF = "tel:+18054664722";
 
 export function Header({ overDark = false }: { overDark?: boolean }) {
   const [open, setOpen] = useState(false);
@@ -22,7 +26,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // When over a dark hero and not scrolled, render transparent + white text.
+  // Transparent over a dark hero only while at the top of the page.
   const transparent = overDark && !scrolled;
 
   return (
@@ -34,9 +38,18 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2.5 text-[15px] font-semibold tracking-tight">
-          <HexMark className={transparent ? "h-8 w-8 text-cyan" : "h-8 w-8 text-brand"} />
-          <span className="font-display tracking-tight">Digital Solution</span>
+        <Link to="/" className="flex items-center gap-2.5" aria-label="Digital Solution — home">
+          {transparent ? (
+            // White wordmark over the dark hero (invert the black logo)
+            <img
+              src={logoWordmark}
+              alt="Digital Solution"
+              className="h-7 w-auto invert brightness-0 contrast-100"
+              style={{ filter: "invert(1) brightness(2)" }}
+            />
+          ) : (
+            <img src={logoWordmark} alt="Digital Solution" className="h-7 w-auto" />
+          )}
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -60,10 +73,14 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="tel:+18055550100"
-            className={`text-sm font-medium ${transparent ? "text-white/80 hover:text-white" : "text-foreground/80 hover:text-foreground"}`}
+            href={PHONE_HREF}
+            className={`text-sm font-medium transition-colors ${
+              transparent
+                ? "text-white/80 hover:text-white"
+                : "text-foreground/80 hover:text-foreground"
+            }`}
           >
-            (805) 555-0100
+            {PHONE_DISPLAY}
           </a>
           <Link
             to="/contact"
@@ -78,7 +95,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
         </div>
 
         <button
-          className="lg:hidden"
+          className={`lg:hidden ${transparent ? "text-white" : "text-foreground"}`}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -99,6 +116,12 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
                 {n.label}
               </Link>
             ))}
+            <a
+              href={PHONE_HREF}
+              className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
+            >
+              {PHONE_DISPLAY}
+            </a>
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
@@ -109,6 +132,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
           </nav>
         </div>
       )}
+      <img src={logoIcon} alt="" aria-hidden className="hidden" />
     </header>
   );
 }
