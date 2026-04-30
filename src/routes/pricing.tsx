@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
-import { PageHero } from "@/components/site/PageHero";
+import { PageHero, CinematicCTA } from "@/components/site/PageHero";
 import { Check, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/pricing")({
@@ -16,9 +16,25 @@ export const Route = createFileRoute("/pricing")({
 });
 
 const tiers = [
-  { name: "Essentials", price: "$89", desc: "Core monitoring & helpdesk for small teams.", features: ["Remote helpdesk (8×5)", "Patch management", "Antivirus & MFA", "Quarterly business review", "Email support"] },
-  { name: "Professional", price: "$149", desc: "Most popular plan for growing businesses.", features: ["Everything in Essentials", "24/7 monitoring & support", "Managed EDR + SOC", "Cloud backup", "vCIO strategy", "Phone & chat support"], featured: true },
-  { name: "Enterprise", price: "Custom", desc: "Tailored stack for regulated and complex orgs.", features: ["Everything in Professional", "Compliance (HIPAA, PCI, CMMC)", "Dedicated engineer", "On-site visits", "Custom SLA", "Executive reporting"] },
+  {
+    name: "Essentials",
+    price: "$89",
+    desc: "Core monitoring & helpdesk for small teams.",
+    features: ["Remote helpdesk (8×5)", "Patch management", "Antivirus & MFA", "Quarterly business review", "Email support"],
+  },
+  {
+    name: "Professional",
+    price: "$149",
+    desc: "Most popular plan for growing businesses.",
+    features: ["Everything in Essentials", "24/7 monitoring & support", "Managed EDR + SOC", "Cloud backup", "vCIO strategy", "Phone & chat support"],
+    featured: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    desc: "Tailored stack for regulated and complex orgs.",
+    features: ["Everything in Professional", "Compliance (HIPAA, PCI, CMMC)", "Dedicated engineer", "On-site visits", "Custom SLA", "Executive reporting"],
+  },
 ];
 
 const faqs = [
@@ -30,44 +46,109 @@ const faqs = [
 
 function PricingPage() {
   return (
-    <SiteShell>
+    <SiteShell overDark>
       <PageHero
         eyebrow="Pricing"
-        title={<>Transparent. Predictable. Yours.</>}
+        title={
+          <>
+            Transparent.
+            <br />
+            <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
+              Predictable. Yours.
+            </span>
+          </>
+        }
         subtitle="Flat per-user pricing means you'll never get a surprise invoice. Pick the plan that fits today — scale tomorrow."
+        meta={["Per user · per month", "No surprise invoices", "12-month or M2M", "Cancel any time"]}
       />
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {tiers.map((t) => (
-            <div key={t.name} className={`relative flex flex-col rounded-3xl border p-8 ${t.featured ? "border-brand bg-gradient-hero text-white shadow-glow lg:-translate-y-4" : "border-border bg-card"}`}>
-              {t.featured && <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cyan px-4 py-1 text-xs font-bold uppercase tracking-wider text-ink">Most popular</div>}
-              <h3 className="font-display text-2xl font-bold">{t.name}</h3>
-              <p className={`mt-2 text-sm ${t.featured ? "text-white/70" : "text-muted-foreground"}`}>{t.desc}</p>
-              <div className="mt-6 flex items-baseline gap-1">
-                <span className="font-display text-5xl font-bold">{t.price}</span>
-                {t.price !== "Custom" && <span className={t.featured ? "text-white/60" : "text-muted-foreground"}>/user/mo</span>}
+
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="grid gap-6 lg:grid-cols-3">
+            {tiers.map((t) => (
+              <div
+                key={t.name}
+                className={`relative flex flex-col rounded-[2rem] border p-10 ${
+                  t.featured
+                    ? "border-transparent bg-black text-white shadow-glow lg:-translate-y-4"
+                    : "border-border bg-card"
+                }`}
+              >
+                {t.featured && (
+                  <div className="absolute -top-3 left-10 rounded-full bg-cyan px-4 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-ink">
+                    Most popular
+                  </div>
+                )}
+                <div className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  <span className={t.featured ? "text-cyan" : "text-brand"}>Plan</span>
+                </div>
+                <h3 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em]">
+                  {t.name}
+                </h3>
+                <p className={`mt-3 text-sm ${t.featured ? "text-white/65" : "text-muted-foreground"}`}>
+                  {t.desc}
+                </p>
+                <div className="mt-8 flex items-baseline gap-1">
+                  <span className="font-display text-6xl font-semibold tracking-[-0.04em]">
+                    {t.price}
+                  </span>
+                  {t.price !== "Custom" && (
+                    <span className={t.featured ? "text-white/50" : "text-muted-foreground"}>
+                      /user/mo
+                    </span>
+                  )}
+                </div>
+                <ul className="mt-8 space-y-3 text-sm">
+                  {t.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3">
+                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${t.featured ? "text-cyan" : "text-brand"}`} />
+                      <span className={t.featured ? "text-white/85" : "text-foreground/85"}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/contact"
+                  className={`mt-10 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition ${
+                    t.featured
+                      ? "bg-white text-ink hover:bg-cyan"
+                      : "bg-foreground text-background hover:bg-brand"
+                  }`}
+                >
+                  Get started <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
-              <ul className="mt-6 space-y-3 text-sm">
-                {t.features.map((f) => <li key={f} className="flex items-start gap-2"><Check className={`mt-0.5 h-4 w-4 shrink-0 ${t.featured ? "text-cyan" : "text-brand"}`} /><span>{f}</span></li>)}
-              </ul>
-              <Link to="/contact" className={`mt-8 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ${t.featured ? "bg-white text-ink hover:bg-cyan" : "bg-foreground text-background hover:bg-brand"}`}>Get started <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
-      <section className="bg-surface">
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <h2 className="text-center font-display text-4xl font-bold">Common questions</h2>
-          <div className="mt-12 space-y-4">
+
+      <section className="border-t border-border bg-surface">
+        <div className="mx-auto max-w-3xl px-6 py-24 sm:py-32">
+          <div className="text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">FAQ</span>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              Common questions.
+            </h2>
+          </div>
+          <div className="mt-14 divide-y divide-border border-y border-border">
             {faqs.map((f) => (
-              <details key={f.q} className="group rounded-2xl border border-border bg-card p-6">
-                <summary className="cursor-pointer list-none font-semibold">{f.q}</summary>
-                <p className="mt-3 text-muted-foreground">{f.a}</p>
+              <details key={f.q} className="group py-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-xl font-medium tracking-[-0.02em]">
+                  {f.q}
+                  <span className="text-2xl text-muted-foreground transition group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-4 max-w-2xl text-muted-foreground">{f.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
+
+      <CinematicCTA
+        title="Not sure which plan?"
+        subtitle="Thirty minutes with our team and we'll point you to the right tier — no pressure, no pitch deck."
+        ctaLabel="Book a call"
+      />
     </SiteShell>
   );
 }
