@@ -55,10 +55,87 @@ const stack = [
   ["Voice", "Microsoft Teams Phone · 3CX · RingCentral"],
 ];
 
+type HeroSlide = {
+  issue: string;
+  location: string;
+  headline: React.ReactNode;
+  body: string;
+  primaryCta: { label: string; to: string };
+  secondaryCta: { label: string; href: string };
+  pullQuote: string;
+  pullAttribution: string;
+  image: string;
+  imageAlt: string;
+  captionEyebrow: string;
+  captionName: string;
+  captionMetaTop: string;
+  captionMetaBottom: string;
+};
+
+const heroSlides: HeroSlide[] = [
+  {
+    issue: "Issue №04",
+    location: "SLO · CA",
+    headline: (
+      <>
+        The IT team
+        <br />
+        that actually
+        <br />
+        <span className="italic text-cyan">shows up.</span>
+      </>
+    ),
+    body: "We're a small, opinionated crew running technology for a couple hundred businesses across the Central Coast. No call centers. No quarterly upsell calls. Just IT, done well, by people you'll actually meet.",
+    primaryCta: { label: "Start a conversation", to: "/contact" },
+    secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
+    pullQuote:
+      "“The companies that win the next decade aren't the ones with the biggest IT budgets — they're the ones whose IT just works, quietly, in the background, every single day.”",
+    pullAttribution: "— Will, founder",
+    image: willAction,
+    imageAlt: "Will, founder of Digital Solution, mid-conversation in his SLO workspace",
+    captionEyebrow: "Founder",
+    captionName: "Will Ressler",
+    captionMetaTop: "Photo · SLO Workspace",
+    captionMetaBottom: "Spring 2026",
+  },
+  {
+    issue: "Issue №05",
+    location: "On-site · Central Coast",
+    headline: (
+      <>
+        The face you'll
+        <br />
+        actually <span className="italic text-cyan">see</span>
+        <br />
+        when it matters.
+      </>
+    ),
+    body: "Meet Jahleel — our newest field engineer. He's the one who shows up at your office at 7am because your printer is down before a board meeting. Young, sharp, AI-fluent, and genuinely good with people. Our clients adore him for a reason.",
+    primaryCta: { label: "Meet the team", to: "/about" },
+    secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
+    pullQuote:
+      "“The job isn't fixing computers — it's making someone's bad morning into a non-event. If I leave and they forget the problem ever happened, I did it right.”",
+    pullAttribution: "— Jahleel, field engineer",
+    image: jahleelHero,
+    imageAlt:
+      "Jahleel, field engineer at Digital Solution, leaning against a concrete wall in golden afternoon light",
+    captionEyebrow: "Field Engineer",
+    captionName: "Jahleel",
+    captionMetaTop: "Photo · Downtown SLO",
+    captionMetaBottom: "Spring 2026",
+  },
+];
+
 function Home4Page() {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const slide = heroSlides[slideIndex];
+  const total = heroSlides.length;
+  const goPrev = () => setSlideIndex((i) => (i - 1 + total) % total);
+  const goNext = () => setSlideIndex((i) => (i + 1) % total);
+
   return (
     <SiteShell overDark>
-      {/* HERO — magazine split. Editorial type left, tall portrait right. */}
+      {/* HERO — manual slider. Editorial type left, tall portrait right. */}
       <section className="relative -mt-[72px] overflow-hidden bg-[#0a0a0c] text-white">
         {/* Soft warm wash bleeding from the right (echoes the photo's golden hour) */}
         <div
@@ -76,53 +153,75 @@ function Home4Page() {
             <div>
               {/* Magazine-style masthead */}
               <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
-                <span>Issue №04</span>
+                <span>{slide.issue}</span>
                 <span className="h-px flex-1 bg-white/15" />
-                <span>SLO · CA</span>
+                <span>{slide.location}</span>
               </div>
 
               <h1 className="mt-10 font-display text-[clamp(2.75rem,7.5vw,7rem)] font-semibold leading-[0.92] tracking-[-0.05em]">
-                The IT team
-                <br />
-                that actually
-                <br />
-                <span className="italic text-cyan">shows up.</span>
+                {slide.headline}
               </h1>
 
               <p className="mt-10 max-w-xl text-lg text-white/70 sm:text-xl">
-                We're a small, opinionated crew running technology for a couple
-                hundred businesses across the Central Coast. No call centers.
-                No quarterly upsell calls. Just IT, done well, by people you'll
-                actually meet.
+                {slide.body}
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
-                  to="/contact"
+                  to={slide.primaryCta.to}
                   className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-cyan"
                 >
-                  Start a conversation
+                  {slide.primaryCta.label}
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </Link>
                 <a
-                  href="tel:+18054664722"
+                  href={slide.secondaryCta.href}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white/85 hover:text-white"
                 >
-                  Or just call · 805-466-4722
+                  {slide.secondaryCta.label}
                 </a>
               </div>
             </div>
 
-            {/* Bottom hairline — pull-quote / by-line */}
-            <div className="mt-16 hidden border-t border-white/10 pt-6 lg:block">
-              <p className="max-w-md font-display text-sm italic leading-relaxed text-white/55">
-                “The companies that win the next decade aren't the ones with
-                the biggest IT budgets — they're the ones whose IT just works,
-                quietly, in the background, every single day.”
-              </p>
-              <p className="mt-3 text-xs uppercase tracking-[0.22em] text-white/40">
-                — Will, founder
-              </p>
+            {/* Bottom hairline — pull-quote / by-line + slider controls */}
+            <div className="mt-16 border-t border-white/10 pt-6">
+              <div className="hidden lg:block">
+                <p className="max-w-md font-display text-sm italic leading-relaxed text-white/55">
+                  {slide.pullQuote}
+                </p>
+                <p className="mt-3 text-xs uppercase tracking-[0.22em] text-white/40">
+                  {slide.pullAttribution}
+                </p>
+              </div>
+
+              {/* Slider controls */}
+              <div className="mt-6 flex items-center gap-4 lg:mt-8">
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  aria-label="Previous slide"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={goNext}
+                  aria-label="Next slide"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-white hover:text-white"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <div className="ml-2 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-white/45">
+                  <span className="tabular-nums text-white/80">
+                    {String(slideIndex + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-px w-10 bg-white/20" />
+                  <span className="tabular-nums">
+                    {String(total).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -130,8 +229,9 @@ function Home4Page() {
           <div className="relative lg:col-span-5">
             <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.8)]">
               <img
-                src={willAction}
-                alt="Will, founder of Digital Solution, mid-conversation in his SLO workspace"
+                key={slide.image}
+                src={slide.image}
+                alt={slide.imageAlt}
                 width={896}
                 height={1280}
                 className="aspect-[3/4] h-auto w-full object-cover"
@@ -140,16 +240,16 @@ function Home4Page() {
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5">
                 <div>
                   <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan">
-                    Founder
+                    {slide.captionEyebrow}
                   </div>
                   <div className="mt-1 font-display text-lg font-semibold tracking-tight">
-                    Will Ressler
+                    {slide.captionName}
                   </div>
                 </div>
                 <div className="text-right text-[10px] uppercase tracking-[0.22em] text-white/50">
-                  Photo · SLO Workspace
+                  {slide.captionMetaTop}
                   <br />
-                  Spring 2026
+                  {slide.captionMetaBottom}
                 </div>
               </div>
             </div>
