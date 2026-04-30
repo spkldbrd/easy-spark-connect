@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as Home3RouteImport } from './routes/home-3'
 import { Route as Home2RouteImport } from './routes/home-2'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -30,6 +31,11 @@ const PricingRoute = PricingRouteImport.update({
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Home3Route = Home3RouteImport.update({
+  id: '/home-3',
+  path: '/home-3',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Home2Route = Home2RouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/home-2': typeof Home2Route
+  '/home-3': typeof Home3Route
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/home-2': typeof Home2Route
+  '/home-3': typeof Home3Route
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/home-2': typeof Home2Route
+  '/home-3': typeof Home3Route
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/home-2'
+    | '/home-3'
     | '/industries'
     | '/pricing'
     | '/services'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/home-2'
+    | '/home-3'
     | '/industries'
     | '/pricing'
     | '/services'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/home-2'
+    | '/home-3'
     | '/industries'
     | '/pricing'
     | '/services'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   Home2Route: typeof Home2Route
+  Home3Route: typeof Home3Route
   IndustriesRoute: typeof IndustriesRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/industries'
       fullPath: '/industries'
       preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home-3': {
+      id: '/home-3'
+      path: '/home-3'
+      fullPath: '/home-3'
+      preLoaderRoute: typeof Home3RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home-2': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   Home2Route: Home2Route,
+  Home3Route: Home3Route,
   IndustriesRoute: IndustriesRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
