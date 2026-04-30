@@ -9,7 +9,7 @@ import svcCloud from "@/assets/svc-cloud.jpg";
 import svcBackup from "@/assets/svc-backup.jpg";
 import svcVoip from "@/assets/svc-voip.jpg";
 import svcAi from "@/assets/svc-ai.jpg";
-import t1 from "@/assets/testimonial-1.jpg";
+import tChris from "@/assets/testimonial-chris-raders.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -260,23 +260,23 @@ function HomePage() {
           <figure className="text-center">
             <blockquote className="font-display text-3xl font-medium leading-[1.15] tracking-[-0.03em] text-foreground sm:text-5xl">
               <span className="text-brand">“</span>
-              Their response times are unreal — issues are usually fixed
-              before our staff even finish typing the ticket. Switching to Digital Solution
-              was the easiest decision we've made in a decade.
+              Our insurance agency depends on Digital Solution to manage all of our technology.
+              In addition to stellar knowledge, I consider Will and the Digital Solution team
+              an essential partner in our success.
               <span className="text-brand">”</span>
             </blockquote>
             <figcaption className="mt-12 flex items-center justify-center gap-4">
               <img
-                src={t1}
-                alt=""
+                src={tChris}
+                alt="Chris Raders, Ted Hamm Insurance Agency"
                 width={64}
                 height={64}
                 loading="lazy"
                 className="h-14 w-14 rounded-full object-cover ring-1 ring-border"
               />
               <div className="text-left">
-                <div className="text-sm font-semibold">Marcus Reyes</div>
-                <div className="text-xs text-muted-foreground">Owner, Coastal Vineyards</div>
+                <div className="text-sm font-semibold">Chris Raders</div>
+                <div className="text-xs text-muted-foreground">Ted Hamm Insurance Agency</div>
               </div>
             </figcaption>
           </figure>
