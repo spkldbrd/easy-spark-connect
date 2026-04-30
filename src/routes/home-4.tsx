@@ -120,8 +120,8 @@ const heroSlides: HeroSlide[] = [
     imageAlt:
       "Jahleel, field engineer at Digital Solution, leaning against a concrete wall in golden afternoon light",
     captionEyebrow: "Field Engineer",
-    captionName: "Jahleel",
-    captionMetaTop: "Photo · Downtown SLO",
+    captionName: "Jahleel Robers",
+    captionMetaTop: "Photo · Downtown Paso Robles",
     captionMetaBottom: "Spring 2026",
   },
 ];
