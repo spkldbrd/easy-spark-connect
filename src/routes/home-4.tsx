@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import willAction from "@/assets/will-action.jpg";
 import jahleelHero from "@/assets/jahleel-hero.jpg";
@@ -58,7 +58,7 @@ const stack = [
 type HeroSlide = {
   issue: string;
   location: string;
-  headline: React.ReactNode;
+  headline: ReactNode;
   body: string;
   primaryCta: { label: string; to: string };
   secondaryCta: { label: string; href: string };
