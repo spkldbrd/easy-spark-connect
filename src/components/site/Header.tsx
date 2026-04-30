@@ -12,6 +12,7 @@ const nav = [
   { to: "/contact", label: "Contact" },
   { to: "/home-2", label: "Home 2" },
   { to: "/home-3", label: "Home 3" },
+  { to: "/home-4", label: "Home 4" },
 ] as const;
 
 const PHONE_DISPLAY = "805-466-4722";
