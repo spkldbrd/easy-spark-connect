@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import willAction from "@/assets/will-action.jpg";
+import jahleelHero from "@/assets/jahleel-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
 
 export const Route = createFileRoute("/home-4")({
