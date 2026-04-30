@@ -1,7 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
-import { PageHero } from "@/components/site/PageHero";
-import { Stethoscope, Scale, Building2, GraduationCap, ShoppingBag, Factory, ArrowRight } from "lucide-react";
+import { PageHero, CinematicCTA } from "@/components/site/PageHero";
 
 export const Route = createFileRoute("/industries")({
   head: () => ({
@@ -16,41 +15,64 @@ export const Route = createFileRoute("/industries")({
 });
 
 const items = [
-  { icon: Stethoscope, name: "Healthcare", note: "HIPAA-compliant IT for clinics, dental offices and specialty practices.", clients: "60+ practices" },
-  { icon: Scale, name: "Legal", note: "Confidentiality-first IT for law firms — secure document handling and ediscovery support.", clients: "40+ firms" },
-  { icon: Building2, name: "Professional Services", note: "Hybrid-ready IT for accounting, real estate and consultancies.", clients: "120+ teams" },
-  { icon: GraduationCap, name: "Education", note: "K-12, charter and higher-ed — student device management and CIPA compliance.", clients: "15+ schools" },
-  { icon: ShoppingBag, name: "Retail & Hospitality", note: "PCI-compliant POS, Wi-Fi, and multi-location networking.", clients: "80+ locations" },
-  { icon: Factory, name: "Manufacturing & AgTech", note: "OT/IT segmentation, ERP support and CMMC-readiness for SLO's growing producers.", clients: "30+ operations" },
+  { n: "01", name: "Healthcare", note: "HIPAA-compliant IT for clinics, dental offices and specialty practices.", clients: "60+ practices", compliance: "HIPAA · HITECH" },
+  { n: "02", name: "Legal", note: "Confidentiality-first IT for law firms — secure document handling and ediscovery support.", clients: "40+ firms", compliance: "ABA · ediscovery" },
+  { n: "03", name: "Professional Services", note: "Hybrid-ready IT for accounting, real estate and consultancies.", clients: "120+ teams", compliance: "SOC 2 · IRS Pub 4557" },
+  { n: "04", name: "Education", note: "K-12, charter and higher-ed — student device management and CIPA compliance.", clients: "15+ schools", compliance: "CIPA · FERPA" },
+  { n: "05", name: "Retail & Hospitality", note: "PCI-compliant POS, Wi-Fi, and multi-location networking.", clients: "80+ locations", compliance: "PCI-DSS" },
+  { n: "06", name: "Manufacturing & AgTech", note: "OT/IT segmentation, ERP support and CMMC-readiness for SLO's growing producers.", clients: "30+ operations", compliance: "CMMC · NIST 800-171" },
 ];
 
 function IndustriesPage() {
   return (
-    <SiteShell>
+    <SiteShell overDark>
       <PageHero
         eyebrow="Industries"
-        title={<>We speak your industry's language.</>}
+        title={
+          <>
+            We speak your
+            <br />
+            <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
+              industry's language.
+            </span>
+          </>
+        }
         subtitle="Compliance, workflows, vendors — we've done it before. You won't pay us to learn on the job."
+        meta={["Healthcare", "Legal", "Education", "Manufacturing"]}
       />
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((i) => (
-            <div key={i.name} className="rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-brand/40 hover:shadow-soft">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow">
-                <i.icon className="h-6 w-6" />
+
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="grid gap-px overflow-hidden rounded-[2rem] border border-border bg-border md:grid-cols-2">
+            {items.map((i) => (
+              <div
+                key={i.name}
+                className="group relative bg-background p-10 transition hover:bg-surface sm:p-12"
+              >
+                <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  <span className="text-brand">{i.n}</span>
+                  <span className="h-px w-8 bg-border" />
+                  <span>{i.compliance}</span>
+                </div>
+                <h2 className="mt-5 font-display text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                  {i.name}
+                </h2>
+                <p className="mt-4 max-w-md text-muted-foreground">{i.note}</p>
+                <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground/70">
+                  <span className="h-1 w-5 bg-brand" />
+                  {i.clients} served
+                </div>
               </div>
-              <h2 className="mt-6 font-display text-2xl font-bold">{i.name}</h2>
-              <p className="mt-2 text-muted-foreground">{i.note}</p>
-              <div className="mt-5 inline-flex rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-secondary-foreground">{i.clients} served</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-16 text-center">
-          <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-foreground px-8 py-4 font-semibold text-background hover:bg-brand">
-            Discuss your industry needs <ArrowRight className="h-4 w-4" />
-          </Link>
+            ))}
+          </div>
         </div>
       </section>
+
+      <CinematicCTA
+        title="Built for your world."
+        subtitle="Tell us about your operation and we'll show you what we've already solved for teams like yours."
+        ctaLabel="Discuss your industry"
+      />
     </SiteShell>
   );
 }

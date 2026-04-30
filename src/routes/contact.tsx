@@ -7,7 +7,7 @@ import { useState } from "react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us — Talk to a Human | Digital Solution SLO" },
+      { title: "Contact — Talk to a Human | Digital Solution SLO" },
       { name: "description", content: "Reach the Digital Solution team in San Luis Obispo. Phone, email, or schedule a free 30-minute IT consultation." },
       { property: "og:title", content: "Contact | Digital Solution" },
       { property: "og:description", content: "Talk to a real human about your IT — no bots, no queues." },
@@ -16,71 +16,111 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const directs = [
+  { icon: Phone, label: "Call us", value: "805-466-4722", href: "tel:+18054664722" },
+  { icon: Mail, label: "Email", value: "hello@digitalsolution.com", href: "mailto:hello@digitalsolution.com" },
+  { icon: MapPin, label: "Office", value: "San Luis Obispo, CA" },
+  { icon: Clock, label: "Hours", value: "Mon–Fri 8am–6pm · 24/7 emergency" },
+];
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (
-    <SiteShell>
+    <SiteShell overDark>
       <PageHero
         eyebrow="Contact"
-        title={<>Talk to a human.</>}
+        title={
+          <>
+            Talk to
+            <br />
+            <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
+              a human.
+            </span>
+          </>
+        }
         subtitle="Tell us a bit about your business and we'll get back to you within one business hour."
+        meta={["Reply within 1 hour", "No call queues", "No bots", "SLO County"]}
       />
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <h2 className="font-display text-3xl font-bold">Reach us directly</h2>
-            <p className="mt-3 text-muted-foreground">Prefer to skip the form? Here's how to find us.</p>
-            <ul className="mt-8 space-y-5">
-              <li className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow"><Phone className="h-5 w-5" /></div>
-                <div><div className="text-sm text-muted-foreground">Call us</div><a href="tel:+18055550100" className="font-semibold">(805) 555-0100</a></div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow"><Mail className="h-5 w-5" /></div>
-                <div><div className="text-sm text-muted-foreground">Email</div><a href="mailto:hello@digitalsolution.com" className="font-semibold">hello@digitalsolution.com</a></div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow"><MapPin className="h-5 w-5" /></div>
-                <div><div className="text-sm text-muted-foreground">Office</div><div className="font-semibold">1234 Higuera St<br/>San Luis Obispo, CA 93401</div></div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow"><Clock className="h-5 w-5" /></div>
-                <div><div className="text-sm text-muted-foreground">Hours</div><div className="font-semibold">Mon–Fri 8am–6pm<br/>24/7 emergency support</div></div>
-              </li>
-            </ul>
-          </div>
-          <div className="lg:col-span-3">
-            <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="rounded-3xl border border-border bg-card p-8 shadow-soft"
-            >
-              {sent ? (
-                <div className="py-12 text-center">
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-brand text-white shadow-glow"><Send className="h-6 w-6" /></div>
-                  <h3 className="mt-6 font-display text-2xl font-bold">Message sent!</h3>
-                  <p className="mt-2 text-muted-foreground">We'll be in touch within one business hour.</p>
-                </div>
-              ) : (
-                <div className="grid gap-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Name" name="name" required />
-                    <Field label="Company" name="company" />
+
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="grid gap-16 lg:grid-cols-12">
+            {/* Direct contact column */}
+            <div className="lg:col-span-5">
+              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">Reach us directly</span>
+              <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+                Prefer to skip the form?
+              </h2>
+              <p className="mt-5 text-muted-foreground">
+                We answer the phone. We answer email. We are humans, in San Luis Obispo, who would genuinely like to hear from you.
+              </p>
+              <ul className="mt-12 divide-y divide-border border-y border-border">
+                {directs.map((d) => (
+                  <li key={d.label} className="flex items-start gap-5 py-6">
+                    <d.icon className="mt-1 h-5 w-5 shrink-0 text-brand" />
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                        {d.label}
+                      </div>
+                      <div className="mt-1 font-display text-lg font-medium tracking-[-0.02em]">
+                        {d.href ? (
+                          <a href={d.href} className="hover:text-brand">{d.value}</a>
+                        ) : (
+                          d.value
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Form column */}
+            <div className="lg:col-span-7">
+              <div className="rounded-[2rem] border border-border bg-card p-10 sm:p-12">
+                {sent ? (
+                  <div className="py-16 text-center">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-foreground text-background">
+                      <Send className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-8 font-display text-3xl font-semibold tracking-[-0.03em]">Message sent.</h3>
+                    <p className="mt-3 text-muted-foreground">We'll be in touch within one business hour.</p>
                   </div>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Email" name="email" type="email" required />
-                    <Field label="Phone" name="phone" type="tel" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-semibold">How can we help?</label>
-                    <textarea name="message" rows={5} required className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring focus:ring-2" />
-                  </div>
-                  <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition hover:bg-brand">
-                    Send message <Send className="h-4 w-4" />
-                  </button>
-                </div>
-              )}
-            </form>
+                ) : (
+                  <form
+                    onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                    className="grid gap-6"
+                  >
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      <Field label="Name" name="name" required />
+                      <Field label="Company" name="company" />
+                    </div>
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      <Field label="Email" name="email" type="email" required />
+                      <Field label="Phone" name="phone" type="tel" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                        How can we help?
+                      </label>
+                      <textarea
+                        name="message"
+                        rows={5}
+                        required
+                        className="mt-3 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring focus:ring-2"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-sm font-semibold text-background transition hover:bg-brand"
+                    >
+                      Send message <Send className="h-4 w-4" />
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -88,11 +128,29 @@ function ContactPage() {
   );
 }
 
-function Field({ label, name, type = "text", required = false }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   return (
     <div>
-      <label className="text-sm font-semibold">{label}{required && <span className="text-destructive"> *</span>}</label>
-      <input name={name} type={type} required={required} className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring focus:ring-2" />
+      <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+        {required && <span className="text-destructive"> *</span>}
+      </label>
+      <input
+        name={name}
+        type={type}
+        required={required}
+        className="mt-3 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring focus:ring-2"
+      />
     </div>
   );
 }
