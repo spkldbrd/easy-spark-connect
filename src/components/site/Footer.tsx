@@ -1,20 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { HexMark, HexPattern } from "./HexMark";
+import { HexMark } from "./HexMark";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-ink text-brand-foreground">
-      <HexPattern className="absolute inset-0 h-full w-full text-white/[0.06]" />
-      <div className="absolute -right-20 -top-20 h-96 w-96 text-cyan/10">
-        <HexMark className="h-full w-full" strokeWidth={1} />
-      </div>
-      <div className="relative mx-auto max-w-7xl px-6 py-16">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-black text-white">
+      <div className="relative mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-12 lg:grid-cols-4">
           <div>
-            <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-bold">
-              <HexMark className="h-9 w-9 text-cyan" />
-              <span className="uppercase tracking-[0.18em]">Digital Solution</span>
+            <Link to="/" className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight">
+              <HexMark className="h-8 w-8 text-cyan" />
+              <span>Digital Solution</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-white/60">
               Trusted IT partner for businesses across San Luis Obispo County since 1997.

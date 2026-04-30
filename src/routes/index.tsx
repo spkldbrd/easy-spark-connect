@@ -1,316 +1,312 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SiteShell } from "@/components/site/SiteShell";
-import { ArrowRight, Shield, Cloud, Phone, HardDrive, Brain, Server, Check, Star, Clock, Award, Users, Building2, Stethoscope, Scale, GraduationCap, ShoppingBag, Factory } from "lucide-react";
-import { HexMark, HexPattern, HexOutline } from "@/components/site/HexMark";
-import heroTeam from "@/assets/hero-team.jpg";
-import networkBg from "@/assets/network-bg.jpg";
+import heroOrb from "@/assets/hero-orb.jpg";
+import svcManaged from "@/assets/svc-managed.jpg";
+import svcSecurity from "@/assets/svc-security.jpg";
+import svcCloud from "@/assets/svc-cloud.jpg";
+import svcBackup from "@/assets/svc-backup.jpg";
+import svcVoip from "@/assets/svc-voip.jpg";
+import svcAi from "@/assets/svc-ai.jpg";
 import t1 from "@/assets/testimonial-1.jpg";
-import t2 from "@/assets/testimonial-2.jpg";
-import t3 from "@/assets/testimonial-3.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Digital Solution — Managed IT & Cybersecurity in San Luis Obispo" },
-      { name: "description", content: "Trusted MSP for businesses across San Luis Obispo County. 24/7 support, cybersecurity, cloud, VoIP and AI solutions with a 15-minute response SLA." },
+      { name: "description", content: "A modern IT partner for businesses across San Luis Obispo County. Managed IT, cybersecurity, cloud, VoIP and AI — backed by humans, on a 15-minute SLA." },
       { property: "og:title", content: "Digital Solution — Managed IT for SLO County" },
-      { property: "og:description", content: "Solving IT problems since 1997. 24/7 support, cybersecurity, and cloud services for SLO businesses." },
+      { property: "og:description", content: "Solving IT problems since 1997. Managed IT, security, cloud, VoIP and AI for the Central Coast." },
+      { property: "og:image", content: heroOrb },
+      { name: "twitter:image", content: heroOrb },
     ],
   }),
   component: HomePage,
 });
 
-const services = [
-  { icon: Server, title: "Managed IT Services", desc: "Proactive monitoring, patching and helpdesk so your team never waits on tech." },
-  { icon: Shield, title: "Cybersecurity", desc: "EDR, SOC, MFA and security training to defend against modern threats." },
-  { icon: HardDrive, title: "Backup & Recovery", desc: "Immutable backups and tested DR plans that keep you running." },
-  { icon: Cloud, title: "Cloud Hosting", desc: "Microsoft 365, Azure and AWS — designed, migrated and managed." },
-  { icon: Phone, title: "VoIP & Internet", desc: "Crystal-clear cloud phones and fiber internet built for hybrid teams." },
-  { icon: Brain, title: "AI Solutions", desc: "Practical AI integrations that automate workflows and unlock productivity." },
+const tabs = [
+  {
+    key: "managed",
+    label: "Managed IT",
+    image: svcManaged,
+    eyebrow: "Always-on operations",
+    title: "An IT department that never sleeps.",
+    body: "24/7 monitoring, proactive patching, and a help desk that picks up before the second ring. Your team stays productive — we handle the rest.",
+    bullets: ["24/7 helpdesk + on-call", "Endpoint management", "Quarterly business reviews"],
+  },
+  {
+    key: "security",
+    label: "Cybersecurity",
+    image: svcSecurity,
+    eyebrow: "Defense in depth",
+    title: "Modern threats, neutralized in real time.",
+    body: "Managed EDR, a 24/7 SOC, phishing-resistant MFA and continuous training. Built to stop ransomware before it reaches your data.",
+    bullets: ["Managed EDR + SOC", "Email & identity hardening", "Security awareness training"],
+  },
+  {
+    key: "cloud",
+    label: "Cloud",
+    image: svcCloud,
+    eyebrow: "Microsoft 365 · Azure · AWS",
+    title: "Cloud designed, migrated, and tuned for you.",
+    body: "From tenant hardening to cost optimization — get the cloud you were promised, without the surprise invoices.",
+    bullets: ["Microsoft 365 rollout", "Azure cost optimization", "Identity & SSO"],
+  },
+  {
+    key: "backup",
+    label: "Backup & DR",
+    image: svcBackup,
+    eyebrow: "Recovery first",
+    title: "Immutable backups. Tested recovery.",
+    body: "A 3-2-1-1 backup posture with annual disaster recovery drills. Ransomware can't touch what it can't reach.",
+    bullets: ["Image-based + cloud", "RPO/RTO under 1 hour", "Annual DR testing"],
+  },
+  {
+    key: "voip",
+    label: "VoIP",
+    image: svcVoip,
+    eyebrow: "Voice + connectivity",
+    title: "Crystal-clear calls. Anywhere your team works.",
+    body: "Cloud PBX, SMS, video and SD-WAN — designed and supported by the same team that runs your network.",
+    bullets: ["Cloud PBX", "SMS & video", "Fiber + LTE failover"],
+  },
+  {
+    key: "ai",
+    label: "AI Solutions",
+    image: svcAi,
+    eyebrow: "Practical, governed AI",
+    title: "AI your team will actually use.",
+    body: "Microsoft Copilot rollouts, custom assistants, and workflow automation that ships value in weeks — not quarters.",
+    bullets: ["Copilot adoption", "Custom GPT assistants", "Process automation"],
+  },
 ];
 
-const stats = [
-  { v: "15min", l: "Avg. response time" },
-  { v: "99.99%", l: "Uptime SLA" },
-  { v: "27+", l: "Years in SLO County" },
-  { v: "450+", l: "Businesses served" },
-];
-
-const industries = [
-  { icon: Stethoscope, name: "Healthcare", note: "HIPAA compliant" },
-  { icon: Scale, name: "Legal", note: "Confidentiality first" },
-  { icon: Building2, name: "Professional Services", note: "Hybrid-ready" },
-  { icon: GraduationCap, name: "Education", note: "K-12 & Higher Ed" },
-  { icon: ShoppingBag, name: "Retail & Hospitality", note: "PCI compliant" },
-  { icon: Factory, name: "Manufacturing", note: "OT/IT security" },
-];
-
-const testimonials = [
-  { name: "Marcus Reyes", role: "Owner, Coastal Vineyards", img: t1, quote: "Digital Solution rebuilt our network and migrated us to the cloud over a single weekend. Zero downtime, and our team has had real, human support every single day since." },
-  { name: "Sarah O'Connor", role: "Operations Director, Bayview Group", img: t2, quote: "After a ransomware scare with our last provider, switching here was night and day. Their security stack and 24/7 SOC give us total peace of mind." },
-  { name: "David Johnson", role: "Director, SLO Family Health", img: t3, quote: "HIPAA compliance felt overwhelming until they walked us through it. Response times are unreal — issues are usually fixed before staff finish typing the ticket." },
-];
-
-const tiers = [
-  { name: "Essentials", price: "$89", per: "/user/mo", desc: "Core monitoring & helpdesk for small teams.", features: ["Remote helpdesk (8×5)", "Patch management", "Antivirus & MFA", "Quarterly business review"] },
-  { name: "Professional", price: "$149", per: "/user/mo", desc: "Our most popular plan for growing businesses.", features: ["Everything in Essentials", "24/7 monitoring & support", "Managed EDR + SOC", "Cloud backup", "vCIO strategy"], featured: true },
-  { name: "Enterprise", price: "Custom", per: "", desc: "Tailored stack for regulated and complex orgs.", features: ["Everything in Professional", "Compliance (HIPAA, PCI, CMMC)", "Dedicated engineer", "On-site visits", "Custom SLA"] },
+const logos = [
+  "Coastal Vineyards",
+  "Bayview Group",
+  "SLO Family Health",
+  "Edna Valley Legal",
+  "Pacific Pediatrics",
+  "Central Coast Mfg",
+  "Morro Bay Hotels",
+  "Madonna & Co.",
 ];
 
 function HomePage() {
+  const [active, setActive] = useState(0);
+  const current = tabs[active];
+
   return (
-    <SiteShell>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-hero text-white">
-        <div
-          className="absolute inset-0 opacity-25 mix-blend-screen"
-          style={{ backgroundImage: `url(${networkBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
-          aria-hidden
+    <SiteShell overDark>
+      {/* HERO — pitch black, oversized type, single orb */}
+      <section className="relative -mt-[72px] overflow-hidden bg-black text-white">
+        <img
+          src={heroOrb}
+          alt=""
+          width={1920}
+          height={1280}
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90"
         />
-        <HexPattern className="absolute inset-0 h-full w-full text-white/[0.07]" />
-        <HexOutline className="absolute -right-32 -top-32 h-[28rem] w-[28rem] text-cyan/20" strokeWidth={1.5} />
-        <HexOutline className="absolute -bottom-40 left-1/3 h-80 w-80 text-white/10" strokeWidth={1} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/40" aria-hidden />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-12 lg:py-28">
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium backdrop-blur">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-cyan" />
-              Now serving San Luis Obispo County
+        {/* black vignette so text reads */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.55)_70%,_#000_100%)]" aria-hidden />
+
+        <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-end px-6 pb-24 pt-40">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan" />
+              Trusted by 450+ Central Coast businesses since 1997
             </div>
-            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              IT that just <span className="text-gradient-brand bg-gradient-to-r from-cyan to-white bg-clip-text text-transparent">works.</span>
-              <br />Backed by humans who care.
+            <h1 className="mt-7 font-display text-[clamp(3rem,8vw,7.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+              IT, finally
+              <br />
+              <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
+                done right.
+              </span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-white/75">
-              Managed IT, cybersecurity, and cloud for SLO businesses — with a 15-minute response SLA and 24/7 support from a local team you'll actually know by name.
+            <p className="mt-8 max-w-xl text-lg text-white/65 sm:text-xl">
+              Managed IT, cybersecurity, cloud and AI for San Luis Obispo County —
+              answered by humans, in under fifteen minutes.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link to="/contact" className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink shadow-glow transition hover:bg-cyan">
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:bg-cyan"
+              >
                 Talk to a human
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </Link>
-              <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10">
-                Explore services
-              </Link>
-            </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/70">
-              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-cyan" /> No long-term lock-in</span>
-              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-cyan" /> Local SLO team</span>
-              <span className="flex items-center gap-2"><Check className="h-4 w-4 text-cyan" /> Transparent pricing</span>
-            </div>
-          </div>
-          <div className="lg:col-span-5">
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-gradient-brand opacity-30 blur-2xl" aria-hidden />
-              <img
-                src={heroTeam}
-                alt="Digital Solution IT engineers monitoring client networks from their San Luis Obispo office"
-                width={1600}
-                height={1024}
-                className="relative aspect-[4/3] w-full rounded-3xl object-cover shadow-glow ring-1 ring-white/20"
-              />
-              <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-background p-4 text-foreground shadow-soft sm:block">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-brand text-white">
-                    <Clock className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground">Avg. response</div>
-                    <div className="text-lg font-bold">Under 15 minutes</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="border-y border-border bg-surface">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden bg-border lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.l} className="bg-surface p-8 text-center">
-              <div className="font-display text-4xl font-bold text-gradient-brand">{s.v}</div>
-              <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brand">What we do</span>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Complete IT, under one roof
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            From day-to-day support to long-term strategy — one trusted partner instead of a half-dozen vendors.
-          </p>
-        </div>
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-card p-8 transition hover:-translate-y-1 hover:border-brand/40 hover:shadow-soft"
-            >
-              <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-brand opacity-0 blur-3xl transition group-hover:opacity-20" aria-hidden />
-              <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand text-white shadow-glow">
-                <s.icon className="h-6 w-6" />
-              </div>
-              <h3 className="relative mt-6 text-xl font-bold">{s.title}</h3>
-              <p className="relative mt-2 text-muted-foreground">{s.desc}</p>
-              <Link to="/services" className="relative mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand">
-                Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* INDUSTRIES */}
-      <section className="bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-5">
-              <span className="text-sm font-semibold uppercase tracking-wider text-brand">Industries</span>
-              <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-                Specialists in the work you actually do.
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                We've built IT stacks for clinics, vineyards, law firms and more across the Central Coast. We speak your compliance language.
-              </p>
-              <Link to="/industries" className="mt-6 inline-flex items-center gap-2 font-semibold text-brand">
-                See all industries <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {industries.map((i) => (
-                  <div key={i.name} className="rounded-2xl border border-border bg-card p-5 transition hover:border-brand/40 hover:shadow-soft">
-                    <i.icon className="h-7 w-7 text-brand" />
-                    <div className="mt-4 font-semibold">{i.name}</div>
-                    <div className="text-xs text-muted-foreground">{i.note}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-brand">Real clients, real results</span>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Loved by 450+ SLO businesses
-          </h2>
-        </div>
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="flex flex-col rounded-3xl border border-border bg-card p-8 shadow-soft">
-              <div className="flex gap-1 text-brand">
-                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-              </div>
-              <blockquote className="mt-4 flex-1 text-foreground/90">"{t.quote}"</blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-6">
-                <img src={t.img} alt={t.name} loading="lazy" width={512} height={512} className="h-12 w-12 rounded-full object-cover" />
-                <div>
-                  <div className="font-semibold">{t.name}</div>
-                  <div className="text-xs text-muted-foreground">{t.role}</div>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2"><Award className="h-5 w-5 text-brand" /> Microsoft Solutions Partner</div>
-          <div className="flex items-center gap-2"><Shield className="h-5 w-5 text-brand" /> CompTIA Security Trustmark+</div>
-          <div className="flex items-center gap-2"><Users className="h-5 w-5 text-brand" /> SLO Chamber Member</div>
-          <div className="flex items-center gap-2"><Star className="h-5 w-5 text-brand" /> 4.9★ on Google (180+ reviews)</div>
-        </div>
-      </section>
-
-      {/* PRICING */}
-      <section className="bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-semibold uppercase tracking-wider text-brand">Pricing</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-              Transparent plans. No surprises.
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Flat per-user pricing means budgeting your IT is finally predictable.
-            </p>
-          </div>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {tiers.map((t) => (
-              <div
-                key={t.name}
-                className={`relative flex flex-col rounded-3xl border p-8 ${
-                  t.featured
-                    ? "border-brand bg-gradient-hero text-white shadow-glow lg:-translate-y-4"
-                    : "border-border bg-card"
-                }`}
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white"
               >
-                {t.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cyan px-4 py-1 text-xs font-bold uppercase tracking-wider text-ink">
-                    Most popular
-                  </div>
-                )}
-                <h3 className="font-display text-2xl font-bold">{t.name}</h3>
-                <p className={`mt-2 text-sm ${t.featured ? "text-white/70" : "text-muted-foreground"}`}>{t.desc}</p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-bold">{t.price}</span>
-                  <span className={t.featured ? "text-white/60" : "text-muted-foreground"}>{t.per}</span>
-                </div>
-                <ul className="mt-6 space-y-3 text-sm">
-                  {t.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <Check className={`mt-0.5 h-4 w-4 shrink-0 ${t.featured ? "text-cyan" : "text-brand"}`} />
-                      <span>{f}</span>
+                What we do <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* hairline tagline row */}
+          <div className="mt-24 flex flex-wrap items-end justify-between gap-6 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.2em] text-white/40">
+            <span>San Luis Obispo, California</span>
+            <span>Est. 1997</span>
+            <span>24 / 7 / 365</span>
+            <span>Microsoft Solutions Partner</span>
+          </div>
+        </div>
+      </section>
+
+      {/* WEBEX-STYLE TABBED SERVICES SLIDER */}
+      <section className="bg-background py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+              The Digital Solution suite
+            </span>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
+              One partner.
+              <br className="hidden sm:block" />
+              <span className="text-muted-foreground">Every layer of your IT.</span>
+            </h2>
+          </div>
+
+          {/* tab bar */}
+          <div className="mt-16 flex justify-center">
+            <div className="flex w-full max-w-5xl gap-1 overflow-x-auto rounded-full border border-border bg-surface p-1.5">
+              {tabs.map((t, i) => (
+                <button
+                  key={t.key}
+                  onClick={() => setActive(i)}
+                  className={`flex-1 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition ${
+                    i === active
+                      ? "bg-foreground text-background shadow-soft"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* feature panel */}
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-black">
+            <div className="grid gap-0 lg:grid-cols-2">
+              <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto">
+                <img
+                  key={current.key}
+                  src={current.image}
+                  alt=""
+                  width={1280}
+                  height={896}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 lg:to-black/0" />
+              </div>
+              <div className="flex flex-col justify-center p-10 text-white sm:p-14 lg:p-16">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan">
+                  {current.eyebrow}
+                </span>
+                <h3 className="mt-4 font-display text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+                  {current.title}
+                </h3>
+                <p className="mt-5 text-base text-white/65 sm:text-lg">{current.body}</p>
+                <ul className="mt-8 space-y-2.5 text-sm text-white/80">
+                  {current.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-3">
+                      <span className="h-1 w-6 bg-cyan" />
+                      {b}
                     </li>
                   ))}
                 </ul>
-                <Link
-                  to="/contact"
-                  className={`mt-8 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ${
-                    t.featured
-                      ? "bg-white text-ink hover:bg-cyan"
-                      : "bg-foreground text-background hover:bg-brand"
-                  }`}
-                >
-                  Get started
-                </Link>
+                <div className="mt-10">
+                  <Link
+                    to="/services"
+                    className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-cyan"
+                  >
+                    Learn more
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LOGO WALL */}
+      <section className="border-y border-border bg-surface py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+            Local teams that trust us with their uptime
+          </p>
+          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+            {logos.map((l) => (
+              <div
+                key={l}
+                className="text-center font-display text-lg font-medium tracking-tight text-foreground/40 transition hover:text-foreground"
+              >
+                {l}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-12 text-white shadow-glow lg:p-20">
-          <div
-            className="absolute inset-0 opacity-30"
-            style={{ backgroundImage: `url(${networkBg})`, backgroundSize: "cover" }}
-            aria-hidden
-          />
-          <HexPattern className="absolute inset-0 h-full w-full text-white/[0.08]" />
-          <HexMark className="absolute -right-16 -bottom-16 h-72 w-72 text-cyan/25" strokeWidth={2} />
-          <HexMark className="absolute -left-20 -top-20 h-56 w-56 text-white/10" strokeWidth={1.5} />
-          <div className="relative mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
-              Ready to stop fighting your IT?
-            </h2>
-            <p className="mt-4 text-lg text-white/80">
-              Book a free 30-minute call. We'll listen, ask smart questions, and show you exactly what we'd do differently.
-            </p>
-            <Link to="/contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-ink transition hover:bg-cyan">
-              Talk to a human <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
+      {/* SINGLE EDITORIAL QUOTE */}
+      <section className="bg-background py-32">
+        <div className="mx-auto max-w-5xl px-6">
+          <figure className="text-center">
+            <blockquote className="font-display text-3xl font-medium leading-[1.15] tracking-[-0.03em] text-foreground sm:text-5xl">
+              <span className="text-brand">“</span>
+              Their response times are unreal — issues are usually fixed
+              before our staff even finish typing the ticket. Switching to Digital Solution
+              was the easiest decision we've made in a decade.
+              <span className="text-brand">”</span>
+            </blockquote>
+            <figcaption className="mt-12 flex items-center justify-center gap-4">
+              <img
+                src={t1}
+                alt=""
+                width={64}
+                height={64}
+                loading="lazy"
+                className="h-14 w-14 rounded-full object-cover ring-1 ring-border"
+              />
+              <div className="text-left">
+                <div className="text-sm font-semibold">Marcus Reyes</div>
+                <div className="text-xs text-muted-foreground">Owner, Coastal Vineyards</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* CINEMATIC CTA */}
+      <section className="relative overflow-hidden bg-black py-32 text-white">
+        <img
+          src={heroOrb}
+          alt=""
+          width={1920}
+          height={1280}
+          loading="lazy"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
+          <h2 className="font-display text-5xl font-semibold tracking-[-0.04em] sm:text-7xl">
+            Let's fix your IT.
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-white/65">
+            Thirty minutes. No pitch deck. Just a real conversation about what's slowing you down — and what we'd do about it.
+          </p>
+          <Link
+            to="/contact"
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition hover:bg-cyan"
+          >
+            Book a call <ArrowRight className="h-5 w-5" />
+          </Link>
         </div>
       </section>
     </SiteShell>
