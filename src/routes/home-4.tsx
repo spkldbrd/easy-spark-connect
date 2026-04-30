@@ -94,7 +94,7 @@ const heroSlides: HeroSlide[] = [
     image: willAction,
     imageAlt: "Will, founder of Digital Solution, mid-conversation in his SLO workspace",
     captionEyebrow: "Founder",
-    captionName: "Will Ressler",
+    captionName: "Will Steffenauer",
     captionMetaTop: "Photo · SLO Workspace",
     captionMetaBottom: "Spring 2026",
   },
