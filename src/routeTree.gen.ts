@@ -16,6 +16,9 @@ import { Route as HomeAltRouteImport } from './routes/home-alt'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LocationsSanLuisObispoRouteImport } from './routes/locations.san-luis-obispo'
+import { Route as LocationsPasoRoblesRouteImport } from './routes/locations.paso-robles'
+import { Route as LocationsAtascaderoRouteImport } from './routes/locations.atascadero'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -52,6 +55,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocationsSanLuisObispoRoute = LocationsSanLuisObispoRouteImport.update({
+  id: '/locations/san-luis-obispo',
+  path: '/locations/san-luis-obispo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsPasoRoblesRoute = LocationsPasoRoblesRouteImport.update({
+  id: '/locations/paso-robles',
+  path: '/locations/paso-robles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsAtascaderoRoute = LocationsAtascaderoRouteImport.update({
+  id: '/locations/atascadero',
+  path: '/locations/atascadero',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +79,9 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/locations/atascadero': typeof LocationsAtascaderoRoute
+  '/locations/paso-robles': typeof LocationsPasoRoblesRoute
+  '/locations/san-luis-obispo': typeof LocationsSanLuisObispoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +91,9 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/locations/atascadero': typeof LocationsAtascaderoRoute
+  '/locations/paso-robles': typeof LocationsPasoRoblesRoute
+  '/locations/san-luis-obispo': typeof LocationsSanLuisObispoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +104,9 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
+  '/locations/atascadero': typeof LocationsAtascaderoRoute
+  '/locations/paso-robles': typeof LocationsPasoRoblesRoute
+  '/locations/san-luis-obispo': typeof LocationsSanLuisObispoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +118,9 @@ export interface FileRouteTypes {
     | '/industries'
     | '/pricing'
     | '/services'
+    | '/locations/atascadero'
+    | '/locations/paso-robles'
+    | '/locations/san-luis-obispo'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +130,9 @@ export interface FileRouteTypes {
     | '/industries'
     | '/pricing'
     | '/services'
+    | '/locations/atascadero'
+    | '/locations/paso-robles'
+    | '/locations/san-luis-obispo'
   id:
     | '__root__'
     | '/'
@@ -109,6 +142,9 @@ export interface FileRouteTypes {
     | '/industries'
     | '/pricing'
     | '/services'
+    | '/locations/atascadero'
+    | '/locations/paso-robles'
+    | '/locations/san-luis-obispo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +155,9 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
+  LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
+  LocationsPasoRoblesRoute: typeof LocationsPasoRoblesRoute
+  LocationsSanLuisObispoRoute: typeof LocationsSanLuisObispoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +211,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/locations/san-luis-obispo': {
+      id: '/locations/san-luis-obispo'
+      path: '/locations/san-luis-obispo'
+      fullPath: '/locations/san-luis-obispo'
+      preLoaderRoute: typeof LocationsSanLuisObispoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/paso-robles': {
+      id: '/locations/paso-robles'
+      path: '/locations/paso-robles'
+      fullPath: '/locations/paso-robles'
+      preLoaderRoute: typeof LocationsPasoRoblesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/atascadero': {
+      id: '/locations/atascadero'
+      path: '/locations/atascadero'
+      fullPath: '/locations/atascadero'
+      preLoaderRoute: typeof LocationsAtascaderoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +243,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
+  LocationsAtascaderoRoute: LocationsAtascaderoRoute,
+  LocationsPasoRoblesRoute: LocationsPasoRoblesRoute,
+  LocationsSanLuisObispoRoute: LocationsSanLuisObispoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
