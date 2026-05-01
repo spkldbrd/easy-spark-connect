@@ -148,8 +148,8 @@ const heroSlides: HeroSlide[] = [
       "A Digital Solution technician on a downtown Paso Robles street at sunset",
     captionEyebrow: "Local · Always",
     captionName: "Paso to Pismo",
-    captionMetaTop: "Photo · Downtown Paso Robles",
-    captionMetaBottom: "Spring 2026",
+    captionMetaTop: "MICAH STEFFENAUER",
+    captionMetaBottom: "LEAD TECH",
   },
 ];
 
