@@ -163,6 +163,71 @@ function AboutPage() {
         </div>
       </section>
 
+
+      {/* Team — four-block grid with portrait, story, and pull quote */}
+      <section className="border-t border-border bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="max-w-2xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+              The team
+            </span>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              The people behind the phone.
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground">
+              When you call us, you talk to one of these people. Not a queue, not a script, not someone three time zones away.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m) => (
+              <article
+                key={m.name}
+                className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-background transition hover:border-brand/40"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={m.image}
+                    alt={`${m.name}, ${m.role} at Digital Solution`}
+                    loading="lazy"
+                    width={600}
+                    height={750}
+                    className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-brand">
+                    {m.role}
+                  </div>
+                  <h3 className="mt-2 font-display text-xl font-semibold tracking-[-0.02em]">
+                    {m.name}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {m.bio}
+                  </p>
+                  <blockquote className="mt-5 border-t border-border pt-5 font-display text-sm italic leading-relaxed text-foreground/75">
+                    {m.quote}
+                  </blockquote>
+                </div>
+              </article>
+            ))}
+
+            {/* Placeholder for the fourth team member */}
+            <article className="flex flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-border bg-background/50 p-10 text-center">
+              <div className="font-display text-5xl font-semibold tracking-tight text-brand/40">
+                +
+              </div>
+              <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand">
+                Now hiring
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">
+                We're growing. If you're a great engineer who loves working face-to-face with clients, we want to talk.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <CinematicCTA
         title="Come meet the team."
         subtitle="Stop by our downtown SLO office, or grab thirty minutes with us on a video call."
