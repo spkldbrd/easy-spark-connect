@@ -154,7 +154,7 @@ const heroSlides: HeroSlide[] = [
   },
 ];
 
-function Home4Page() {
+function HomePage() {
   // SSR + first paint always shows slide 0 (canonical founder hero) so crawlers,
   // social previews, and Core Web Vitals stay stable. After hydration we pick a
   // random slide so real visitors get variety on each visit.
