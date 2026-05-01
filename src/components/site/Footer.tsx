@@ -73,9 +73,45 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
+        {/* City row — local SEO + trust signal */}
+        <div className="mt-12 border-t border-white/10 pt-8">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/45">
+            Proudly serving San Luis Obispo County
+          </div>
+          <nav
+            aria-label="Service area"
+            className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-2 text-xs uppercase tracking-[0.18em] text-white/55"
+          >
+            {[
+              { label: "Atascadero", to: "/locations/atascadero" as const, live: true },
+              { label: "Templeton", to: "/locations/templeton" as const, live: false },
+              { label: "Paso Robles", to: "/locations/paso-robles" as const, live: true },
+              { label: "Santa Margarita", to: "/locations/santa-margarita" as const, live: false },
+              { label: "San Luis Obispo", to: "/locations/san-luis-obispo" as const, live: true },
+              { label: "Morro Bay", to: "/locations/morro-bay" as const, live: false },
+              { label: "Cayucos", to: "/locations/cayucos" as const, live: false },
+              { label: "Avila Beach", to: "/locations/avila-beach" as const, live: false },
+              { label: "Pismo Beach", to: "/locations/pismo-beach" as const, live: false },
+              { label: "Grover Beach", to: "/locations/grover-beach" as const, live: false },
+              { label: "Arroyo Grande", to: "/locations/arroyo-grande" as const, live: false },
+            ].map((c, i, arr) => (
+              <span key={c.label} className="flex items-center gap-1">
+                {c.live ? (
+                  <Link to={c.to} className="transition hover:text-white">
+                    {c.label}
+                  </Link>
+                ) : (
+                  <span className="text-white/35">{c.label}</span>
+                )}
+                {i < arr.length - 1 && <span className="text-white/25">·</span>}
+              </span>
+            ))}
+          </nav>
+        </div>
+
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
           <p>© {new Date().getFullYear()} Central Coast Digital Solution, LLC. All rights reserved.</p>
-          <p>Proudly serving San Luis Obispo County.</p>
+          <p>Atascadero · California</p>
         </div>
       </div>
     </footer>
