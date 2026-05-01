@@ -154,9 +154,18 @@ const heroSlides: HeroSlide[] = [
 ];
 
 function Home4Page() {
+  // SSR + first paint always shows slide 0 (canonical founder hero) so crawlers,
+  // social previews, and Core Web Vitals stay stable. After hydration we pick a
+  // random slide so real visitors get variety on each visit.
   const [slideIndex, setSlideIndex] = useState(0);
-  const slide = heroSlides[slideIndex];
   const total = heroSlides.length;
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * total);
+    if (randomIndex !== 0) setSlideIndex(randomIndex);
+  }, [total]);
+
+  const slide = heroSlides[slideIndex];
   const goPrev = () => setSlideIndex((i) => (i - 1 + total) % total);
   const goNext = () => setSlideIndex((i) => (i + 1) % total);
 
