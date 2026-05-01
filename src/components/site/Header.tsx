@@ -76,6 +76,22 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          {navRight.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+                transparent
+                  ? "text-white/70 hover:text-white"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+              activeProps={{
+                className: transparent ? "text-white" : "text-foreground",
+              }}
+            >
+              {n.label}
+            </Link>
+          ))}
           <a
             href={PHONE_HREF}
             className={`text-sm font-medium transition-colors ${
@@ -111,6 +127,16 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
         <div className="border-t border-border bg-background text-foreground lg:hidden">
           <nav className="flex flex-col p-4">
             {nav.map((n) => (
+              <Link
+                key={n.to}
+                to={n.to}
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
+              >
+                {n.label}
+              </Link>
+            ))}
+            {navRight.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
