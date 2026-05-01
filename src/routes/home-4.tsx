@@ -122,8 +122,8 @@ const heroSlides: HeroSlide[] = [
       "A Digital Solution field engineer on a downtown Paso Robles sidewalk at golden hour",
     captionEyebrow: "Field Service",
     captionName: "On-site · same day",
-    captionMetaTop: "Photo · Downtown Paso Robles",
-    captionMetaBottom: "Spring 2026",
+    captionMetaTop: "JAHLEEL ROBERTS",
+    captionMetaBottom: "TECH",
   },
   {
     issue: "Issue №06",
