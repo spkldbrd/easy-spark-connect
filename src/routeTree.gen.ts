@@ -12,9 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndustriesRouteImport } from './routes/industries'
-import { Route as Home4RouteImport } from './routes/home-4'
-import { Route as Home3RouteImport } from './routes/home-3'
-import { Route as Home2RouteImport } from './routes/home-2'
+import { Route as HomeAltRouteImport } from './routes/home-alt'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -34,19 +32,9 @@ const IndustriesRoute = IndustriesRouteImport.update({
   path: '/industries',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Home4Route = Home4RouteImport.update({
-  id: '/home-4',
-  path: '/home-4',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Home3Route = Home3RouteImport.update({
-  id: '/home-3',
-  path: '/home-3',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Home2Route = Home2RouteImport.update({
-  id: '/home-2',
-  path: '/home-2',
+const HomeAltRoute = HomeAltRouteImport.update({
+  id: '/home-alt',
+  path: '/home-alt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -69,9 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/home-2': typeof Home2Route
-  '/home-3': typeof Home3Route
-  '/home-4': typeof Home4Route
+  '/home-alt': typeof HomeAltRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
@@ -80,9 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/home-2': typeof Home2Route
-  '/home-3': typeof Home3Route
-  '/home-4': typeof Home4Route
+  '/home-alt': typeof HomeAltRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
@@ -92,9 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/home-2': typeof Home2Route
-  '/home-3': typeof Home3Route
-  '/home-4': typeof Home4Route
+  '/home-alt': typeof HomeAltRoute
   '/industries': typeof IndustriesRoute
   '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
@@ -105,9 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/home-2'
-    | '/home-3'
-    | '/home-4'
+    | '/home-alt'
     | '/industries'
     | '/pricing'
     | '/services'
@@ -116,9 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/home-2'
-    | '/home-3'
-    | '/home-4'
+    | '/home-alt'
     | '/industries'
     | '/pricing'
     | '/services'
@@ -127,9 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
-    | '/home-2'
-    | '/home-3'
-    | '/home-4'
+    | '/home-alt'
     | '/industries'
     | '/pricing'
     | '/services'
@@ -139,9 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  Home2Route: typeof Home2Route
-  Home3Route: typeof Home3Route
-  Home4Route: typeof Home4Route
+  HomeAltRoute: typeof HomeAltRoute
   IndustriesRoute: typeof IndustriesRoute
   PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
@@ -170,25 +144,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustriesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/home-4': {
-      id: '/home-4'
-      path: '/home-4'
-      fullPath: '/home-4'
-      preLoaderRoute: typeof Home4RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home-3': {
-      id: '/home-3'
-      path: '/home-3'
-      fullPath: '/home-3'
-      preLoaderRoute: typeof Home3RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home-2': {
-      id: '/home-2'
-      path: '/home-2'
-      fullPath: '/home-2'
-      preLoaderRoute: typeof Home2RouteImport
+    '/home-alt': {
+      id: '/home-alt'
+      path: '/home-alt'
+      fullPath: '/home-alt'
+      preLoaderRoute: typeof HomeAltRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -219,9 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  Home2Route: Home2Route,
-  Home3Route: Home3Route,
-  Home4Route: Home4Route,
+  HomeAltRoute: HomeAltRoute,
   IndustriesRoute: IndustriesRoute,
   PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
