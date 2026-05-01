@@ -7,7 +7,7 @@ import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
 
-export const Route = createFileRoute("/home-4")({
+export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Digital Solution — The IT team that actually shows up" },
@@ -17,11 +17,12 @@ export const Route = createFileRoute("/home-4")({
           "Real conversations, real outcomes. A boutique IT, security, and AI partner for businesses on California's Central Coast.",
       },
       { property: "og:title", content: "Digital Solution — The IT team that actually shows up" },
+      { property: "og:description", content: "Real conversations, real outcomes. A boutique IT, security, and AI partner for businesses on California's Central Coast." },
       { property: "og:image", content: willAction },
       { name: "twitter:image", content: willAction },
     ],
   }),
-  component: Home4Page,
+  component: HomePage,
 });
 
 const principles = [
