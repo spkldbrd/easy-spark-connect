@@ -43,6 +43,33 @@ const milestones = [
   { year: "2024", text: "Crossed 450 Central Coast businesses served." },
 ];
 
+const team = [
+  {
+    name: "Will Steffenauer",
+    role: "Founder",
+    image: willAction,
+    quote:
+      "“The companies that win the next decade aren't the ones with the biggest IT budgets — they're the ones whose IT just works, quietly, in the background, every single day.”",
+    bio: "Will started Digital Solution out of a one-room office in downtown SLO in 1997. Twenty-seven years later, he still picks up the phone himself. You'll find him most mornings at a corner table at a downtown coffee shop, laptop open, talking through a roadmap with a client.",
+  },
+  {
+    name: "Micah Steffenauer",
+    role: "Lead Technician",
+    image: micahHero,
+    quote:
+      "“People don't call me because I'm the smartest guy in the room. They call because they know I'll show up, I'll be straight with them, and it'll actually be fixed when I leave.”",
+    bio: "Born and raised on the Central Coast, Micah is the guy half the county already has saved in their phone — friends, neighbors, the shop owner two doors down. When something stops working, his phone rings. He picks up, drives over, fixes it.",
+  },
+  {
+    name: "Jahleel Roberts",
+    role: "Field Engineer",
+    image: jahleelHero,
+    quote:
+      "“The job isn't fixing computers — it's making someone's bad morning into a non-event. If I leave and they forget the problem ever happened, I did it right.”",
+    bio: "Jahleel is the one showing up at your office at 7am because your printer died before a board meeting. Young, sharp, AI-fluent, and genuinely good with people — our clients adore him for a reason.",
+  },
+];
+
 function AboutPage() {
   return (
     <SiteShell overDark>
