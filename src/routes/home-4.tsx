@@ -127,26 +127,28 @@ const heroSlides: HeroSlide[] = [
   },
   {
     issue: "Issue №06",
-    location: "Off-grid · Los Padres",
+    location: "Downtown · Paso Robles",
     headline: (
       <>
-        Steady hands.
+        The guy
         <br />
-        <span className="italic text-cyan">Wild</span> weekends.
+        everyone <span className="italic text-cyan">calls</span>
+        <br />
+        first.
       </>
     ),
-    body: "Meet Micah — our lead technician. The one quietly architecting the fixes that keep your network humming Monday through Friday. When he's not solving computer problems, you'll find him deep in the backcountry with his Jeep, chasing dirt roads and big skies. Same calm focus, different terrain.",
+    body: "Meet Micah — our lead technician and, somehow, half the Central Coast's personal IT guy. Friends, neighbors, the barista who knows his order, the shop owner two doors down — when something stops working, his phone rings. He's the one who actually picks up, drives over, and fixes it. Born and raised here. Knows your street, your business, and probably your dog.",
     primaryCta: { label: "Meet the team", to: "/about" },
     secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
     pullQuote:
-      "“Good infrastructure is like a good trail — you only notice it when something goes wrong. My job is to make sure you never notice.”",
+      "“People don't call me because I'm the smartest guy in the room. They call because they know I'll show up, I'll be straight with them, and it'll actually be fixed when I leave.”",
     pullAttribution: "— Micah, lead technician",
     image: micahHero,
     imageAlt:
-      "Micah, lead technician at Digital Solution, leaning against his lifted purple Jeep on a backcountry overlook",
+      "Micah, lead technician at Digital Solution, leaning against an adobe wall on a downtown Paso Robles sidewalk at sunset",
     captionEyebrow: "Lead Technician",
     captionName: "Micah Steffenauer",
-    captionMetaTop: "Photo · Los Padres Backcountry",
+    captionMetaTop: "Photo · Downtown Paso Robles",
     captionMetaBottom: "Spring 2026",
   },
 ];
