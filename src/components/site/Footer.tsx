@@ -82,21 +82,21 @@ export function Footer() {
             aria-label="Service area"
             className="mt-4 flex flex-wrap items-center gap-x-1 gap-y-2 text-xs uppercase tracking-[0.18em] text-white/55"
           >
-            {[
-              { label: "Atascadero", to: "/locations/atascadero" as const, live: true },
-              { label: "Templeton", to: "/locations/templeton" as const, live: false },
-              { label: "Paso Robles", to: "/locations/paso-robles" as const, live: true },
-              { label: "Santa Margarita", to: "/locations/santa-margarita" as const, live: false },
-              { label: "San Luis Obispo", to: "/locations/san-luis-obispo" as const, live: true },
-              { label: "Morro Bay", to: "/locations/morro-bay" as const, live: false },
-              { label: "Cayucos", to: "/locations/cayucos" as const, live: false },
-              { label: "Avila Beach", to: "/locations/avila-beach" as const, live: false },
-              { label: "Pismo Beach", to: "/locations/pismo-beach" as const, live: false },
-              { label: "Grover Beach", to: "/locations/grover-beach" as const, live: false },
-              { label: "Arroyo Grande", to: "/locations/arroyo-grande" as const, live: false },
-            ].map((c, i, arr) => (
+            {([
+              { label: "Atascadero", to: "/locations/atascadero" },
+              { label: "Templeton" },
+              { label: "Paso Robles", to: "/locations/paso-robles" },
+              { label: "Santa Margarita" },
+              { label: "San Luis Obispo", to: "/locations/san-luis-obispo" },
+              { label: "Morro Bay" },
+              { label: "Cayucos" },
+              { label: "Avila Beach" },
+              { label: "Pismo Beach" },
+              { label: "Grover Beach" },
+              { label: "Arroyo Grande" },
+            ] as const).map((c, i, arr) => (
               <span key={c.label} className="flex items-center gap-1">
-                {c.live ? (
+                {"to" in c ? (
                   <Link to={c.to} className="transition hover:text-white">
                     {c.label}
                   </Link>
