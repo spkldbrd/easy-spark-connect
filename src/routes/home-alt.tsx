@@ -22,7 +22,7 @@ export const Route = createFileRoute("/home-alt")({
       { name: "twitter:image", content: heroOrb },
     ],
   }),
-  component: HomePage,
+  component: HomeAltPage,
 });
 
 const tabs = [
@@ -93,7 +93,7 @@ const logos = [
   "Madonna & Co.",
 ];
 
-function HomePage() {
+function HomeAltPage() {
   const [active, setActive] = useState(0);
   const current = tabs[active];
 
