@@ -111,43 +111,43 @@ const heroSlides: HeroSlide[] = [
         when it matters.
       </>
     ),
-    body: "Meet Jahleel — our newest field engineer. He's the one who shows up at your office at 7am because your printer is down before a board meeting. Young, sharp, AI-fluent, and genuinely good with people. Our clients adore him for a reason.",
-    primaryCta: { label: "Meet the team", to: "/about" },
+    body: "When your printer dies before a board meeting, a real person from our team is on the road within the hour. No ticket queues. No \"a technician will reach out within 48 hours.\" Just someone local — who knows your office — walking through your door before your coffee gets cold.",
+    primaryCta: { label: "Start a conversation", to: "/contact" },
     secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
     pullQuote:
-      "“The job isn't fixing computers — it's making someone's bad morning into a non-event. If I leave and they forget the problem ever happened, I did it right.”",
-    pullAttribution: "— Jahleel, field engineer",
+      "“The job isn't fixing computers — it's making someone's bad morning into a non-event. If we leave and they forget the problem ever happened, we did it right.”",
+    pullAttribution: "— The Digital Solution team",
     image: jahleelHero,
     imageAlt:
-      "Jahleel, field engineer at Digital Solution, leaning against a concrete wall in golden afternoon light",
-    captionEyebrow: "Field Engineer",
-    captionName: "Jahleel Roberts",
+      "A Digital Solution field engineer on a downtown Paso Robles sidewalk at golden hour",
+    captionEyebrow: "Field Service",
+    captionName: "On-site · same day",
     captionMetaTop: "Photo · Downtown Paso Robles",
     captionMetaBottom: "Spring 2026",
   },
   {
     issue: "Issue №06",
-    location: "Downtown · Paso Robles",
+    location: "Paso · SLO · Pismo",
     headline: (
       <>
-        The guy
+        The number
         <br />
-        everyone <span className="italic text-cyan">calls</span>
+        you'll <span className="italic text-cyan">actually</span>
         <br />
-        first.
+        save in your phone.
       </>
     ),
-    body: "Meet Micah — our lead technician and, somehow, half the Central Coast's personal IT guy. Friends, neighbors, the barista who knows his order, the shop owner two doors down — when something stops working, his phone rings. He's the one who actually picks up, drives over, and fixes it. Born and raised here. Knows your street, your business, and probably your dog.",
-    primaryCta: { label: "Meet the team", to: "/about" },
+    body: "Most IT companies want to be a vendor. We'd rather be the person you text on a Saturday when something feels off. Born and raised on the Central Coast — we know your street, your business, and probably your dog. Your team gets a direct line to ours. Not a portal. Not a queue.",
+    primaryCta: { label: "Start a conversation", to: "/contact" },
     secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
     pullQuote:
-      "“People don't call me because I'm the smartest guy in the room. They call because they know I'll show up, I'll be straight with them, and it'll actually be fixed when I leave.”",
-    pullAttribution: "— Micah, lead technician",
+      "“People don't call us because we're the smartest guys in the room. They call because they know we'll show up, we'll be straight with them, and it'll actually be fixed when we leave.”",
+    pullAttribution: "— The Digital Solution team",
     image: micahHero,
     imageAlt:
-      "Micah, lead technician at Digital Solution, leaning against an adobe wall on a downtown Paso Robles sidewalk at sunset",
-    captionEyebrow: "Lead Technician",
-    captionName: "Micah Steffenauer",
+      "A Digital Solution technician on a downtown Paso Robles street at sunset",
+    captionEyebrow: "Local · Always",
+    captionName: "Paso to Pismo",
     captionMetaTop: "Photo · Downtown Paso Robles",
     captionMetaBottom: "Spring 2026",
   },
