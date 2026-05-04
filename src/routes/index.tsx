@@ -233,6 +233,9 @@ function HomePage() {
   const goPrev = () => setSlideIndex((i) => (i - 1 + total) % total);
   const goNext = () => setSlideIndex((i) => (i + 1) % total);
 
+  const [activeService, setActiveService] = useState(0);
+  const currentService = serviceTabs[activeService];
+
   return (
     <SiteShell overDark>
       {/* HERO — manual slider. Editorial type left, tall portrait right. */}
