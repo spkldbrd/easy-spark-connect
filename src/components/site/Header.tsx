@@ -135,6 +135,13 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
       {open && (
         <div className="border-t border-border bg-background text-foreground lg:hidden">
           <nav className="flex flex-col p-4">
+            <a
+              href="/#services"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
+            >
+              Services
+            </a>
             {nav.map((n) => (
               <Link
                 key={n.to}
