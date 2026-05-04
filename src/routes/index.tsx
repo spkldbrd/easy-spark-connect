@@ -6,6 +6,69 @@ import willAction from "@/assets/will-action.jpg";
 import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
+import svcManaged from "@/assets/svc-managed.jpg";
+import svcSecurity from "@/assets/svc-security.jpg";
+import svcCloud from "@/assets/svc-cloud.jpg";
+import svcBackup from "@/assets/svc-backup.jpg";
+import svcVoip from "@/assets/svc-voip.jpg";
+import svcAi from "@/assets/svc-ai.jpg";
+
+const serviceTabs = [
+  {
+    key: "managed",
+    label: "Managed IT",
+    image: svcManaged,
+    eyebrow: "Always-on operations",
+    title: "An IT department that never sleeps.",
+    body: "24/7 monitoring, proactive patching, and a help desk that picks up before the second ring. Your team stays productive — we handle the rest.",
+    bullets: ["24/7 helpdesk + on-call", "Endpoint management", "Quarterly business reviews"],
+  },
+  {
+    key: "security",
+    label: "Cybersecurity",
+    image: svcSecurity,
+    eyebrow: "Defense in depth",
+    title: "Modern threats, neutralized in real time.",
+    body: "Managed EDR, a 24/7 SOC, phishing-resistant MFA and continuous training. Built to stop ransomware before it reaches your data.",
+    bullets: ["Managed EDR + SOC", "Email & identity hardening", "Security awareness training"],
+  },
+  {
+    key: "cloud",
+    label: "Cloud & Microsoft 365",
+    image: svcCloud,
+    eyebrow: "Microsoft 365 · Azure · AWS",
+    title: "Cloud designed, migrated, and tuned for you.",
+    body: "From tenant hardening to cost optimization — get the cloud you were promised, without the surprise invoices.",
+    bullets: ["Microsoft 365 rollout", "Azure cost optimization", "Identity & SSO"],
+  },
+  {
+    key: "backup",
+    label: "Backup & Disaster Recovery",
+    image: svcBackup,
+    eyebrow: "Recovery first",
+    title: "Immutable backups. Tested recovery.",
+    body: "A 3-2-1-1 backup posture with annual disaster recovery drills. Ransomware can't touch what it can't reach.",
+    bullets: ["Image-based + cloud", "RPO/RTO under 1 hour", "Annual DR testing"],
+  },
+  {
+    key: "voip",
+    label: "Business VoIP",
+    image: svcVoip,
+    eyebrow: "Voice + connectivity",
+    title: "Crystal-clear calls. Anywhere your team works.",
+    body: "Cloud PBX, SMS, video and SD-WAN — designed and supported by the same team that runs your network.",
+    bullets: ["Cloud PBX", "SMS & video", "Fiber + LTE failover"],
+  },
+  {
+    key: "ai",
+    label: "AI Solutions",
+    image: svcAi,
+    eyebrow: "Practical, governed AI",
+    title: "AI your team will actually use.",
+    body: "Microsoft Copilot rollouts, custom assistants, and workflow automation that ships value in weeks — not quarters.",
+    bullets: ["Copilot adoption", "Custom GPT assistants", "Process automation"],
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
