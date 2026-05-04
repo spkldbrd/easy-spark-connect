@@ -56,6 +56,16 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
+          <a
+            href="/#services"
+            className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+              transparent
+                ? "text-white/70 hover:text-white"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Services
+          </a>
           {nav.map((n) => (
             <Link
               key={n.to}
