@@ -478,12 +478,12 @@ function HomePage() {
             <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
               The stack we run.
             </h2>
-            <Link
-              to="/services"
+            <a
+              href="#services"
               className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-brand"
             >
               See all services <ArrowUpRight className="h-4 w-4" />
-            </Link>
+            </a>
           </div>
 
           <dl className="mt-12 divide-y divide-border border-y border-border">
