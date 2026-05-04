@@ -360,6 +360,83 @@ function HomePage() {
         </div>
       </section>
 
+      {/* SERVICES SELECTOR — tabbed, sits directly under the hero */}
+      <section id="services" className="scroll-mt-24 bg-background py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+              The Digital Solution suite
+            </span>
+            <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
+              One partner.
+              <br className="hidden sm:block" />
+              <span className="text-muted-foreground">Every layer of your IT.</span>
+            </h2>
+          </div>
+
+          <div className="mt-16 flex justify-center">
+            <div className="flex w-full max-w-5xl gap-1 overflow-x-auto rounded-full border border-border bg-surface p-1.5">
+              {serviceTabs.map((t, i) => (
+                <button
+                  key={t.key}
+                  onClick={() => setActiveService(i)}
+                  className={`flex-1 whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition ${
+                    i === activeService
+                      ? "bg-foreground text-background shadow-soft"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-black">
+            <div className="grid gap-0 lg:grid-cols-2">
+              <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto">
+                <img
+                  key={currentService.key}
+                  src={currentService.image}
+                  alt=""
+                  width={1280}
+                  height={896}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 lg:to-black/0" />
+              </div>
+              <div className="flex flex-col justify-center p-10 text-white sm:p-14 lg:p-16">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan">
+                  {currentService.eyebrow}
+                </span>
+                <h3 className="mt-4 font-display text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">
+                  {currentService.title}
+                </h3>
+                <p className="mt-5 text-base text-white/65 sm:text-lg">{currentService.body}</p>
+                <ul className="mt-8 space-y-2.5 text-sm text-white/80">
+                  {currentService.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-3">
+                      <span className="h-1 w-6 bg-cyan" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-10">
+                  <Link
+                    to="/contact"
+                    className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-cyan"
+                  >
+                    Talk to us about this
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PRINCIPLES — four big numbered tenets, no cards, lots of air */}
       <section className="bg-background py-32">
         <div className="mx-auto max-w-7xl px-6">
