@@ -57,7 +57,7 @@ export function PageHero({
 export function CinematicCTA({
   title,
   subtitle,
-  ctaLabel = "Book a call",
+  ctaLabel = "Talk to us",
   ctaTo = "/contact",
 }: {
   title: ReactNode;
