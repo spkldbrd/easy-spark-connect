@@ -62,7 +62,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Services
+            IT services
           </a>
           {nav.map((n) => (
             <Link
@@ -138,7 +138,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
               onClick={() => setOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
             >
-              Services
+              IT services
             </a>
             {nav.map((n) => (
               <Link
