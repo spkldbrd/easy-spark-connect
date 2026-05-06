@@ -464,7 +464,12 @@ function HomePage() {
 
       {/* QUOTE — same testimonial, slightly different presentation */}
       <section className="bg-background py-32">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[auto_1fr] lg:items-center">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
+            Trusted locally
+          </span>
+        </div>
+        <div className="mx-auto mt-12 grid max-w-6xl gap-12 px-6 lg:grid-cols-[auto_1fr] lg:items-center">
           <img
             src={tChris}
             alt="Chris Raders, Ted Hamm Insurance Agency"
