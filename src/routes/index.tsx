@@ -438,7 +438,7 @@ function HomePage() {
       </section>
 
       {/* PRINCIPLES — four big numbered tenets, no cards, lots of air */}
-      <section className="bg-background py-32">
+      <section className="border-y border-border bg-surface py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -468,44 +468,6 @@ function HomePage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* THE STACK — quiet table, very different from prior service grids */}
-      <section className="border-y border-border bg-surface py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              The stack we run.
-            </h2>
-            <a
-              href="#services"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-brand"
-            >
-              See all services <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-
-          <dl className="mt-12 divide-y divide-border border-y border-border">
-            {stack.map(([k, v]) => (
-              <div
-                key={k}
-                className="grid grid-cols-1 gap-2 py-5 sm:grid-cols-[180px_1fr] sm:items-baseline"
-              >
-                <dt className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">
-                  {k}
-                </dt>
-                <dd className="font-display text-lg font-medium tracking-tight text-foreground">
-                  {v}
-                </dd>
-              </div>
-            ))}
-          </dl>
-
-          <p className="mt-10 max-w-2xl text-sm text-muted-foreground">
-            Vendor-neutral by design. We pick what fits your team — not what
-            pays us the highest margin.
-          </p>
         </div>
       </section>
 
