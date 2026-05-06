@@ -116,7 +116,7 @@ function AiSolutionsPage() {
           </>
         }
         subtitle="Microsoft Copilot rollouts, custom assistants, and workflow automation — delivered by the same engineers who already run your IT. Practical, governed, in production within weeks."
-        meta={["Copilot certified", "Azure AI partner", "MSP-grade governance", "Ships in weeks"]}
+        meta={["Local SLO team", "27 years in IT", "MSP-grade governance", "Ships in weeks"]}
       />
 
       {/* Offerings grid */}
