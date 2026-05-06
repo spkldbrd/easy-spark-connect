@@ -361,7 +361,7 @@ function HomePage() {
             <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-6xl">
               One team.
               <br className="hidden sm:block" />
-              <span className="flex w-full max-w-5xl gap-1 overflow-x-auto rounded-full border border-border bg-surface p-1.5 mt-[20px]">Every layer of your IT.</span>
+              <span className="text-muted-foreground">Every layer of your IT.</span>
             </h2>
           </div>
 
