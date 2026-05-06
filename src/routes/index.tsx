@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
 import willAction from "@/assets/will-action.jpg";
