@@ -11,22 +11,22 @@ export function Footer() {
         <img
           src={logoIcon}
           alt=""
-          className="absolute -left-16 -top-10 h-72 w-72 opacity-20 invert"
+          className="absolute -left-16 -top-10 h-72 w-72 opacity-[0.13] invert"
         />
         <img
           src={logoIcon}
           alt=""
-          className="absolute right-[8%] top-1/3 h-40 w-40 opacity-15 invert -rotate-12"
+          className="absolute right-[8%] top-1/3 h-40 w-40 opacity-10 invert -rotate-12"
         />
         <img
           src={logoIcon}
           alt=""
-          className="absolute -bottom-16 left-1/3 h-96 w-96 opacity-[0.12] invert rotate-12"
+          className="absolute -bottom-16 left-1/3 h-96 w-96 opacity-[0.08] invert rotate-12"
         />
         <img
           src={logoIcon}
           alt=""
-          className="absolute -right-10 -bottom-10 h-56 w-56 opacity-20 invert"
+          className="absolute -right-10 -bottom-10 h-56 w-56 opacity-[0.135] invert"
         />
       </div>
 
