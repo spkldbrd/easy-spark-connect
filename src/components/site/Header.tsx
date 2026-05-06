@@ -131,16 +131,6 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
                 {n.label}
               </Link>
             ))}
-            {navRight.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
-              >
-                {n.label}
-              </Link>
-            ))}
             <a
               href={PHONE_HREF}
               className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
