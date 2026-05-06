@@ -141,7 +141,7 @@ const heroSlides: HeroSlide[] = [
         <span className="italic text-cyan">shows up.</span>
       </>
     ),
-    body: "We're a small, opinionated crew running technology for a couple hundred businesses across the Central Coast. No call centers. No quarterly upsell calls. Just IT, done well, by people you'll actually meet.",
+    body: "We're a small, opinionated crew running technology for businesses across the Central Coast. No call centers. No quarterly upsell calls. Just IT, done well, by people you'll actually meet.",
     primaryCta: { label: "Start a conversation", to: "/contact" },
     secondaryCta: { label: "Or just call · 805-466-4722", href: "tel:+18054664722" },
     pullQuote:
