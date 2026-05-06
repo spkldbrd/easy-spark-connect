@@ -101,7 +101,7 @@ const principles = [
   },
   {
     n: "III",
-    t: "Show the work.",
+    t: "Communicate the work.",
     d: "Communicate the work.",
   },
   {
