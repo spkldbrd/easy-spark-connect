@@ -47,11 +47,12 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">Services</h4>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li><Link to="/services" className="hover:text-white">Managed IT</Link></li>
-              <li><Link to="/services" className="hover:text-white">Cybersecurity</Link></li>
-              <li><Link to="/services" className="hover:text-white">Cloud & Backup</Link></li>
-              <li><Link to="/services" className="hover:text-white">VoIP & Internet</Link></li>
-              <li><Link to="/services" className="hover:text-white">AI Solutions</Link></li>
+              <li><a href="/#services" className="hover:text-white">Managed IT</a></li>
+              <li><a href="/#services" className="hover:text-white">Cybersecurity</a></li>
+              <li><a href="/#services" className="hover:text-white">Cloud & Microsoft 365</a></li>
+              <li><a href="/#services" className="hover:text-white">Backup & Disaster Recovery</a></li>
+              <li><a href="/#services" className="hover:text-white">Business VoIP</a></li>
+              <li><a href="/#services" className="hover:text-white">AI Solutions</a></li>
             </ul>
           </div>
           <div>
