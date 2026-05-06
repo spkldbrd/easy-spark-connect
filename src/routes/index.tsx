@@ -502,7 +502,7 @@ function HomePage() {
               to="/contact"
               className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition hover:bg-cyan"
             >
-              Book a call
+              Talk to us
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </Link>
           </div>
