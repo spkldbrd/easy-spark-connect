@@ -9,9 +9,6 @@ const nav = [
   { to: "/contact", label: "Contact Us" },
 ] as const;
 
-const navRight = [
-  { to: "/home-alt", label: "Home Alt" },
-] as const;
 
 const PHONE_DISPLAY = "805-466-4722";
 const PHONE_HREF = "tel:+18054664722";
