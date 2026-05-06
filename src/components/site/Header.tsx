@@ -5,7 +5,6 @@ import logoWordmark from "@/assets/logo-wordmark.png";
 import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
-  { to: "/industries", label: "Industries" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;

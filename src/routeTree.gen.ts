@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
-import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as HomeAltRouteImport } from './routes/home-alt'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -22,11 +21,6 @@ import { Route as LocationsAtascaderoRouteImport } from './routes/locations.atas
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndustriesRoute = IndustriesRouteImport.update({
-  id: '/industries',
-  path: '/industries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeAltRoute = HomeAltRouteImport.update({
@@ -70,7 +64,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/home-alt': typeof HomeAltRoute
-  '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -81,7 +74,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/home-alt': typeof HomeAltRoute
-  '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -93,7 +85,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/home-alt': typeof HomeAltRoute
-  '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -106,7 +97,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/home-alt'
-    | '/industries'
     | '/services'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -117,7 +107,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/home-alt'
-    | '/industries'
     | '/services'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -128,7 +117,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/home-alt'
-    | '/industries'
     | '/services'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -140,7 +128,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   HomeAltRoute: typeof HomeAltRoute
-  IndustriesRoute: typeof IndustriesRoute
   ServicesRoute: typeof ServicesRoute
   LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
   LocationsPasoRoblesRoute: typeof LocationsPasoRoblesRoute
@@ -154,13 +141,6 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/industries': {
-      id: '/industries'
-      path: '/industries'
-      fullPath: '/industries'
-      preLoaderRoute: typeof IndustriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home-alt': {
@@ -220,7 +200,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   HomeAltRoute: HomeAltRoute,
-  IndustriesRoute: IndustriesRoute,
   ServicesRoute: ServicesRoute,
   LocationsAtascaderoRoute: LocationsAtascaderoRoute,
   LocationsPasoRoblesRoute: LocationsPasoRoblesRoute,
