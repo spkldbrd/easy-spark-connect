@@ -6,7 +6,6 @@ import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
   { to: "/about", label: "Our Story" },
-  { to: "/contact", label: "Contact Us" },
 ] as const;
 
 
@@ -60,6 +59,16 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
             }`}
           >
             IT Services
+          </a>
+          <a
+            href="/#services"
+            className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+              transparent
+                ? "text-white/70 hover:text-white"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            AI Solutions
           </a>
           {nav.map((n) => (
             <Link
@@ -120,6 +129,13 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
               className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
             >
               IT Services
+            </a>
+            <a
+              href="/#services"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
+            >
+              AI Solutions
             </a>
             {nav.map((n) => (
               <Link
