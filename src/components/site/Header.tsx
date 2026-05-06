@@ -5,8 +5,8 @@ import logoWordmark from "@/assets/logo-wordmark.png";
 import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
-  { to: "/about", label: "Our story" },
-  { to: "/contact", label: "Contact us" },
+  { to: "/about", label: "Our Story" },
+  { to: "/contact", label: "Contact Us" },
 ] as const;
 
 const navRight = [
