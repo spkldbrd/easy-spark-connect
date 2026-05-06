@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
-import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as HomeAltRouteImport } from './routes/home-alt'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -23,11 +22,6 @@ import { Route as LocationsAtascaderoRouteImport } from './routes/locations.atas
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustriesRoute = IndustriesRouteImport.update({
@@ -77,7 +71,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/home-alt': typeof HomeAltRoute
   '/industries': typeof IndustriesRoute
-  '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -89,7 +82,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/home-alt': typeof HomeAltRoute
   '/industries': typeof IndustriesRoute
-  '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -102,7 +94,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/home-alt': typeof HomeAltRoute
   '/industries': typeof IndustriesRoute
-  '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -116,7 +107,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/home-alt'
     | '/industries'
-    | '/pricing'
     | '/services'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -128,7 +118,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/home-alt'
     | '/industries'
-    | '/pricing'
     | '/services'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -140,7 +129,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/home-alt'
     | '/industries'
-    | '/pricing'
     | '/services'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -153,7 +141,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   HomeAltRoute: typeof HomeAltRoute
   IndustriesRoute: typeof IndustriesRoute
-  PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
   LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
   LocationsPasoRoblesRoute: typeof LocationsPasoRoblesRoute
@@ -167,13 +154,6 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industries': {
@@ -241,7 +221,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   HomeAltRoute: HomeAltRoute,
   IndustriesRoute: IndustriesRoute,
-  PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
   LocationsAtascaderoRoute: LocationsAtascaderoRoute,
   LocationsPasoRoblesRoute: LocationsPasoRoblesRoute,
@@ -250,3 +229,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
