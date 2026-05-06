@@ -111,15 +111,6 @@ const principles = [
   },
 ];
 
-const stack = [
-  ["Endpoint", "Microsoft Defender · Huntress · NinjaOne"],
-  ["Identity", "Entra ID · Okta · Duo MFA"],
-  ["Cloud", "Microsoft 365 · Azure · AWS"],
-  ["Network", "Meraki · Fortinet · Ubiquiti"],
-  ["Backup", "Veeam · Datto · Wasabi immutable"],
-  ["Voice", "Microsoft Teams Phone · 3CX · RingCentral"],
-];
-
 type HeroSlide = {
   issue: string;
   location: string;
