@@ -61,16 +61,6 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
           >
             IT Services
           </a>
-          <a
-            href="/#services"
-            className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
-              transparent
-                ? "text-white/70 hover:text-white"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            AI Solutions
-          </a>
           {nav.map((n) => (
             <Link
               key={n.to}
