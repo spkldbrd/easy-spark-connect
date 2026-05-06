@@ -5,8 +5,8 @@ import logoWordmark from "@/assets/logo-wordmark.png";
 import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
-  { to: "/about", label: "Our story" },
-  { to: "/contact", label: "Contact us" },
+  { to: "/about", label: "Our Story" },
+  { to: "/contact", label: "Contact Us" },
 ] as const;
 
 const navRight = [
@@ -62,7 +62,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            IT services
+            IT Services
           </a>
           {nav.map((n) => (
             <Link
@@ -138,7 +138,7 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
               onClick={() => setOpen(false)}
               className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
             >
-              IT services
+              IT Services
             </a>
             {nav.map((n) => (
               <Link
