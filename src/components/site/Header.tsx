@@ -130,6 +130,13 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
             >
               IT Services
             </a>
+            <a
+              href="/#services"
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
+            >
+              AI Solutions
+            </a>
             {nav.map((n) => (
               <Link
                 key={n.to}
