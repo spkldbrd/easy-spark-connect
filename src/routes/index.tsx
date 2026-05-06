@@ -102,7 +102,7 @@ const principles = [
   {
     n: "III",
     t: "Communicate the work.",
-    d: "Communicate the work.",
+    d: "You always know what changed, why it mattered, and what comes next.",
   },
   {
     n: "IV",
