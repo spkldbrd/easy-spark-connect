@@ -9,9 +9,6 @@ const nav = [
   { to: "/contact", label: "Contact Us" },
 ] as const;
 
-const navRight = [
-  { to: "/home-alt", label: "Home Alt" },
-] as const;
 
 const PHONE_DISPLAY = "805-466-4722";
 const PHONE_HREF = "tel:+18054664722";
@@ -83,22 +80,6 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          {navRight.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
-                transparent
-                  ? "text-white/70 hover:text-white"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-              activeProps={{
-                className: transparent ? "text-white" : "text-foreground",
-              }}
-            >
-              {n.label}
-            </Link>
-          ))}
           <a
             href={PHONE_HREF}
             className={`text-sm font-medium transition-colors ${
@@ -141,16 +122,6 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
               IT Services
             </a>
             {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-secondary"
-              >
-                {n.label}
-              </Link>
-            ))}
-            {navRight.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
