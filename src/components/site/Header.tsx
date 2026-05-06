@@ -6,7 +6,6 @@ import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
   { to: "/industries", label: "Industries" },
-  { to: "/pricing", label: "Pricing" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
