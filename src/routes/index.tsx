@@ -387,10 +387,16 @@ function HomePage() {
           <div className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-black">
             <div className="grid gap-0 lg:grid-cols-2">
               <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto">
-                {currentService.key === "security" || currentService.key === "managed" ? (
+                {currentService.key === "security" || currentService.key === "managed" || currentService.key === "voip" ? (
                   <video
                     key={currentService.key}
-                    src={currentService.key === "security" ? "/cybersecurity-loop.mp4" : "/managed-network-loop.mp4"}
+                    src={
+                      currentService.key === "security"
+                        ? "/cybersecurity-loop.mp4"
+                        : currentService.key === "managed"
+                          ? "/managed-network-loop.mp4"
+                          : "/voip-loop.mp4"
+                    }
                     autoPlay
                     loop
                     muted
