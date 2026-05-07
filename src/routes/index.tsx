@@ -387,15 +387,27 @@ function HomePage() {
           <div className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-black">
             <div className="grid gap-0 lg:grid-cols-2">
               <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto">
-                <img
-                  key={currentService.key}
-                  src={currentService.image}
-                  alt=""
-                  width={1280}
-                  height={896}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
-                />
+                {currentService.key === "security" ? (
+                  <video
+                    key={currentService.key}
+                    src="/cybersecurity-loop.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
+                  />
+                ) : (
+                  <img
+                    key={currentService.key}
+                    src={currentService.image}
+                    alt=""
+                    width={1280}
+                    height={896}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 lg:to-black/0" />
               </div>
               <div className="flex flex-col justify-center p-10 text-white sm:p-14 lg:p-16">
