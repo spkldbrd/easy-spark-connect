@@ -395,6 +395,19 @@ function HomePage() {
                     loop
                     muted
                     playsInline
+                    preload="none"
+                    poster={currentService.image}
+                    className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
+                  />
+                ) : currentService.key === "ai" ? (
+                  <video
+                    key={currentService.key}
+                    src="/ai-automation.mp4"
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="none"
+                    poster={currentService.image}
                     className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
                   />
                 ) : (
