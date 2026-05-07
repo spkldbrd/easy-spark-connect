@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { buildSeo, organizationJsonLd } from "@/lib/seo";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
@@ -72,20 +73,15 @@ const serviceTabs = [
 ];
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Digital Solution — The IT team that actually shows up" },
-      {
-        name: "description",
-        content:
-          "Real conversations, real outcomes. A boutique IT, security, and AI partner for businesses on California's Central Coast.",
-      },
-      { property: "og:title", content: "Digital Solution — The IT team that actually shows up" },
-      { property: "og:description", content: "Real conversations, real outcomes. A boutique IT, security, and AI partner for businesses on California's Central Coast." },
-      { property: "og:image", content: willAction },
-      { name: "twitter:image", content: willAction },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "The IT team that actually shows up",
+      description:
+        "Boutique managed IT, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes — since 1997.",
+      path: "/",
+      image: willAction,
+      jsonLd: organizationJsonLd(),
+    }),
   component: HomePage,
 });
 

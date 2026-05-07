@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
+import { buildSeo } from "@/lib/seo";
 import {
   Sparkles,
   Bot,
@@ -13,22 +14,14 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/ai-solutions")({
-  head: () => ({
-    meta: [
-      { title: "AI Solutions for Business — Practical, Governed AI | Digital Solution" },
-      {
-        name: "description",
-        content:
-          "Microsoft Copilot rollouts, custom AI assistants, workflow automation, and AI governance from a Central Coast MSP that ships value in weeks — not quarters.",
-      },
-      { property: "og:title", content: "AI Solutions | Digital Solution" },
-      {
-        property: "og:description",
-        content:
-          "Practical AI for real businesses — adoption, automation, and governance from your trusted IT team.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "AI Solutions for Business — Practical, Governed AI",
+      description:
+        "Microsoft Copilot rollouts, custom AI assistants, workflow automation, and AI governance from a Central Coast MSP that ships value in weeks — not quarters.",
+      path: "/ai-solutions",
+      image: "/ai-automation-poster.jpg",
+    }),
   component: AiSolutionsPage,
 });
 

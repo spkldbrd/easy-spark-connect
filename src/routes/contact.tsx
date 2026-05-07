@@ -1,18 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero } from "@/components/site/PageHero";
+import { buildSeo } from "@/lib/seo";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Talk to a Human | Digital Solution SLO" },
-      { name: "description", content: "Reach the Digital Solution team in San Luis Obispo. Phone, email, or schedule a free 30-minute IT consultation." },
-      { property: "og:title", content: "Contact | Digital Solution" },
-      { property: "og:description", content: "Talk to a real human about your IT — no bots, no queues." },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "Contact — Talk to a Human",
+      description:
+        "Reach the Digital Solution team in San Luis Obispo. Call, email, or schedule a free 30-minute IT consultation. No bots, no queues.",
+      path: "/contact",
+    }),
   component: ContactPage,
 });
 
