@@ -407,7 +407,7 @@ function HomePage() {
                     muted
                     playsInline
                     preload="none"
-                    poster={currentService.image}
+                    poster="/ai-automation-poster.jpg"
                     className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
                   />
                 ) : (
