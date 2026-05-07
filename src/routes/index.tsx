@@ -7,6 +7,7 @@ import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
 import svcManaged from "@/assets/svc-managed.jpg";
+import { NetworkBreath } from "@/components/site/NetworkBreath";
 import svcSecurity from "@/assets/svc-security.jpg";
 import svcCloud from "@/assets/svc-cloud.jpg";
 import svcBackup from "@/assets/svc-backup.jpg";
@@ -395,6 +396,9 @@ function HomePage() {
                   loading="lazy"
                   className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
                 />
+                {currentService.key === "managed" && (
+                  <NetworkBreath className="absolute inset-0 h-full w-full mix-blend-screen opacity-90" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 lg:to-black/0" />
               </div>
               <div className="flex flex-col justify-center p-10 text-white sm:p-14 lg:p-16">
