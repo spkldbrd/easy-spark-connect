@@ -117,7 +117,6 @@ function AiSolutionsPage() {
         }
         subtitle="Microsoft Copilot rollouts, custom assistants, and workflow automation — delivered by the same engineers who already run your IT. Practical, governed, in production within weeks."
         meta={["Local team", "27 years in IT", "MSP-grade governance", "Ships in weeks"]}
-        videoSrc="/ai-automation.mp4"
       />
 
       {/* Offerings grid */}
