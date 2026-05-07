@@ -7,7 +7,7 @@ import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
 import svcManaged from "@/assets/svc-managed.jpg";
-import { NetworkBreath } from "@/components/site/NetworkBreath";
+
 import svcSecurity from "@/assets/svc-security.jpg";
 import svcCloud from "@/assets/svc-cloud.jpg";
 import svcBackup from "@/assets/svc-backup.jpg";
@@ -387,17 +387,28 @@ function HomePage() {
           <div className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-black">
             <div className="grid gap-0 lg:grid-cols-2">
               <div className="relative aspect-[4/3] overflow-hidden lg:aspect-auto">
-                <img
-                  key={currentService.key}
-                  src={currentService.image}
-                  alt=""
-                  width={1280}
-                  height={896}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
-                />
-                {currentService.key === "managed" && (
-                  <NetworkBreath className="absolute inset-0 h-full w-full mix-blend-screen opacity-90" />
+                {currentService.key === "managed" ? (
+                  <video
+                    key="managed-video"
+                    src="/managed-network-loop.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    aria-hidden
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <img
+                    key={currentService.key}
+                    src={currentService.image}
+                    alt=""
+                    width={1280}
+                    height={896}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full animate-in fade-in object-cover duration-700"
+                  />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/40 lg:to-black/0" />
               </div>
