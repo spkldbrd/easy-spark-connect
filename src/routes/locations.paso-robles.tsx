@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CityPage, type CityPageData } from "@/components/site/CityPage";
+import { buildSeo, localBusinessJsonLd } from "@/lib/seo";
 
 const city: CityPageData = {
   name: "Paso Robles",
@@ -64,20 +65,19 @@ const city: CityPageData = {
 };
 
 export const Route = createFileRoute("/locations/paso-robles")({
-  head: () => ({
-    meta: [
-      { title: "IT Support in Paso Robles, CA | Digital Solution" },
-      {
-        name: "description",
-        content:
-          "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team that's been here since 1997.",
-      },
-      { property: "og:title", content: "IT Support in Paso Robles | Digital Solution" },
-      {
-        property: "og:description",
-        content: "Wine country IT done right — POS, WiFi, security, and 24/7 monitoring from a local team twelve minutes south.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "IT Support in Paso Robles, CA",
+      description:
+        "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team that's been here since 1997.",
+      path: "/locations/paso-robles",
+      jsonLd: localBusinessJsonLd({
+        city: "Paso Robles",
+        region: "San Luis Obispo County",
+        path: "/locations/paso-robles",
+        description:
+          "Wine country IT — POS, WiFi, security, and 24/7 monitoring for Paso Robles businesses.",
+      }),
+    }),
   component: () => <CityPage city={city} />,
 });
