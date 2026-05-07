@@ -6,22 +6,37 @@ export function PageHero({
   title,
   subtitle,
   meta,
+  videoSrc,
 }: {
   eyebrow: string;
   title: ReactNode;
   subtitle?: ReactNode;
   /** Optional hairline detail row (4 short labels) */
   meta?: string[];
+  /** Optional background video — plays once then freezes on last frame */
+  videoSrc?: string;
 }) {
   return (
     <section className="relative -mt-[72px] overflow-hidden bg-black text-white">
-      <img
-        src={heroOrb}
-        alt=""
-        width={1920}
-        height={1280}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
-      />
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          poster={heroOrb}
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
+        />
+      ) : (
+        <img
+          src={heroOrb}
+          alt=""
+          width={1920}
+          height={1280}
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" aria-hidden />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.55)_70%,_#000_100%)]" aria-hidden />
 
