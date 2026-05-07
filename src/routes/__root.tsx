@@ -26,21 +26,13 @@ function NotFoundComponent() {
 
 export const Route = createRootRoute({
   head: () => ({
+    // Site-wide defaults only. Per-route metadata (title, description,
+    // og:image, canonical) is set with buildSeo() in each route file.
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Digital Solution — Managed IT for SLO County" },
-      { name: "description", content: "Trusted MSP for businesses across San Luis Obispo County since 1997." },
       { name: "author", content: "Digital Solution" },
-      { property: "og:title", content: "Digital Solution — Managed IT for SLO County" },
-      { property: "og:description", content: "Trusted MSP for businesses across San Luis Obispo County since 1997." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Digital Solution — Managed IT for SLO County" },
-      { name: "twitter:description", content: "Trusted MSP for businesses across San Luis Obispo County since 1997." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/333d8815-d7df-4f0f-beb9-8d707109162d/id-preview-699ca479--27e3cc09-e7df-436c-9fa0-127db6efd65a.lovable.app-1777529724893.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/333d8815-d7df-4f0f-beb9-8d707109162d/id-preview-699ca479--27e3cc09-e7df-436c-9fa0-127db6efd65a.lovable.app-1777529724893.png" },
+      { name: "theme-color", content: "#0a0a0a" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

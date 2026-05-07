@@ -1,20 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
+import { buildSeo } from "@/lib/seo";
 import heroTeam from "@/assets/hero-team.jpg";
 import willAction from "@/assets/will-action.jpg";
 import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Local SLO IT Since 1997 | Digital Solution" },
-      { name: "description", content: "Central Coast Digital Solution, LLC has been the trusted IT partner for businesses across San Luis Obispo County for over 25 years." },
-      { property: "og:title", content: "About | Digital Solution" },
-      { property: "og:description", content: "A local team of engineers who actually pick up the phone." },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "About — Local SLO IT Since 1997",
+      description:
+        "Central Coast Digital Solution has been the trusted IT partner for San Luis Obispo County businesses for over 25 years. A local team of engineers who actually pick up the phone.",
+      path: "/about",
+      image: heroTeam,
+    }),
   component: AboutPage,
 });
 

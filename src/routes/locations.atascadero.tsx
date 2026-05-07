@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CityPage, type CityPageData } from "@/components/site/CityPage";
+import { buildSeo, localBusinessJsonLd } from "@/lib/seo";
 
 const city: CityPageData = {
   name: "Atascadero",
@@ -63,20 +64,19 @@ const city: CityPageData = {
 };
 
 export const Route = createFileRoute("/locations/atascadero")({
-  head: () => ({
-    meta: [
-      { title: "IT Support in Atascadero, CA | Digital Solution" },
-      {
-        name: "description",
-        content:
-          "Atascadero's local IT partner since 1997. Managed IT, cybersecurity, cloud, and on-site support — same-hour response from a team that lives where you do.",
-      },
-      { property: "og:title", content: "IT Support in Atascadero | Digital Solution" },
-      {
-        property: "og:description",
-        content: "Atascadero's local IT team — on-site within the hour, 24/7 monitoring, and 28 years right here in town.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "IT Support in Atascadero, CA",
+      description:
+        "Atascadero's local IT partner since 1997. Managed IT, cybersecurity, cloud, and on-site support — same-hour response from a team that lives where you do.",
+      path: "/locations/atascadero",
+      jsonLd: localBusinessJsonLd({
+        city: "Atascadero",
+        region: "San Luis Obispo County",
+        path: "/locations/atascadero",
+        description:
+          "Managed IT, cybersecurity, and cloud services for Atascadero businesses since 1997.",
+      }),
+    }),
   component: () => <CityPage city={city} />,
 });

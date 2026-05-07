@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CityPage, type CityPageData } from "@/components/site/CityPage";
+import { buildSeo, localBusinessJsonLd } from "@/lib/seo";
 
 const city: CityPageData = {
   name: "San Luis Obispo",
@@ -66,20 +67,19 @@ const city: CityPageData = {
 };
 
 export const Route = createFileRoute("/locations/san-luis-obispo")({
-  head: () => ({
-    meta: [
-      { title: "IT Support in San Luis Obispo, CA | Digital Solution" },
-      {
-        name: "description",
-        content:
-          "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 1997.",
-      },
-      { property: "og:title", content: "IT Support in San Luis Obispo | Digital Solution" },
-      {
-        property: "og:description",
-        content: "Local IT for downtown SLO businesses — HIPAA-ready networks, downtown-savvy installs, and same-day on-site response.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeo({
+      title: "IT Support in San Luis Obispo, CA",
+      description:
+        "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 1997.",
+      path: "/locations/san-luis-obispo",
+      jsonLd: localBusinessJsonLd({
+        city: "San Luis Obispo",
+        region: "San Luis Obispo County",
+        path: "/locations/san-luis-obispo",
+        description:
+          "HIPAA-ready networks, downtown-savvy installs, and same-day on-site IT for San Luis Obispo.",
+      }),
+    }),
   component: () => <CityPage city={city} />,
 });
