@@ -7,6 +7,7 @@ import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
 import tChris from "@/assets/testimonial-chris-raders.jpg";
 import svcManaged from "@/assets/svc-managed.jpg";
+import { NetworkBreath } from "@/components/site/NetworkBreath";
 import svcSecurity from "@/assets/svc-security.jpg";
 import svcCloud from "@/assets/svc-cloud.jpg";
 import svcBackup from "@/assets/svc-backup.jpg";
