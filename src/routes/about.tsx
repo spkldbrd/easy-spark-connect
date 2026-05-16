@@ -94,8 +94,8 @@ function AboutPage() {
             </span>
           </>
         }
-        subtitle="We started Digital Solution in 1997 with a simple idea: small businesses deserve IT support that's friendly, fast and honest. We've never wavered."
-        meta={["Est. 1997", "30 engineers", "Paso to Pismo", "On-site within an hour"]}
+        subtitle="We started Digital Solution in 2015 with a simple idea: local businesses deserve IT support that's friendly, fast and honest. We've never wavered."
+        meta={["Est. 2015", "Local Team", "Paso to Pismo", "Fast Response"]}
       />
 
       {/* Editorial story block */}
