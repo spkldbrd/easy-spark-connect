@@ -117,13 +117,13 @@ function AboutPage() {
             <div className="lg:col-span-5">
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">Our story</span>
               <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Built for SLO businesses, by SLO people.
+                Built for local businesses by people who understand local business.
               </h2>
               <p className="mt-6 text-lg text-muted-foreground">
-                We're headquartered downtown and work with hundreds of clients from Paso to Pismo. When something breaks, an actual local engineer can be on-site within an hour — not days.
+                Digital Solution was founded in 2015, but Will's IT experience goes back to 1995. After years of hands-on IT work, business ownership, hard lessons, and digital enablement projects, he built Digital Solution to give Central Coast businesses practical, honest, responsive support.
               </p>
               <p className="mt-4 text-muted-foreground">
-                Over the past two decades we've grown into a 30-person team of engineers, security specialists and account leads. But we still operate like a small business, because we are one — and because that's what makes us different.
+                Today, we help local businesses with managed IT, cybersecurity, cloud services, backup, and practical AI implementation. We are not a national helpdesk. We are a local team that knows our clients, answers the phone, and helps businesses make better technology decisions without the runaround.
               </p>
             </div>
           </div>
