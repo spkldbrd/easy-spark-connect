@@ -6,6 +6,7 @@ import heroTeam from "@/assets/hero-team.jpg";
 import willAction from "@/assets/will-action.jpg";
 import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
+import tamikaHero from "@/assets/tamika-hero.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -68,6 +69,14 @@ const team = [
     quote:
       "“The job isn't fixing computers — it's making someone's bad morning into a non-event. If I leave and they forget the problem ever happened, I did it right.”",
     bio: "Jahleel is the one showing up at your office at 7am because your printer died before a board meeting. Young, sharp, AI-fluent, and genuinely good with people — our clients adore him for a reason.",
+  },
+  {
+    name: "Tamika Steffenauer",
+    role: "Office Manager",
+    image: tamikaHero,
+    quote:
+      "“Somebody's gotta keep these guys fed, on time, and paid. Turns out that somebody is me — and I wouldn't have it any other way.”",
+    bio: "Tamika is the glue that holds Digital Solution together. She makes sure the team takes their breaks, gets on-site on time, stays fed, and that every bill gets paid and every check gets written. Nothing here runs without her.",
   },
 ];
 
@@ -212,19 +221,6 @@ function AboutPage() {
                 </div>
               </article>
             ))}
-
-            {/* Placeholder for the fourth team member */}
-            <article className="flex flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-border bg-background/50 p-10 text-center">
-              <div className="font-display text-5xl font-semibold tracking-tight text-brand/40">
-                +
-              </div>
-              <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand">
-                Now hiring
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                We're growing. If you're a great engineer who loves working face-to-face with clients, we want to talk.
-              </p>
-            </article>
           </div>
         </div>
       </section>
