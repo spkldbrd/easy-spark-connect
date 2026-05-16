@@ -87,10 +87,10 @@ function AboutPage() {
         eyebrow="About us"
         title={
           <>
-            Your trusted IT partner.
+            Your local IT partner.
             <br />
             <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
-              Serving SLO County since 2015.
+              Since 2015.
             </span>
           </>
         }
