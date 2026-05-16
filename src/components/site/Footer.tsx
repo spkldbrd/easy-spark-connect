@@ -42,7 +42,7 @@ export function Footer() {
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-white/60">
-              Trusted IT partner for businesses across San Luis Obispo County since 1997.
+              Trusted IT partner for businesses across San Luis Obispo County since 2015.
             </p>
           </div>
           <div>
