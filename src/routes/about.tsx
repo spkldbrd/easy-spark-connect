@@ -221,19 +221,6 @@ function AboutPage() {
                 </div>
               </article>
             ))}
-
-            {/* Placeholder for the fourth team member */}
-            <article className="flex flex-col items-center justify-center rounded-[1.5rem] border border-dashed border-border bg-background/50 p-10 text-center">
-              <div className="font-display text-5xl font-semibold tracking-tight text-brand/40">
-                +
-              </div>
-              <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand">
-                Now hiring
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                We're growing. If you're a great engineer who loves working face-to-face with clients, we want to talk.
-              </p>
-            </article>
           </div>
         </div>
       </section>
