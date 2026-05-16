@@ -19,8 +19,8 @@ export const Route = createFileRoute("/contact")({
 const directs = [
   { icon: Phone, label: "Call us", value: "805-466-4722", href: "tel:+18054664722" },
   { icon: Mail, label: "Email", value: "hello@digitalsolution.com", href: "mailto:hello@digitalsolution.com" },
-  { icon: MapPin, label: "Office", value: "San Luis Obispo, CA" },
-  { icon: Clock, label: "Hours", value: "Mon–Fri 8am–6pm · 24/7 emergency" },
+  { icon: Clock, label: "Hours", value: "8am to 5pm Monday - Friday " },
+  { icon: Clock, label: "Emergency", value: "24/7 Emergency Support" },
 ];
 
 function ContactPage() {
