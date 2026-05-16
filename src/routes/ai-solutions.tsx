@@ -90,7 +90,7 @@ const principles = [
   {
     n: "03",
     title: "MSP discipline",
-    desc: "We came from managed IT. Every AI deployment ships with monitoring, backups, documentation, and a support line.",
+    desc: "Every AI deployment ships with monitoring, backups, documentation, and a support line.",
   },
 ];
 
