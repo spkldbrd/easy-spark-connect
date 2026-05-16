@@ -1,8 +1,16 @@
-# Recolor Jahleel's shirt to dark grey
+# Add Tamika Steffenauer to the About team grid
 
-Edit `src/assets/jahleel-hero.jpg` (used on Home and About) via AI image edit to change his shirt color to dark grey, preserving face, pose, lighting, and background. Overwrite the same file so both pages pick it up automatically — no code changes needed.
+Replace the "Now hiring" placeholder (4th slot) on `/about` with Tamika as Office Manager, using the uploaded portrait.
 
-## Technical
-- Tool: `imagegen--edit_image` on `src/assets/jahleel-hero.jpg`
-- Prompt: change shirt to dark grey, keep everything else identical
-- QA: view resulting image to confirm only the shirt changed
+## Changes
+- Copy `user-uploads://image-13.png` → `src/assets/tamika-hero.jpg`
+- In `src/routes/about.tsx`:
+  - Import the new asset
+  - Add a 4th entry to the `team` array:
+    - **Name:** Tamika Steffenauer
+    - **Role:** Office Manager
+    - **Bio:** "Tamika is the glue. She makes sure we take our breaks, get on-site on time, keeps everyone fed, pays the bills, and writes the checks. Nothing at Digital Solution runs without her."
+    - **Quote:** "“Somebody's gotta keep these guys fed, on time, and paid. Turns out that somebody is me — and I wouldn't have it any other way.”"
+  - Remove the dashed "Now hiring" placeholder card
+
+No home page changes (team grid only lives on About).
