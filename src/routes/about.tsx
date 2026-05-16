@@ -117,13 +117,13 @@ function AboutPage() {
             <div className="lg:col-span-5">
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">Our story</span>
               <h2 className="mt-4 font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Built for local businesses by people who understand local business.
+                IT support with local roots.
               </h2>
               <p className="mt-6 text-lg text-muted-foreground">
-                Digital Solution was founded in 2015, but Will's IT experience goes back to 1995. After years of hands-on IT work, business ownership, hard lessons, and digital enablement projects, he built Digital Solution to give Central Coast businesses practical, honest, responsive support.
+                Founded in 2015 and backed by IT experience going back to 1995, we help Central Coast businesses with managed IT, cybersecurity, cloud, backup, and practical AI implementation.
               </p>
               <p className="mt-4 text-muted-foreground">
-                Today, we help local businesses with managed IT, cybersecurity, cloud services, backup, and practical AI implementation. We are not a national helpdesk. We are a local team that knows our clients, answers the phone, and helps businesses make better technology decisions without the runaround.
+                We are local, responsive, and hands-on. Clients work with people who know their business, understand their systems, and help them make practical technology decisions without the runaround.
               </p>
             </div>
           </div>
