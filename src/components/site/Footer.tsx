@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import logoWordmark from "@/assets/logo-wordmark.png";
 import logoIcon from "@/assets/logo-icon.png";
+import callTextIcon from "@/assets/call-text-icon.png";
 
 export function Footer() {
   return (
@@ -68,7 +69,7 @@ export function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">Get in touch</h4>
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0" />8am to 5pm Monday - Friday </li>
-              <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0" /><a href="tel:+18054664722" className="hover:text-white">805-466-4722</a></li>
+              <li className="flex items-start gap-2"><img src={callTextIcon} alt="Call or text" className="mt-0.5 h-4 w-4 shrink-0 invert" /><a href="tel:+18054664722" className="hover:text-white">805-466-4722 · call or text</a></li>
               <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0" />hello@digitalsolution.com</li>
               <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0" />24/7 Emergency Support</li>
             </ul>
