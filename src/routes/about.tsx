@@ -6,6 +6,7 @@ import heroTeam from "@/assets/hero-team.jpg";
 import willAction from "@/assets/will-action.jpg";
 import jahleelHero from "@/assets/jahleel-hero.jpg";
 import micahHero from "@/assets/micah-hero.jpg";
+import tamikaHero from "@/assets/tamika-hero.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () =>
