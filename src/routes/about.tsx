@@ -87,15 +87,15 @@ function AboutPage() {
         eyebrow="About us"
         title={
           <>
-            A local SLO team.
+            Trusted IT partner for businesses across
             <br />
             <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
-              27 years. Counting.
+              San Luis Obispo County since 2015.
             </span>
           </>
         }
-        subtitle="We started Digital Solution in 1997 with a simple idea: small businesses deserve IT support that's friendly, fast and honest. We've never wavered."
-        meta={["Est. 1997", "30 engineers", "Paso to Pismo", "On-site within an hour"]}
+        subtitle="We started Digital Solution in 2015 with a simple idea: local businesses deserve IT support that's friendly, fast and honest. We've never wavered."
+        meta={["Est. 2015", "Local Team", "Paso to Pismo", "Fast Response"]}
       />
 
       {/* Editorial story block */}
