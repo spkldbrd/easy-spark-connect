@@ -87,10 +87,10 @@ function AboutPage() {
         eyebrow="About us"
         title={
           <>
-            A local SLO team.
+            Trusted IT partner for businesses across
             <br />
             <span className="bg-gradient-to-r from-white via-cyan to-[oklch(0.7_0.18_220)] bg-clip-text text-transparent">
-              27 years. Counting.
+              San Luis Obispo County since 2015.
             </span>
           </>
         }
