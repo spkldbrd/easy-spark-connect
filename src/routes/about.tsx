@@ -39,7 +39,7 @@ const values = [
 ];
 
 const milestones = [
-  { year: "1995", text: "William began his first IT job and started his first business." },
+  { year: "1995", text: "William began his first IT job at a local computer shop in Atascadero, and started his first business." },
   { year: "2008", text: "Shifted into digital enablement work after the downturn, supporting live insurance agents and national carrier workflows." },
   { year: "2015", text: "Digital Solution was founded to provide practical business IT support." },
   { year: "Today", text: "Supporting Central Coast businesses with managed IT, cybersecurity, cloud, backup, and practical AI consulting and implementation services." },
