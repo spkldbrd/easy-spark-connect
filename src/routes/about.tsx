@@ -39,10 +39,10 @@ const values = [
 ];
 
 const milestones = [
-  { year: "1997", text: "Founded in San Luis Obispo." },
-  { year: "2008", text: "Launched 24/7 monitoring & helpdesk." },
-  { year: "2016", text: "Built our in-house security operations practice." },
-  { year: "2024", text: "Crossed 450 Central Coast businesses served." },
+  { year: "1995", text: "William began his first IT job and started his first business." },
+  { year: "2008", text: "Shifted into digital enablement work after the downturn, supporting live insurance agents and national carrier workflows." },
+  { year: "2015", text: "Digital Solution was founded to provide practical business IT support." },
+  { year: "Today", text: "Supporting Central Coast businesses with managed IT, cybersecurity, cloud, backup, and practical AI consulting and implementation services." },
 ];
 
 const team = [
