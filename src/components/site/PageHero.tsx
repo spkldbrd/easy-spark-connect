@@ -46,8 +46,6 @@ export function PageHero({
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
         />
       )}
-      {false && (
-        <></>
       {imageSrc ? (
         <>
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" aria-hidden />
