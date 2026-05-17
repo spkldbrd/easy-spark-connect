@@ -12,9 +12,9 @@ const city: CityPageData = {
       <p>
         SLO is a town built on professional services, healthcare, education,
         and tourism — and every one of those industries lives or dies by its
-        IT. We've spent two decades supporting downtown SLO businesses,
-        Higuera Street retail, and offices clustered around Cal Poly and the
-        Marigold Center.
+        IT. We've spent years supporting downtown SLO businesses, Higuera
+        Street retail, the offices clustered around Cal Poly, and businesses
+        around the airport.
       </p>
       <p>
         Our team makes the trip down 101 weekly for routine site visits, and
