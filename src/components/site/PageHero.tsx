@@ -92,23 +92,34 @@ export function CinematicCTA({
   subtitle,
   ctaLabel = "Talk to us",
   ctaTo = "/contact",
+  imageSrc,
 }: {
   title: ReactNode;
   subtitle?: ReactNode;
   ctaLabel?: string;
   ctaTo?: string;
+  imageSrc?: string;
 }) {
+  const bg = imageSrc ?? heroOrb;
   return (
     <section className="relative overflow-hidden bg-black py-32 text-white">
       <img
-        src={heroOrb}
+        src={bg}
         alt=""
         width={1920}
         height={1280}
         loading="lazy"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+        className={
+          imageSrc
+            ? "pointer-events-none absolute inset-y-0 right-0 left-[55%] h-full w-[45%] object-cover object-top"
+            : "pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+        }
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
+      {imageSrc ? (
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,_black_0%,_black_45%,_rgba(0,0,0,0.85)_55%,_rgba(0,0,0,0.4)_70%,_transparent_90%)]" aria-hidden />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
+      )}
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <h2 className="font-display text-5xl font-semibold tracking-[-0.04em] sm:text-7xl">
           {title}
