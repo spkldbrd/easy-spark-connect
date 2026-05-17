@@ -54,7 +54,7 @@ const city: CityPageData = {
     },
   ],
   pullQuote:
-    "“We've been making the drive between Atascadero and Paso for clients since 1997. We know the back roads, the harvest schedules, and which restaurants have the worst WiFi — and we've fixed most of them.”",
+    "“The drive between Atascadero and Paso feels like just a quick run down the street to our friends house. We know the back roads, the tourism schedules, and which restaurants have the worst WiFi.”",
   neighborhoods: [
     "downtown City Park",
     "Vine Street",
