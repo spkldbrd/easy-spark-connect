@@ -37,13 +37,13 @@ export function PageHero({
           alt=""
           width={1920}
           height={1280}
-          className={`pointer-events-none absolute inset-0 h-full w-full object-cover ${imageSrc ? "object-right opacity-90" : "opacity-70"}`}
+          className={`pointer-events-none absolute inset-0 h-full w-full object-cover ${imageSrc ? "object-[right_bottom] opacity-100" : "opacity-70"}`}
         />
       )}
       {imageSrc ? (
         <>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" aria-hidden />
         </>
       ) : (
         <>
