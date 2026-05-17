@@ -111,7 +111,7 @@ export function CinematicCTA({
         loading="lazy"
         className={
           imageSrc
-            ? "pointer-events-none absolute inset-y-0 right-0 left-[55%] h-full w-[45%] object-cover object-top"
+            ? "pointer-events-none absolute inset-y-0 right-0 left-[60%] h-full w-[40%] object-contain object-right-top"
             : "pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
         }
       />
