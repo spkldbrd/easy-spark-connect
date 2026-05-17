@@ -22,7 +22,7 @@ export const Route = createFileRoute("/ai-solutions")({
       description:
         "Microsoft Copilot rollouts, custom ChatGPT assistants, and Claude workflow automations, delivered by the same engineers who already run your IT. Practical, governed, in production within weeks.",
       path: "/ai-solutions",
-      image: "/ai-automation-poster.jpg",
+      image: aiHero,
       jsonLd: {
         "@context": "https://schema.org",
         "@type": "Service",
