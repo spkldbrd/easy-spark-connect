@@ -47,7 +47,7 @@ const city: CityPageData = {
     },
   ],
   pullQuote:
-    "“We started this business in Atascadero in 1997 because we believed local businesses deserved better than a 1-800 number. Twenty-eight years later, that's still the whole pitch.”",
+    "“We started this business in Atascadero in 2015 because we believed local businesses deserved better than a 1-800 number. That's still the whole pitch.”",
   neighborhoods: [
     "downtown Sunken Gardens",
     "the Colony",
