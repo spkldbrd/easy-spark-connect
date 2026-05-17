@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
-import aiHero from "@/assets/ai-solutions-hero.jpg";
-import aiCtaRobot from "@/assets/ai-cta-robot.png";
+import aiHero from "@/assets/ai-solutions-hero.webp";
+import aiCtaRobot from "@/assets/ai-cta-robot.webp";
 import { buildSeo, SITE } from "@/lib/seo";
 import {
   Sparkles,
