@@ -71,7 +71,7 @@ export function Footer() {
               <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0" />8am to 5pm Monday - Friday </li>
               <li className="flex items-start gap-2"><img src={callTextIcon} alt="Call or text" className="mt-0.5 h-5 w-5 shrink-0 brightness-0 invert opacity-60" /><a href="tel:+18054664722" className="hover:text-white">805-466-4722</a></li>
               <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0" />hello@digitalsolution.com</li>
-              <li className="flex items-start gap-2"><Clock className="mt-0.5 h-4 w-4 shrink-0" />24/7 Emergency Support</li>
+              
             </ul>
           </div>
         </div>
