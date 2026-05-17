@@ -35,7 +35,7 @@ export function PageHero({
         <img
           src={imageSrc}
           alt=""
-          className="pointer-events-none absolute bottom-0 right-0 h-[80%] w-auto max-w-[70%] object-contain object-bottom"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[right_bottom]"
         />
       ) : (
         <img
