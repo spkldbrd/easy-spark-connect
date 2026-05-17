@@ -59,10 +59,9 @@ const city: CityPageData = {
     "“SLO businesses don't need an out-of-state MSP with a slick portal. They need someone who'll actually walk in the door — and who knows that parking on Higuera is a problem.”",
   neighborhoods: [
     "downtown Higuera",
-    "the Mission area",
-    "the Marigold Center",
     "Foothill Boulevard",
     "the airport business park",
+    "the Marigold Center",
   ],
 };
 
