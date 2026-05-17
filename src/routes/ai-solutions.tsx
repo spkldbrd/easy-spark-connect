@@ -112,6 +112,8 @@ function AiSolutionsPage() {
           </>
         }
         subtitle="Microsoft Copilot rollouts, custom ChatGPT assistants, and Claude workflow automations, delivered by the same engineers who already run your IT. Practical, governed, in production within weeks."
+        ctaLabel="Book a discovery call"
+        ctaTo="/contact"
         meta={["Local team", "27 years in IT", "MSP-grade governance", "Ships in weeks"]}
       />
 
