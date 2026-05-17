@@ -189,6 +189,7 @@ function AiSolutionsPage() {
         title="Let's find your first AI win."
         subtitle="A 30-minute call. We'll surface two or three use cases worth piloting in the next 60 days."
         ctaLabel="Book a discovery call"
+        imageSrc={aiCtaRobot}
       />
     </SiteShell>
   );
