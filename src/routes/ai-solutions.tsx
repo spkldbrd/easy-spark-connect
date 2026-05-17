@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
 import aiHero from "@/assets/ai-solutions-hero.jpg";
+import aiCtaRobot from "@/assets/ai-cta-robot.jpg";
 import { buildSeo } from "@/lib/seo";
 import {
   Sparkles,
@@ -189,6 +190,7 @@ function AiSolutionsPage() {
         title="Let's find your first AI win."
         subtitle="A 30-minute call. We'll surface two or three use cases worth piloting in the next 60 days."
         ctaLabel="Book a discovery call"
+        imageSrc={aiCtaRobot}
       />
     </SiteShell>
   );
