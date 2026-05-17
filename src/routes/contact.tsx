@@ -117,10 +117,11 @@ function ContactPage() {
                       <Field label="Phone" name="phone" type="tel" />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                         How can we help?
                       </label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         rows={5}
                         required
