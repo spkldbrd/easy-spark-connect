@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
+import aiHero from "@/assets/ai-solutions-hero.jpg";
 import { buildSeo } from "@/lib/seo";
 import {
   Sparkles,
@@ -99,6 +100,7 @@ function AiSolutionsPage() {
     <SiteShell overDark>
       <PageHero
         eyebrow="AI Solutions"
+        imageSrc={aiHero}
         title={
           <>
             AI your team will

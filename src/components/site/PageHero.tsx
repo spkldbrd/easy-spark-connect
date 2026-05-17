@@ -7,6 +7,7 @@ export function PageHero({
   subtitle,
   meta,
   videoSrc,
+  imageSrc,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -15,6 +16,8 @@ export function PageHero({
   meta?: string[];
   /** Optional background video — plays once then freezes on last frame */
   videoSrc?: string;
+  /** Optional background image override (defaults to heroOrb) */
+  imageSrc?: string;
 }) {
   return (
     <section className="relative -mt-[72px] overflow-hidden bg-black text-white">
@@ -30,7 +33,7 @@ export function PageHero({
         />
       ) : (
         <img
-          src={heroOrb}
+          src={imageSrc ?? heroOrb}
           alt=""
           width={1920}
           height={1280}
