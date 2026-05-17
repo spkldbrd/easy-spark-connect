@@ -120,20 +120,22 @@ export function CinematicCTA({
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
       )}
-      <div className="relative mx-auto max-w-4xl px-6 text-center">
-        <h2 className="font-display text-5xl font-semibold tracking-[-0.04em] sm:text-7xl">
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="mx-auto mt-6 max-w-xl text-lg text-white/65">{subtitle}</p>
-        )}
-        <a
-          href={ctaTo}
-          className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition hover:bg-cyan"
-        >
-          {ctaLabel}
-          <span aria-hidden>→</span>
-        </a>
+      <div className={imageSrc ? "relative mx-auto max-w-7xl px-6" : "relative mx-auto max-w-4xl px-6 text-center"}>
+        <div className={imageSrc ? "max-w-2xl" : ""}>
+          <h2 className="font-display text-5xl font-semibold tracking-[-0.04em] sm:text-7xl">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className={imageSrc ? "mt-6 max-w-xl text-lg text-white/65" : "mx-auto mt-6 max-w-xl text-lg text-white/65"}>{subtitle}</p>
+          )}
+          <a
+            href={ctaTo}
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition hover:bg-cyan"
+          >
+            {ctaLabel}
+            <span aria-hidden>→</span>
+          </a>
+        </div>
       </div>
     </section>
   );
