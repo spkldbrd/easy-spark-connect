@@ -226,8 +226,8 @@ function AboutPage() {
       </section>
 
       <CinematicCTA
-        title="Come meet the team."
-        subtitle="Stop by our downtown SLO office, or grab thirty minutes with us on a video call."
+        title="Coffee’s on us."
+        subtitle="Let’s meet in person or connect over a quick video call."
         ctaLabel="Get in touch"
       />
     </SiteShell>
