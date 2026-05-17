@@ -10,7 +10,14 @@ const city: CityPageData = {
   intro: (
     <>
       <p>
-        We know Atascadero. We've driven every windy road in this town (and know the stories about how they were made). Wherever your business is, a local tech can be at your door — usually within the hour.
+        Digital Solution is headquartered right here in Atascadero. When your
+        network goes down, you're not waiting on someone driving up from L.A.
+        or Bakersfield — you're waiting on a neighbor.
+      </p>
+      <p>
+        We've been the IT team behind dozens of Atascadero businesses for over
+        two decades. Family-owned, local-staffed, and the same crew who answer
+        the phone are the ones who show up at your door.
       </p>
     </>
   ),
