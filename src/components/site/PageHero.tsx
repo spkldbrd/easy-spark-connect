@@ -8,6 +8,8 @@ export function PageHero({
   meta,
   videoSrc,
   imageSrc,
+  ctaLabel,
+  ctaTo,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -18,6 +20,9 @@ export function PageHero({
   videoSrc?: string;
   /** Optional background image override (defaults to heroOrb) */
   imageSrc?: string;
+  /** Optional CTA button rendered under the subtitle */
+  ctaLabel?: string;
+  ctaTo?: string;
 }) {
   return (
     <section className="relative -mt-[72px] overflow-hidden bg-black text-white">
@@ -68,6 +73,15 @@ export function PageHero({
           </h1>
           {subtitle && (
             <p className="mt-7 max-w-2xl text-lg text-white/65 sm:text-xl">{subtitle}</p>
+          )}
+          {ctaLabel && (
+            <a
+              href={ctaTo ?? "/contact"}
+              className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition hover:bg-cyan"
+            >
+              {ctaLabel}
+              <span aria-hidden>→</span>
+            </a>
           )}
         </div>
 
