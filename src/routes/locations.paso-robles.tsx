@@ -56,11 +56,9 @@ const city: CityPageData = {
   pullQuote:
     "“The drive between Atascadero and Paso feels like just a quick run down the street to our friends house. We know the back roads, the tourism schedules, and which restaurants have the worst WiFi.”",
   neighborhoods: [
-    "downtown City Park",
-    "Vine Street",
-    "the Templeton Gap",
-    "the eastside AVAs",
-    "Highway 46 East",
+    "Downtown City Park",
+    "Tin City, Highway 46 West wine country",
+    "the eastside vineyards",
   ],
 };
 
