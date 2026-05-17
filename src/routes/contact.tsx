@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero } from "@/components/site/PageHero";
-import { buildSeo } from "@/lib/seo";
+import { buildSeo, SITE } from "@/lib/seo";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
 
@@ -12,6 +12,22 @@ export const Route = createFileRoute("/contact")({
       description:
         "Reach the Digital Solution team in San Luis Obispo. Call, email, or schedule a free 30-minute IT consultation. No bots, no queues.",
       path: "/contact",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: SITE.name,
+        url: `${SITE.url}/contact`,
+        telephone: "+1-805-466-4722",
+        email: "hello@digitalsolution.com",
+        openingHours: "Mo-Fr 08:00-17:00",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "San Luis Obispo",
+          addressRegion: "CA",
+          addressCountry: "US",
+        },
+        areaServed: "San Luis Obispo County",
+      },
     }),
   component: ContactPage,
 });

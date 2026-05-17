@@ -3,7 +3,7 @@ import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
 import aiHero from "@/assets/ai-solutions-hero.jpg";
 import aiCtaRobot from "@/assets/ai-cta-robot.png";
-import { buildSeo } from "@/lib/seo";
+import { buildSeo, SITE } from "@/lib/seo";
 import {
   Sparkles,
   Bot,
@@ -23,6 +23,37 @@ export const Route = createFileRoute("/ai-solutions")({
         "Microsoft Copilot rollouts, custom ChatGPT assistants, and Claude workflow automations, delivered by the same engineers who already run your IT. Practical, governed, in production within weeks.",
       path: "/ai-solutions",
       image: "/ai-automation-poster.jpg",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: "AI Implementation and Consulting",
+        provider: {
+          "@type": "Organization",
+          name: SITE.name,
+          url: SITE.url,
+        },
+        areaServed: "San Luis Obispo County",
+        url: `${SITE.url}/ai-solutions`,
+        description:
+          "Microsoft 365 Copilot rollouts, custom AI assistants, workflow automation, AI governance, document intelligence, AI-ready infrastructure, training, and AI strategy roadmaps.",
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "AI Solutions",
+          itemListElement: [
+            "Microsoft 365 Copilot rollouts",
+            "Custom AI assistants",
+            "Workflow & process automation",
+            "AI governance & policy",
+            "Document intelligence",
+            "AI-ready infrastructure",
+            "Training & change management",
+            "AI strategy & roadmap",
+          ].map((name) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name },
+          })),
+        },
+      },
     }),
   component: AiSolutionsPage,
 });
