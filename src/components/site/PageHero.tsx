@@ -37,11 +37,20 @@ export function PageHero({
           alt=""
           width={1920}
           height={1280}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
+          className={`pointer-events-none absolute inset-0 h-full w-full object-cover ${imageSrc ? "object-right opacity-90" : "opacity-70"}`}
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.55)_70%,_#000_100%)]" aria-hidden />
+      {imageSrc ? (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" aria-hidden />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" aria-hidden />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.55)_70%,_#000_100%)]" aria-hidden />
+        </>
+      )}
 
       <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-end px-6 pb-20 pt-40">
         <div className="max-w-4xl">
