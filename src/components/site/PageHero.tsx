@@ -117,6 +117,12 @@ export function CinematicCTA({
   const bg = imageSrc ?? heroOrb;
   return (
     <section className="relative overflow-hidden bg-black py-32 text-white">
+      {imageSrc && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 right-0 h-[34rem] w-[34rem] translate-x-1/4 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.35)_0%,_rgba(56,189,248,0.12)_40%,_transparent_70%)] blur-2xl sm:right-[max(0rem,calc((100vw-80rem)/2))]"
+        />
+      )}
       <img
         src={bg}
         alt=""
@@ -125,7 +131,7 @@ export function CinematicCTA({
         loading="lazy"
         className={
           imageSrc
-            ? "pointer-events-none absolute bottom-0 right-6 h-[22rem] w-auto max-w-[38vw] object-contain object-right-bottom sm:right-[max(1.5rem,calc((100vw-80rem)/2))] sm:h-[26rem]"
+            ? "pointer-events-none absolute -bottom-8 right-6 h-[25rem] w-auto max-w-[44vw] object-contain object-right-bottom sm:right-[max(1.5rem,calc((100vw-80rem)/2))] sm:h-[30rem]"
             : "pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
         }
       />
