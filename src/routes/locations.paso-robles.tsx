@@ -12,8 +12,8 @@ const city: CityPageData = {
       <p>
         Paso isn't a market we cover from a call center. It's where we eat
         lunch. We've spent decades supporting wineries, tasting rooms, and
-        professional offices throughout the Paso Robles AVA — and we know how
-        much a network outage costs at 4pm on a Saturday.
+        professional offices throughout Paso Robles, and we know how much a
+        network outage costs at 4pm on a Saturday.
       </p>
       <p>
         Our Atascadero shop is a twelve-minute drive up the 101. When you
