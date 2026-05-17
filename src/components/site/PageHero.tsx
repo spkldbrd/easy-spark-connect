@@ -48,7 +48,7 @@ export function PageHero({
       )}
       {imageSrc ? (
         <>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" aria-hidden />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,_black_0%,_black_22%,_rgba(0,0,0,0.92)_30%,_rgba(0,0,0,0.55)_42%,_transparent_65%)]" aria-hidden />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" aria-hidden />
         </>
       ) : (
