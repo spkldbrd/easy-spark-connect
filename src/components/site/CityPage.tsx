@@ -150,7 +150,7 @@ export function CityPage({ city }: { city: CityPageData }) {
             <span className="text-brand">
               {city.neighborhoods.join(" to ")}
             </span>
-            , a local engineer can be at your door — usually within the hour.
+            , a local engineer can usually be at your door within the hour.
           </p>
         </div>
       </section>
