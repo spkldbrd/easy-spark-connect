@@ -116,7 +116,7 @@ export function CinematicCTA({
         }
       />
       {imageSrc ? (
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,_black_0%,_black_45%,_rgba(0,0,0,0.85)_55%,_rgba(0,0,0,0.4)_70%,_transparent_90%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,_black_0%,_black_40%,_rgba(0,0,0,0.7)_50%,_transparent_60%)]" aria-hidden />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
       )}
