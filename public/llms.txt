@@ -1,0 +1,18 @@
+# Digital Solution
+
+> Boutique managed IT, cybersecurity, and AI partner serving San Luis Obispo County since 1997. Family-owned, North County-based, with same-hour on-site response across Atascadero, Paso Robles, and San Luis Obispo.
+
+Digital Solution is a local managed service provider (MSP) headquartered in Atascadero, California. We provide managed IT, cybersecurity, cloud, and AI implementation services to professional services, healthcare, hospitality, wineries, and small-to-mid-sized businesses throughout SLO County.
+
+## Pages
+
+- [Home](/): Overview of Digital Solution's services, team, and Central Coast coverage.
+- [About](/about): Company history since 1997, team bios, and local roots.
+- [AI Solutions](/ai-solutions): AI implementation and consulting — automation, workflow integration, and practical AI for small businesses.
+- [Contact](/contact): Phone, email, hours, address, and contact form.
+
+## Locations
+
+- [Atascadero IT Support](/locations/atascadero): Headquarters — same-hour on-site response for North County businesses.
+- [Paso Robles IT Support](/locations/paso-robles): Wine country IT, POS, WiFi, and 24/7 monitoring.
+- [San Luis Obispo IT Support](/locations/san-luis-obispo): Downtown SLO, Cal Poly area, healthcare, and hospitality IT.
