@@ -99,6 +99,7 @@ function AiSolutionsPage() {
     <SiteShell overDark>
       <PageHero
         eyebrow="AI Solutions"
+        imageSrc={aiHero}
         title={
           <>
             AI your team will
