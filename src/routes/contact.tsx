@@ -117,10 +117,11 @@ function ContactPage() {
                       <Field label="Phone" name="phone" type="tel" />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                      <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                         How can we help?
                       </label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         rows={5}
                         required
@@ -155,13 +156,15 @@ function Field({
   type?: string;
   required?: boolean;
 }) {
+  const id = `contact-${name}`;
   return (
     <div>
-      <label className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
         {label}
         {required && <span className="text-destructive"> *</span>}
       </label>
       <input
+        id={id}
         name={name}
         type={type}
         required={required}
