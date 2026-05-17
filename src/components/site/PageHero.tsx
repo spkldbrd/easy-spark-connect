@@ -31,13 +31,19 @@ export function PageHero({
           poster={heroOrb}
           className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
         />
+      ) : imageSrc ? (
+        <img
+          src={imageSrc}
+          alt=""
+          className="pointer-events-none absolute bottom-0 right-0 h-[80%] w-auto max-w-[70%] object-contain object-bottom"
+        />
       ) : (
         <img
-          src={imageSrc ?? heroOrb}
+          src={heroOrb}
           alt=""
           width={1920}
           height={1280}
-          className={`pointer-events-none absolute inset-0 h-full w-full object-cover ${imageSrc ? "object-[right_bottom] opacity-100" : "opacity-70"}`}
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
         />
       )}
       {imageSrc ? (
