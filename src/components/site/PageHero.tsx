@@ -111,12 +111,12 @@ export function CinematicCTA({
         loading="lazy"
         className={
           imageSrc
-            ? "pointer-events-none absolute inset-y-0 right-[max(1.5rem,calc((100vw-80rem)/2))] left-[60%] h-full object-contain object-right-top"
+            ? "pointer-events-none absolute bottom-0 right-6 h-[22rem] w-auto max-w-[38vw] object-contain object-right-bottom sm:right-[max(1.5rem,calc((100vw-80rem)/2))] sm:h-[26rem]"
             : "pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
         }
       />
       {imageSrc ? (
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,_black_0%,_black_40%,_rgba(0,0,0,0.7)_50%,_transparent_60%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,_black_0%,_black_42%,_rgba(0,0,0,0.72)_54%,_rgba(0,0,0,0.18)_68%,_transparent_80%)]" aria-hidden />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
       )}
