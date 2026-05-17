@@ -3,16 +3,16 @@ import { buildSeo, organizationJsonLd } from "@/lib/seo";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
-import willAction from "@/assets/will-action.jpg";
-import jahleelHero from "@/assets/jahleel-hero.jpg";
-import micahHero from "@/assets/micah-hero.jpg";
-import tChris from "@/assets/testimonial-chris-raders.jpg";
+import willAction from "@/assets/will-action.webp";
+import jahleelHero from "@/assets/jahleel-hero.webp";
+import micahHero from "@/assets/micah-hero.webp";
+import tChris from "@/assets/testimonial-chris-raders.webp";
 import svcManaged from "@/assets/svc-managed.jpg";
 
 import svcSecurity from "@/assets/svc-security.jpg";
 import svcCloud from "@/assets/svc-cloud.jpg";
 import svcBackup from "@/assets/svc-backup.jpg";
-import svcVoip from "@/assets/svc-voip.jpg";
+import svcVoip from "@/assets/svc-voip.webp";
 import svcAi from "@/assets/svc-ai.jpg";
 
 const serviceTabs = [

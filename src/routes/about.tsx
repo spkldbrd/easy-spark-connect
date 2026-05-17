@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero, CinematicCTA } from "@/components/site/PageHero";
 import { buildSeo } from "@/lib/seo";
-import heroTeam from "@/assets/hero-team.jpg";
-import willAction from "@/assets/will-action.jpg";
-import jahleelHero from "@/assets/jahleel-hero.jpg";
-import micahHero from "@/assets/micah-hero.jpg";
-import tamikaHero from "@/assets/tamika-hero.jpg";
+import heroTeam from "@/assets/hero-team.webp";
+import willAction from "@/assets/will-action.webp";
+import jahleelHero from "@/assets/jahleel-hero.webp";
+import micahHero from "@/assets/micah-hero.webp";
+import tamikaHero from "@/assets/tamika-hero.webp";
 
 export const Route = createFileRoute("/about")({
   head: () =>
