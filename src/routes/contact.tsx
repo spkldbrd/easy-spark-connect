@@ -4,6 +4,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { buildSeo, SITE } from "@/lib/seo";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { sendContactMessage } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () =>
