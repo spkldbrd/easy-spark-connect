@@ -3,9 +3,20 @@ import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero } from "@/components/site/PageHero";
 import { buildSeo, SITE } from "@/lib/seo";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendContactMessage } from "@/lib/contact.functions";
+
+const RECAPTCHA_SITE_KEY = "6LfWyfIsAAAAANqSnCCHSeSfC4EHLFA_1CsiZ4BG";
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, opts: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 export const Route = createFileRoute("/contact")({
   head: () =>
