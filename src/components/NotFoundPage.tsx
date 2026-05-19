@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
+import logoWordmark from "@/assets/logo-wordmark.png";
 
 export function NotFoundPage() {
   const [redirecting, setRedirecting] = useState(false);
@@ -59,6 +60,11 @@ export function NotFoundPage() {
         }}
       />
       <div className="relative z-10 max-w-xl text-center">
+        <img
+          src={logoWordmark}
+          alt="Digital Solution"
+          className="mx-auto mb-10 h-10 w-auto"
+        />
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
           Error 404
         </p>
