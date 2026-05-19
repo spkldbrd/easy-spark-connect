@@ -7,6 +7,8 @@ const schema = z.object({
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(40).optional().default(""),
   message: z.string().trim().min(1).max(5000),
+  recaptchaToken: z.string().min(10).max(4000),
+
 });
 
 const TO = "william@digitalsolution.com";
@@ -21,6 +23,26 @@ export const sendContactMessage = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const apiKey = process.env.SMTP2GO_API_KEY;
     if (!apiKey) throw new Error("SMTP2GO_API_KEY is not configured");
+
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!recaptchaSecret) throw new Error("RECAPTCHA_SECRET_KEY is not configured");
+
+    const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret: recaptchaSecret, response: data.recaptchaToken }),
+    });
+    const verify = (await verifyRes.json().catch(() => ({}))) as {
+      success?: boolean;
+      score?: number;
+      action?: string;
+      "error-codes"?: string[];
+    };
+    if (!verify.success || (typeof verify.score === "number" && verify.score < 0.5) || (verify.action && verify.action !== "contact")) {
+      console.warn("reCAPTCHA rejected", verify);
+      throw new Error("reCAPTCHA verification failed");
+    }
+
 
     const text = `New contact form submission
 
