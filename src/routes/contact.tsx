@@ -134,10 +134,7 @@ function ContactPage() {
                     <p className="mt-3 text-muted-foreground">We'll be in touch within one business hour.</p>
                   </div>
                 ) : (
-                  <form
-                    onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-                    className="grid gap-6"
-                  >
+                  <form onSubmit={handleSubmit} className="grid gap-6">
                     <div className="grid gap-6 sm:grid-cols-2">
                       <Field label="Name" name="name" required />
                       <Field label="Company" name="company" />
@@ -155,16 +152,22 @@ function ContactPage() {
                         name="message"
                         rows={5}
                         required
+                        maxLength={5000}
                         className="mt-3 w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring focus:ring-2"
                       />
                     </div>
+                    {error && (
+                      <p className="text-sm text-destructive" role="alert">{error}</p>
+                    )}
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-sm font-semibold text-background transition hover:bg-brand"
+                      disabled={submitting}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 text-sm font-semibold text-background transition hover:bg-brand disabled:opacity-60"
                     >
-                      Send message <Send className="h-4 w-4" />
+                      {submitting ? "Sending…" : (<>Send message <Send className="h-4 w-4" /></>)}
                     </button>
                   </form>
+
                 )}
               </div>
             </div>
