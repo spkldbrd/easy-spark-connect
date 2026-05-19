@@ -7,6 +7,8 @@ const schema = z.object({
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(40).optional().default(""),
   message: z.string().trim().min(1).max(5000),
+  recaptchaToken: z.string().min(10).max(4000),
+
 });
 
 const TO = "william@digitalsolution.com";
