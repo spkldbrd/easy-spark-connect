@@ -58,6 +58,15 @@ function ContactPage() {
   const [error, setError] = useState<string | null>(null);
   const send = useServerFn(sendContactMessage);
 
+  useEffect(() => {
+    if (document.querySelector(`script[src*="recaptcha/api.js"]`)) return;
+    const s = document.createElement("script");
+    s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (submitting) return;
@@ -65,6 +74,12 @@ function ContactPage() {
     setSubmitting(true);
     const fd = new FormData(e.currentTarget);
     try {
+      if (!window.grecaptcha) throw new Error("reCAPTCHA not loaded yet — try again in a moment.");
+      const recaptchaToken: string = await new Promise((resolve, reject) => {
+        window.grecaptcha!.ready(() => {
+          window.grecaptcha!.execute(RECAPTCHA_SITE_KEY, { action: "contact" }).then(resolve, reject);
+        });
+      });
       await send({
         data: {
           name: String(fd.get("name") || ""),
@@ -72,16 +87,18 @@ function ContactPage() {
           email: String(fd.get("email") || ""),
           phone: String(fd.get("phone") || ""),
           message: String(fd.get("message") || ""),
+          recaptchaToken,
         },
       });
       setSent(true);
     } catch (err) {
       console.error(err);
-      setError("Something went wrong. Please call or email us directly.");
+      setError(err instanceof Error && err.message.includes("reCAPTCHA") ? err.message : "Something went wrong. Please call or email us directly.");
     } finally {
       setSubmitting(false);
     }
   };
+
 
   return (
     <SiteShell overDark>
