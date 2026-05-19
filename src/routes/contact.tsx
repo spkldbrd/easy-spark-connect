@@ -43,6 +43,34 @@ const directs = [
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const send = useServerFn(sendContactMessage);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (submitting) return;
+    setError(null);
+    setSubmitting(true);
+    const fd = new FormData(e.currentTarget);
+    try {
+      await send({
+        data: {
+          name: String(fd.get("name") || ""),
+          company: String(fd.get("company") || ""),
+          email: String(fd.get("email") || ""),
+          phone: String(fd.get("phone") || ""),
+          message: String(fd.get("message") || ""),
+        },
+      });
+      setSent(true);
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please call or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <SiteShell overDark>
