@@ -10,16 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocationsSanLuisObispoRouteImport } from './routes/locations.san-luis-obispo'
 import { Route as LocationsPasoRoblesRouteImport } from './routes/locations.paso-robles'
 import { Route as LocationsAtascaderoRouteImport } from './routes/locations.atascadero'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AiSolutionsRoute = AiSolutionsRouteImport.update({
@@ -52,12 +59,19 @@ const LocationsAtascaderoRoute = LocationsAtascaderoRouteImport.update({
   path: '/locations/atascadero',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
   '/locations/san-luis-obispo': typeof LocationsSanLuisObispoRoute
@@ -66,7 +80,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
   '/locations/san-luis-obispo': typeof LocationsSanLuisObispoRoute
@@ -76,7 +92,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
   '/locations/san-luis-obispo': typeof LocationsSanLuisObispoRoute
@@ -87,7 +105,9 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/ai-solutions'
+    | '/blog'
     | '/contact'
+    | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
     | '/locations/san-luis-obispo'
@@ -96,7 +116,9 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/ai-solutions'
+    | '/blog'
     | '/contact'
+    | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
     | '/locations/san-luis-obispo'
@@ -105,7 +127,9 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/ai-solutions'
+    | '/blog'
     | '/contact'
+    | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
     | '/locations/san-luis-obispo'
@@ -115,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AiSolutionsRoute: typeof AiSolutionsRoute
+  BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
   LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
   LocationsPasoRoblesRoute: typeof LocationsPasoRoblesRoute
@@ -128,6 +153,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ai-solutions': {
@@ -172,13 +204,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationsAtascaderoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
+
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AiSolutionsRoute: AiSolutionsRoute,
+  BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
   LocationsAtascaderoRoute: LocationsAtascaderoRoute,
   LocationsPasoRoblesRoute: LocationsPasoRoblesRoute,
