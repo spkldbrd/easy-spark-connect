@@ -57,7 +57,7 @@ function BlogIndex() {
             <p className="text-center text-muted-foreground">No posts yet.</p>
           ) : (
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((p) => (
+              {posts.map((p: WPPost) => (
                 <PostCard key={p.id} post={p} />
               ))}
             </div>
