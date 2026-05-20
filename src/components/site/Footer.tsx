@@ -60,8 +60,7 @@ export function Footer() {
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/80">Company</h4>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
               <li><Link to="/about" className="hover:text-white">About</Link></li>
-              
-              
+              <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
               <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
             </ul>
           </div>
