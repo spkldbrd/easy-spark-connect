@@ -8,7 +8,7 @@ const searchSchema = z.object({
   page: z.coerce.number().int().min(1).max(500).optional().default(1),
 });
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   validateSearch: searchSchema,
   loaderDeps: ({ search: { page } }) => ({ page }),
   loader: async ({ deps }) => fetchPosts(deps.page, 12),
