@@ -141,3 +141,22 @@
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
 }
+
+/* WordPress post content (from /blog/$slug) */
+.wp-content { font-size: 1.0625rem; line-height: 1.75; color: var(--ink); }
+.wp-content > * + * { margin-top: 1.25em; }
+.wp-content h2 { font-family: var(--font-display); font-size: 1.875rem; font-weight: 600; letter-spacing: -0.03em; margin-top: 2em; }
+.wp-content h3 { font-family: var(--font-display); font-size: 1.375rem; font-weight: 600; margin-top: 1.75em; }
+.wp-content a { color: oklch(0.45 0.21 255); text-decoration: underline; text-underline-offset: 3px; }
+.wp-content a:hover { color: oklch(0.55 0.21 255); }
+.wp-content img { border-radius: 0.75rem; max-width: 100%; height: auto; }
+.wp-content ul, .wp-content ol { padding-left: 1.5rem; }
+.wp-content ul { list-style: disc; }
+.wp-content ol { list-style: decimal; }
+.wp-content li + li { margin-top: 0.5rem; }
+.wp-content blockquote { border-left: 3px solid var(--cyan); padding-left: 1.25rem; font-style: italic; color: var(--muted-foreground); }
+.wp-content code { background: var(--surface); padding: 0.15em 0.4em; border-radius: 0.3rem; font-family: var(--font-mono, monospace); font-size: 0.9em; }
+.wp-content pre { background: var(--surface-2, var(--surface)); padding: 1rem 1.25rem; border-radius: 0.75rem; overflow-x: auto; }
+.wp-content pre code { background: transparent; padding: 0; }
+.wp-content figure { margin: 1.5em 0; }
+.wp-content figcaption { font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.5rem; text-align: center; }
