@@ -12,7 +12,7 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "Digital Solution" },
       { name: "theme-color", content: "#0a0a0a" },
-      { name: "google-site-verification", content: "3L2KrzYC5TZQx16yTUPnS3bLNlyXnsBTc8HFObeyTNg" },
+      { name: "google-site-verification", content: "WzZctgZuIyLW2A6ggaIoVEI_Ab86GS6VNIIpUpWfJ10" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
