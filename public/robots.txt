@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://easy-spark-connect.lovable.app/sitemap.xml
+Sitemap: https://digitalsolution.com/sitemap.xml
