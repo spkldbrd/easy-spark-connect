@@ -60,5 +60,23 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.location.hostname.endsWith(".lovable.app")) return;
+    if (isEditorContext()) return;
+
+    // Tell JS-executing crawlers to drop this copy.
+    if (!document.querySelector('meta[name="robots"]')) {
+      const meta = document.createElement("meta");
+      meta.name = "robots";
+      meta.content = "noindex";
+      document.head.appendChild(meta);
+    }
+
+    // Visitor-side redirect to the primary domain (not a true 301).
+    const { pathname, search, hash } = window.location;
+    window.location.replace(PRIMARY_ORIGIN + pathname + search + hash);
+  }, []);
+
   return <Outlet />;
 }
