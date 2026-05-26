@@ -1,5 +1,22 @@
 import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { NotFoundPage } from "@/components/NotFoundPage";
+
+const PRIMARY_ORIGIN = "https://digitalsolution.com";
+
+function isEditorContext() {
+  if (typeof window === "undefined") return true;
+  const host = window.location.hostname;
+  // Lovable editor preview hostnames
+  if (host.startsWith("id-preview--")) return true;
+  // Iframed (Lovable editor embeds the preview)
+  try {
+    if (window.self !== window.top) return true;
+  } catch {
+    return true;
+  }
+  return false;
+}
 
 import appCss from "../styles.css?url";
 
