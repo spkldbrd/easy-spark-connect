@@ -1,20 +1,19 @@
-Three small copy updates. The /about title is already "About — Local SLO IT Since 2015", so no change needed there.
+## Context
 
-## 1. Homepage meta / OG / Twitter description
-File: `src/routes/index.tsx` (line ~80) — append a sentence.
+Two issues:
 
-- From: `…real outcomes — since 2015.`
-- To: `…real outcomes — since 2015. Three decades of Central Coast IT experience.`
+1. **OG image** — The homepage's `head()` currently passes `image: willAction` to `buildSeo()`, which overrides the default and emits `og:image = .../will-action-*.webp`. The new asset you uploaded at `public/og-image.jpg` is never used.
+2. **Logo tag** — `og:logo` isn't part of the official Open Graph spec, but Schema.org's `Organization` block has a standard `logo` field that Google and several SEO checkers read. We currently don't emit one.
 
-Also check `src/lib/seo.ts` (line ~132) default description and update to match if it's used as a fallback for the homepage.
+## Plan
 
-## 2. Will Steffenauer bio
-File: `src/routes/about.tsx` (line 54).
+1. **`src/routes/index.tsx`** — Remove the `image: willAction` line from the homepage `buildSeo({...})` call so it falls back to the site default `/og-image.jpg` (the new image you provided). Leave the `willAction` import alone since the page still renders the photo in the hero.
 
-- From: `"Will started Digital Solution out of a one-room office in downtown SLO in 2015. A decade later, he still picks up the phone himself. You'll find him most mornings at a corner table at a downtown coffee shop, laptop open, talking through a roadmap with a client."`
-- To: `"Will has been doing IT on the Central Coast since 1995. He founded Digital Solution in 2015 to bring that experience to local businesses. A decade later, he still picks up the phone himself."`
+2. **`src/lib/seo.ts`** — In `organizationJsonLd()`, add a `logo` field pointing to an absolute URL of the wordmark. To keep this consistent and Worker-safe, copy `src/assets/logo-wordmark.png` to `public/logo.png` and reference it as `absoluteUrl("/logo.png")`. This makes it discoverable by Google's Organization knowledge panel and any tool that looks for a logo on the page.
 
-## 3. /about title
-Already correct — no change.
+   Optionally also emit a non-standard `<meta property="og:logo">` in the root `head()` for the SEO checkers that look for it explicitly. (Harmless, ignored by Facebook/LinkedIn.) Let me know if you want this too — otherwise I'll only do the standards-compliant JSON-LD `logo`.
 
-Note: the user's table referenced "since 1997" as the current state, but the homepage already says "since 2015" from the earlier edit. Treating their target column as the source of truth.
+## Result
+
+- Share previews on the homepage will use `https://digitalsolution.com/og-image.jpg` (your new image).
+- Search engines and SEO checkers will pick up the company logo via the Organization JSON-LD on every page.

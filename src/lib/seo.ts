@@ -128,6 +128,7 @@ export function organizationJsonLd(): JsonLd {
     "@type": "Organization",
     name: SITE.name,
     url: SITE.url,
+    logo: absoluteUrl("/logo.png"),
     description:
       "Boutique managed IT, cybersecurity, and AI partner serving San Luis Obispo County since 2015.",
   };
