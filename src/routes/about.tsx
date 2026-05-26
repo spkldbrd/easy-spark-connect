@@ -51,7 +51,7 @@ const team = [
     image: willAction,
     quote:
       "“The companies that win the next decade aren't the ones with the biggest IT budgets — they're the ones whose IT just works, quietly, in the background, every single day.”",
-    bio: "Will started Digital Solution out of a one-room office in downtown SLO in 2015. Twenty-seven years later, he still picks up the phone himself. You'll find him most mornings at a corner table at a downtown coffee shop, laptop open, talking through a roadmap with a client.",
+    bio: "Will started Digital Solution out of a one-room office in downtown SLO in 2015. A decade later, he still picks up the phone himself. You'll find him most mornings at a corner table at a downtown coffee shop, laptop open, talking through a roadmap with a client.",
   },
   {
     name: "Micah Steffenauer",

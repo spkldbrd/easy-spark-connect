@@ -16,7 +16,7 @@ const city: CityPageData = {
       </p>
       <p>
         We've been the IT team behind dozens of Atascadero businesses for over
-        two decades. Family-owned, local-staffed, and the same crew who answer
+        a decade. Family-owned, local-staffed, and the same crew who answer
         the phone are the ones who show up at your door.
       </p>
     </>

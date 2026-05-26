@@ -46,7 +46,7 @@ function BlogIndex() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
             Plain-spoken notes from the bench — fixes, threats, AI experiments, and the
-            occasional opinion. Twenty-seven years of doing the work, written down.
+            occasional opinion. A decade of doing the work, written down.
           </p>
         </div>
       </section>
