@@ -15,7 +15,6 @@ export const Route = createFileRoute("/about")({
       description:
         "Central Coast Digital Solution has been the trusted IT partner for San Luis Obispo County businesses for over 25 years. A local team of engineers who actually pick up the phone.",
       path: "/about",
-      image: heroTeam,
     }),
   component: AboutPage,
 });
