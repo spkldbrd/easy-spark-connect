@@ -7,7 +7,7 @@
  *   export const Route = createFileRoute("/about")({
  *     head: () => buildSeo({
  *       title: "About",
- *       description: "Local SLO IT since 1997.",
+ *       description: "Local SLO IT since 2015.",
  *       path: "/about",
  *       image: heroAbout,
  *     }),
@@ -129,7 +129,7 @@ export function organizationJsonLd(): JsonLd {
     name: SITE.name,
     url: SITE.url,
     description:
-      "Boutique managed IT, cybersecurity, and AI partner serving San Luis Obispo County since 1997.",
+      "Boutique managed IT, cybersecurity, and AI partner serving San Luis Obispo County since 2015.",
   };
 }
 

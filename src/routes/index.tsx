@@ -77,7 +77,7 @@ export const Route = createFileRoute("/")({
     buildSeo({
       title: "The IT team that actually shows up",
       description:
-        "Boutique managed IT, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes — since 1997.",
+        "Boutique managed IT, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes — since 2015.",
       path: "/",
       image: willAction,
       jsonLd: organizationJsonLd(),

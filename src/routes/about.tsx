@@ -11,7 +11,7 @@ import tamikaHero from "@/assets/tamika-hero.webp";
 export const Route = createFileRoute("/about")({
   head: () =>
     buildSeo({
-      title: "About — Local SLO IT Since 1997",
+      title: "About — Local SLO IT Since 2015",
       description:
         "Central Coast Digital Solution has been the trusted IT partner for San Luis Obispo County businesses for over 25 years. A local team of engineers who actually pick up the phone.",
       path: "/about",
@@ -51,7 +51,7 @@ const team = [
     image: willAction,
     quote:
       "“The companies that win the next decade aren't the ones with the biggest IT budgets — they're the ones whose IT just works, quietly, in the background, every single day.”",
-    bio: "Will started Digital Solution out of a one-room office in downtown SLO in 1997. Twenty-seven years later, he still picks up the phone himself. You'll find him most mornings at a corner table at a downtown coffee shop, laptop open, talking through a roadmap with a client.",
+    bio: "Will started Digital Solution out of a one-room office in downtown SLO in 2015. A decade later, he still picks up the phone himself. You'll find him most mornings at a corner table at a downtown coffee shop, laptop open, talking through a roadmap with a client.",
   },
   {
     name: "Micah Steffenauer",
