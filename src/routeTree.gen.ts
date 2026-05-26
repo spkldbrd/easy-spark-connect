@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
 import { Route as AboutRouteImport } from './routes/about'
@@ -19,6 +20,11 @@ import { Route as LocationsPasoRoblesRouteImport } from './routes/locations.paso
 import { Route as LocationsAtascaderoRouteImport } from './routes/locations.atascadero'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/sitemap.xml'
     | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/sitemap.xml'
     | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/sitemap.xml'
     | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AiSolutionsRoute: typeof AiSolutionsRoute
   ContactRoute: typeof ContactRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
   LocationsPasoRoblesRoute: typeof LocationsPasoRoblesRoute
@@ -149,6 +162,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AiSolutionsRoute: AiSolutionsRoute,
   ContactRoute: ContactRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   LocationsAtascaderoRoute: LocationsAtascaderoRoute,
   LocationsPasoRoblesRoute: LocationsPasoRoblesRoute,
