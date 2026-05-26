@@ -67,7 +67,7 @@ export const Route = createFileRoute("/locations/paso-robles")({
     buildSeo({
       title: "IT Support in Paso Robles, CA",
       description:
-        "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team that's been here since 1997.",
+        "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team that's been here since 2015.",
       path: "/locations/paso-robles",
       jsonLd: localBusinessJsonLd({
         city: "Paso Robles",

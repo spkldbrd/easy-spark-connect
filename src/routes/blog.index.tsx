@@ -15,7 +15,7 @@ export const Route = createFileRoute("/blog/")({
   head: () => buildSeo({
     title: "Blog",
     description:
-      "Practical IT, cybersecurity, and AI insights from the Digital Solution team — based on the Central Coast since 1997.",
+      "Practical IT, cybersecurity, and AI insights from the Digital Solution team — based on the Central Coast since 2015.",
     path: "/blog",
   }),
   errorComponent: ({ error }) => (

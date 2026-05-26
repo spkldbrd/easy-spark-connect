@@ -68,14 +68,14 @@ export const Route = createFileRoute("/locations/atascadero")({
     buildSeo({
       title: "IT Support in Atascadero, CA",
       description:
-        "Atascadero's local IT partner since 1997. Managed IT, cybersecurity, cloud, and on-site support — same-hour response from a team that lives where you do.",
+        "Atascadero's local IT partner since 2015. Managed IT, cybersecurity, cloud, and on-site support — same-hour response from a team that lives where you do.",
       path: "/locations/atascadero",
       jsonLd: localBusinessJsonLd({
         city: "Atascadero",
         region: "San Luis Obispo County",
         path: "/locations/atascadero",
         description:
-          "Managed IT, cybersecurity, and cloud services for Atascadero businesses since 1997.",
+          "Managed IT, cybersecurity, and cloud services for Atascadero businesses since 2015.",
       }),
     }),
   component: () => <CityPage city={city} />,

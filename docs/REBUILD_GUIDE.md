@@ -14,7 +14,7 @@ shape is documented below.
 - **Service area**: San Luis Obispo County, CA (Paso Robles → Pismo Beach).
 - **Phone (used everywhere)**: `805-466-4722` → `tel:+18054664722`
 - **Email**: `hello@digitalsolution.com`
-- **Founded**: 1997
+- **Founded**: 2015
 - **Founder**: Will Steffenauer. Other named team: Micah Steffenauer (Lead
   Tech), Jahleel Roberts (Field Engineer).
 
@@ -161,7 +161,7 @@ Black background with four scattered, low-opacity inverted hex logo
 decorations absolutely positioned.
 
 Four columns:
-1. Logo (inverted) + tagline "Trusted IT partner ... since 1997."
+1. Logo (inverted) + tagline "Trusted IT partner ... since 2015."
 2. **Services** (all link to `/#services` anchors — Managed IT, Cybersecurity,
    Cloud & M365, Backup & DR, Business VoIP, AI Solutions).
 3. **Company** — About (`/about`), Contact (`/contact`).
@@ -261,13 +261,13 @@ Black section, no background image. White pill "Talk to us" → `/contact`.
 ## 10. About Page (`/about`)
 
 Uses `<PageHero>` (eyebrow "About us", gradient-text title, meta row:
-`Est. 1997 · 30 engineers · Paso to Pismo · On-site within an hour`).
+`Est. 2015 · 30 engineers · Paso to Pismo · On-site within an hour`).
 
 Sections:
 1. Editorial story — large team photo (`hero-team.jpg`) + 2-paragraph copy.
 2. **Values** — 3 numbered cards on `bg-surface` (Humans first, Strategic
    not reactive, Real expertise). Source: `values` array.
-3. **Milestones** — timeline of `{year, text}` pairs (1997, 2008, 2016, 2024).
+3. **Milestones** — timeline of `{year, text}` pairs (2015, 2008, 2016, 2024).
 4. **Team** — 4-card grid: 3 portraits (Will, Micah, Jahleel) + 1 dashed
    "Now hiring" placeholder. Each card: portrait (4/5), role eyebrow, name,
    bio, quote. Source: `team` array.

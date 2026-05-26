@@ -70,7 +70,7 @@ export const Route = createFileRoute("/locations/san-luis-obispo")({
     buildSeo({
       title: "IT Support in San Luis Obispo, CA",
       description:
-        "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 1997.",
+        "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 2015.",
       path: "/locations/san-luis-obispo",
       jsonLd: localBusinessJsonLd({
         city: "San Luis Obispo",
