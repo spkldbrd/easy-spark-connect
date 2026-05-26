@@ -227,7 +227,7 @@ function HomePage() {
   return (
     <SiteShell overDark>
       {/* HERO — manual slider. Editorial type left, tall portrait right. */}
-      <section className="relative -mt-[72px] overflow-hidden bg-[#0a0a0c] text-white">
+      <section className="relative -mt-[96px] overflow-hidden bg-[#0a0a0c] text-white">
         {/* Soft warm wash bleeding from the right (echoes the photo's golden hour) */}
         <div
           className="pointer-events-none absolute inset-y-0 right-0 w-2/3 opacity-60"
