@@ -79,7 +79,6 @@ export const Route = createFileRoute("/")({
       description:
         "Boutique managed IT, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes — since 2015. Three decades of Central Coast IT experience.",
       path: "/",
-      image: willAction,
       jsonLd: organizationJsonLd(),
     }),
   component: HomePage,
