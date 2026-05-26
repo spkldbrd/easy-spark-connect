@@ -43,11 +43,11 @@ export function Header({ overDark = false }: { overDark?: boolean }) {
             <img
               src={logoWordmark}
               alt="Digital Solution"
-              className="h-8 w-auto invert brightness-0 contrast-100"
+              className="h-16 w-auto invert brightness-0 contrast-100"
               style={{ filter: "invert(1) brightness(2)" }}
             />
           ) : (
-            <img src={logoWordmark} alt="Digital Solution" className="h-8 w-auto" />
+            <img src={logoWordmark} alt="Digital Solution" className="h-16 w-auto" />
           )}
         </Link>
 
