@@ -17,11 +17,10 @@
 
 export const SITE = {
   name: "Digital Solution",
-  // Canonical production URL. Update when a custom domain goes live.
-  url: "https://easy-spark-connect.lovable.app",
-  // Default share image when a route doesn't provide one. Should be an
-  // absolute URL or a path served from /public.
-  defaultImage: "",
+  // Canonical production URL.
+  url: "https://digitalsolution.com",
+  // Default share image when a route doesn't provide one. Served from /public.
+  defaultImage: "/og-image.jpg",
   twitterHandle: "",
   locale: "en_US",
   // Appended after the route title: "About — Digital Solution"
