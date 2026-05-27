@@ -77,7 +77,7 @@ export const Route = createFileRoute("/")({
     buildSeo({
       title: "The IT team that actually shows up",
       description:
-        "Boutique managed IT, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes — since 2015. Three decades of Central Coast IT experience.",
+        "Boutique managed IT, cybersecurity, and AI for SLO County businesses — since 2015. Led by an engineer with 30 years of Central Coast IT experience.",
       path: "/",
       jsonLd: organizationJsonLd(),
     }),
