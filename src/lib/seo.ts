@@ -98,7 +98,8 @@ export function buildSeo(input: SeoInput) {
   }
 
   if (noindex) {
-    meta.push({ name: "robots", content: "noindex, nofollow" });
+    const content = noindex === "follow" ? "noindex, follow" : "noindex, nofollow";
+    meta.push({ name: "robots", content });
   }
 
   const links = [{ rel: "canonical", href: url }];
