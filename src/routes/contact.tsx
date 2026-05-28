@@ -25,22 +25,32 @@ export const Route = createFileRoute("/contact")({
       description:
         "Reach the Digital Solution team in San Luis Obispo. Call, email, or schedule a free 30-minute IT consultation. No bots, no queues.",
       path: "/contact",
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        name: SITE.name,
-        url: `${SITE.url}/contact`,
-        telephone: "+1-805-466-4722",
-        email: "hello@digitalsolution.com",
-        openingHours: "Mo-Fr 08:00-17:00",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "San Luis Obispo",
-          addressRegion: "CA",
-          addressCountry: "US",
+      image: "https://digitalsolution.com/og-image.jpg",
+      jsonLd: [
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Digital Solution",
+          url: "https://digitalsolution.com/contact",
         },
-        areaServed: "San Luis Obispo County",
-      },
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Digital Solution",
+          url: "https://digitalsolution.com",
+          telephone: "805-466-4722",
+          email: "hello@digitalsolution.com",
+          openingHours: "Mo-Fr 08:00-17:00",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "7700 Santa Ynez Ave",
+            addressLocality: "Atascadero",
+            addressRegion: "CA",
+            postalCode: "93422",
+            addressCountry: "US",
+          },
+        },
+      ],
     }),
   component: ContactPage,
 });
