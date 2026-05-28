@@ -11,37 +11,24 @@ import tamikaHero from "@/assets/tamika-hero.webp";
 export const Route = createFileRoute("/about")({
   head: () =>
     buildSeo({
-      title: "About — Local SLO IT Since 2015",
+      title: "About | Digital Solution — SLO County IT Since 2015",
       description:
-        "Digital Solution has been SLO County's trusted IT partner since 2015. Founded by an engineer with 30 years of Central Coast IT experience — local team, real engineers, no call centers.",
+        "SLO County's trusted IT partner since 2015. Founded by an engineer with 30 years of Central Coast IT experience. Local team, no call centers, no surprises.",
       path: "/about",
       jsonLd: [
         {
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "Digital Solution",
-          url: "https://digitalsolution.com",
-          telephone: "805-466-4722",
-          email: "hello@digitalsolution.com",
-          foundingDate: "2015",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "7700 Santa Ynez Ave",
-            addressLocality: "Atascadero",
-            addressRegion: "CA",
-            postalCode: "93422",
-            addressCountry: "US",
-          },
-          areaServed: "San Luis Obispo County",
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "William Steffenauer",
-          jobTitle: "Owner",
-          worksFor: {
-            "@type": "Organization",
-            name: "Digital Solution",
+          "@type": "AboutPage",
+          url: "https://digitalsolution.com/about",
+          mainEntity: {
+            "@type": "LocalBusiness",
+            "@id": "https://digitalsolution.com/#business",
+            foundingDate: "2015",
+            founder: {
+              "@type": "Person",
+              name: "William Steffenauer",
+              jobTitle: "Owner",
+            },
           },
         },
       ],
