@@ -74,26 +74,14 @@ export const Route = createFileRoute("/locations/atascadero")({
       jsonLd: {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://digitalsolution.com/#business",
         name: "Digital Solution",
-        url: "https://digitalsolution.com/locations/atascadero",
-        telephone: "805-466-4722",
-        email: "hello@digitalsolution.com",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "7700 Santa Ynez Ave",
-          addressLocality: "Atascadero",
-          addressRegion: "CA",
-          postalCode: "93422",
-          addressCountry: "US",
-        },
+        url: "https://digitalsolution.com",
         areaServed: {
           "@type": "City",
           name: "Atascadero",
           sameAs: "https://en.wikipedia.org/wiki/Atascadero,_California",
         },
-        openingHours: "Mo-Fr 08:00-17:00",
-        description:
-          "Atascadero's local IT partner since 2015. Managed IT, cybersecurity, cloud, and on-site support — same-hour response from a team headquartered in Atascadero.",
       },
     }),
   component: () => <CityPage city={city} />,
