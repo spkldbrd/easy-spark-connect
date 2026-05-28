@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CityPage, type CityPageData } from "@/components/site/CityPage";
-import { buildSeo, localBusinessJsonLd } from "@/lib/seo";
+import { buildSeo } from "@/lib/seo";
 
 const city: CityPageData = {
   name: "Paso Robles",
@@ -54,7 +54,7 @@ const city: CityPageData = {
     },
   ],
   pullQuote:
-    "“The drive between Atascadero and Paso feels like just a quick run down the street to our friends house. We know the back roads, the tourism schedules, and which restaurants have the worst WiFi.”",
+    '“The drive between Atascadero and Paso feels like just a quick run down the street to our friends house. We know the back roads, the tourism schedules, and which restaurants have the worst WiFi.”',
   neighborhoods: [
     "Downtown City Park",
     "Tin City, Highway 46 West wine country",
@@ -67,15 +67,33 @@ export const Route = createFileRoute("/locations/paso-robles")({
     buildSeo({
       title: "IT Support in Paso Robles, CA",
       description:
-        "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team that's been here since 2015.",
+        "IT support for Paso Robles wineries, restaurants, and professional offices. Same-day on-site from a North County team serving the area since 2015.",
+      image: "https://digitalsolution.com/og-image.jpg",
       path: "/locations/paso-robles",
-      jsonLd: localBusinessJsonLd({
-        city: "Paso Robles",
-        region: "San Luis Obispo County",
-        path: "/locations/paso-robles",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "Digital Solution",
+        url: "https://digitalsolution.com/locations/paso-robles",
+        telephone: "805-466-4722",
+        email: "hello@digitalsolution.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "7700 Santa Ynez Ave",
+          addressLocality: "Atascadero",
+          addressRegion: "CA",
+          postalCode: "93422",
+          addressCountry: "US",
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Paso Robles",
+          sameAs: "https://en.wikipedia.org/wiki/Paso_Robles,_California",
+        },
+        openingHours: "Mo-Fr 08:00-17:00",
         description:
-          "Wine country IT — POS, WiFi, security, and 24/7 monitoring for Paso Robles businesses.",
-      }),
+          "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team.",
+      },
     }),
   component: () => <CityPage city={city} />,
 });
