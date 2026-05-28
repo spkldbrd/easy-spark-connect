@@ -20,7 +20,7 @@ export const Route = createFileRoute("/ai-solutions")({
     buildSeo({
       title: "AI Solutions for Business — Practical, Governed AI",
       description:
-        "Microsoft Copilot rollouts, custom AI assistants, and Claude automations — delivered by the engineers who already run your IT. Governed, in production within weeks.",
+        "Microsoft Copilot rollouts, AI assistants, and Claude automations from the engineers who already run your IT. Governed, in production within weeks.",
       path: "/ai-solutions",
       image: aiHero,
       jsonLd: {
