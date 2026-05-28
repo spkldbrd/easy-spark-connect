@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CityPage, type CityPageData } from "@/components/site/CityPage";
-import { buildSeo, localBusinessJsonLd } from "@/lib/seo";
+import { buildSeo } from "@/lib/seo";
 
 const city: CityPageData = {
   name: "San Luis Obispo",
@@ -70,15 +70,33 @@ export const Route = createFileRoute("/locations/san-luis-obispo")({
     buildSeo({
       title: "IT Support in San Luis Obispo, CA",
       description:
-        "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 2015.",
+        "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality since 2015.",
       path: "/locations/san-luis-obispo",
-      jsonLd: localBusinessJsonLd({
-        city: "San Luis Obispo",
-        region: "San Luis Obispo County",
-        path: "/locations/san-luis-obispo",
+      image: "https://digitalsolution.com/og-image.jpg",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "Digital Solution",
+        url: "https://digitalsolution.com/locations/san-luis-obispo",
+        telephone: "805-466-4722",
+        email: "hello@digitalsolution.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "7700 Santa Ynez Ave",
+          addressLocality: "Atascadero",
+          addressRegion: "CA",
+          postalCode: "93422",
+          addressCountry: "US",
+        },
+        areaServed: {
+          "@type": "City",
+          name: "San Luis Obispo",
+          sameAs: "https://en.wikipedia.org/wiki/San_Luis_Obispo,_California",
+        },
+        openingHours: "Mo-Fr 08:00-17:00",
         description:
-          "HIPAA-ready networks, downtown-savvy installs, and same-day on-site IT for San Luis Obispo.",
-      }),
+          "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 2015.",
+      },
     }),
   component: () => <CityPage city={city} />,
 });
