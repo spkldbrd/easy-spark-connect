@@ -73,26 +73,14 @@ export const Route = createFileRoute("/locations/paso-robles")({
       jsonLd: {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://digitalsolution.com/#business",
         name: "Digital Solution",
-        url: "https://digitalsolution.com/locations/paso-robles",
-        telephone: "805-466-4722",
-        email: "hello@digitalsolution.com",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "7700 Santa Ynez Ave",
-          addressLocality: "Atascadero",
-          addressRegion: "CA",
-          postalCode: "93422",
-          addressCountry: "US",
-        },
+        url: "https://digitalsolution.com",
         areaServed: {
           "@type": "City",
           name: "Paso Robles",
           sameAs: "https://en.wikipedia.org/wiki/Paso_Robles,_California",
         },
-        openingHours: "Mo-Fr 08:00-17:00",
-        description:
-          "Local IT and cybersecurity for Paso Robles wineries, restaurants, and professional offices. Same-day on-site response from a North County team.",
       },
     }),
   component: () => <CityPage city={city} />,
