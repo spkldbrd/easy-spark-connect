@@ -10,6 +10,7 @@ export interface WPPost {
   excerpt: { rendered: string };
   content: { rendered: string };
   featured_media: number;
+  categories?: number[];
   _embedded?: {
     "wp:featuredmedia"?: Array<{
       source_url?: string;
@@ -17,7 +18,19 @@ export interface WPPost {
       media_details?: { sizes?: Record<string, { source_url: string }> };
     }>;
     author?: Array<{ name: string }>;
+    "wp:term"?: Array<Array<{ id: number; slug: string; taxonomy: string; name?: string }>>;
   };
+}
+
+export function hasCategorySlug(p: WPPost, slug: string): boolean {
+  const groups = p._embedded?.["wp:term"];
+  if (!groups) return false;
+  for (const group of groups) {
+    for (const term of group) {
+      if (term.taxonomy === "category" && term.slug === slug) return true;
+    }
+  }
+  return false;
 }
 
 export function featuredImage(p: WPPost): string | undefined {
@@ -52,7 +65,7 @@ export function formatDate(iso: string): string {
 
 export async function fetchPosts(page = 1, perPage = 12) {
   const res = await fetch(
-    `${WP_BASE}/posts?_embed=wp:featuredmedia,author&per_page=${perPage}&page=${page}`,
+    `${WP_BASE}/posts?_embed=wp:featuredmedia,author,wp:term&per_page=${perPage}&page=${page}`,
   );
   if (!res.ok) throw new Error(`WP fetch failed: ${res.status}`);
   const total = Number(res.headers.get("x-wp-totalpages") || "1");
@@ -62,7 +75,7 @@ export async function fetchPosts(page = 1, perPage = 12) {
 
 export async function fetchPostBySlug(slug: string): Promise<WPPost | null> {
   const res = await fetch(
-    `${WP_BASE}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia,author`,
+    `${WP_BASE}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia,author,wp:term`,
   );
   if (!res.ok) throw new Error(`WP fetch failed: ${res.status}`);
   const arr = (await res.json()) as WPPost[];

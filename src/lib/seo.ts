@@ -42,8 +42,8 @@ export interface SeoInput {
   type?: "website" | "article" | "profile";
   /** Skip the "— Digital Solution" suffix. */
   titleAbsolute?: boolean;
-  /** Set true on routes that should not be indexed (drafts, dashboards, etc.). */
-  noindex?: boolean;
+  /** Set true for "noindex, nofollow"; "follow" for "noindex, follow" (syndicated content). */
+  noindex?: boolean | "follow";
   /** Optional JSON-LD structured data. Pass one or many objects. */
   jsonLd?: JsonLd | JsonLd[];
 }
@@ -98,7 +98,8 @@ export function buildSeo(input: SeoInput) {
   }
 
   if (noindex) {
-    meta.push({ name: "robots", content: "noindex, nofollow" });
+    const content = noindex === "follow" ? "noindex, follow" : "noindex, nofollow";
+    meta.push({ name: "robots", content });
   }
 
   const links = [{ rel: "canonical", href: url }];
