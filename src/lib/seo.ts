@@ -20,7 +20,7 @@ export const SITE = {
   // Canonical production URL.
   url: "https://digitalsolution.com",
   // Default share image when a route doesn't provide one. Served from /public.
-  defaultImage: "/og-image.jpg",
+  defaultImage: "https://digitalsolution.com/og-image.jpg",
   twitterHandle: "",
   locale: "en_US",
   // Appended after the route title: "About — Digital Solution"
