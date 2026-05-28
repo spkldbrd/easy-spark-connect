@@ -77,9 +77,54 @@ export const Route = createFileRoute("/")({
     buildSeo({
       title: "The IT team that actually shows up",
       description:
-        "Boutique managed IT, cybersecurity, and AI for SLO County businesses — since 2015. Led by an engineer with 30 years of Central Coast IT experience.",
+        "Boutique managed IT services, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes since 2015.",
       path: "/",
-      jsonLd: organizationJsonLd(),
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://digitalsolution.com/#business",
+        name: "Digital Solution",
+        legalName: "Central Coast Digital Solution, LLC",
+        url: "https://digitalsolution.com",
+        logo: "https://digitalsolution.com/logo.png",
+        image: "https://digitalsolution.com/og-image.jpg",
+        telephone: "+1-805-466-4722",
+        email: "hello@digitalsolution.com",
+        priceRange: "$$",
+        foundingDate: "2015",
+        description:
+          "Boutique managed IT services, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes since 2015.",
+        founder: {
+          "@type": "Person",
+          name: "William Steffenauer",
+          jobTitle: "Owner",
+        },
+        areaServed: [
+          "Atascadero",
+          "Templeton",
+          "Paso Robles",
+          "Santa Margarita",
+          "San Luis Obispo",
+          "Morro Bay",
+          "Cayucos",
+          "Avila Beach",
+          "Pismo Beach",
+          "Grover Beach",
+          "Arroyo Grande",
+        ],
+        sameAs: [
+          "https://www.linkedin.com/company/the-digital-solution",
+          "https://www.facebook.com/thedigitalsolution",
+        ],
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "08:00",
+            closes: "17:00",
+          },
+        ],
+      },
     }),
   component: HomePage,
 });
