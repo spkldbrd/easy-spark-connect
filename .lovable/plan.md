@@ -1,25 +1,16 @@
-## Plan: noindex syndicated posts (techtips category only)
+## Plan: Homepage SEO Updates
+
+### Scope
+Only the `head()` config in `src/routes/index.tsx`. No visible content, layout, styling, or functionality changes.
 
 ### Changes
+1. **Meta description** — Replace the current `description` passed to `buildSeo()` with:
+   > "Boutique managed IT services, cybersecurity, and AI for businesses on California's Central Coast. Real engineers, real conversations, real outcomes since 2015."
 
-**1. `src/lib/seo.ts`** — extend `buildSeo` to support `noindex: "follow"` so we can emit `noindex,follow` (currently `noindex` emits `noindex,nofollow`).
+2. **JSON-LD schema** — Replace the current `jsonLd: organizationJsonLd()` with the exact `ProfessionalService` schema provided, including all fields: `@id`, `name`, `legalName`, `url`, `logo`, `image`, `telephone`, `email`, `priceRange`, `foundingDate`, `description`, `founder`, `areaServed`, `sameAs`, and `openingHoursSpecification`.
 
-Add a new variant: accept `noindex?: boolean | "follow"`. When `"follow"`, push `{ name: "robots", content: "noindex, follow" }`. Keep existing `true` behavior unchanged.
+### Why inline the schema
+The `buildSeo()` helper accepts `jsonLd` directly. The user's schema is page-specific and richer than the reusable `organizationJsonLd()` helper, so it will be passed inline to `buildSeo()` without touching `src/lib/seo.ts`.
 
-**2. `src/lib/wp.ts`** — pull category data alongside posts.
-
-- Add `categories: number[]` and extend `_embedded` with `"wp:term"?: Array<Array<{ id: number; slug: string; taxonomy: string }>>` on `WPPost`.
-- Update `fetchPostBySlug` (and `fetchPosts` for consistency) to request `_embed=wp:featuredmedia,author,wp:term` so embedded terms include categories.
-- Add helper `hasCategorySlug(post, slug): boolean` that scans `_embedded["wp:term"]` flat arrays for a matching `taxonomy: "category"` with the given slug.
-
-**3. `src/routes/blog.$slug.tsx`** — apply noindex conditionally.
-
-In `head()`, after loading the post, compute `isSyndicated = hasCategorySlug(post, "techtips")` and pass `noindex: isSyndicated ? "follow" : false` to `buildSeo`. Canonical stays as-is (self-canonical to `/blog/<slug>`).
-
-### Untouched
-- `/blog` index — stays indexable (no change).
-- Non-techtips posts — stay indexable with self-canonical (no change).
-- `__root.tsx`, `robots.txt`, sitemap — no change.
-
-### Verification
-After republish, view-source on a techtips post should show `<meta name="robots" content="noindex, follow">`; a non-techtips post should have no robots meta.
+### Files touched
+- `src/routes/index.tsx` (lines 76–83 only)

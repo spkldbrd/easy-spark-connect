@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { buildSeo, organizationJsonLd } from "@/lib/seo";
+import { buildSeo } from "@/lib/seo";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { SiteShell } from "@/components/site/SiteShell";
