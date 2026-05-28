@@ -24,6 +24,7 @@ export const Route = createFileRoute("/blog/$slug")({
       path: `/blog/${post.slug}`,
       image: featuredImage(post),
       type: "article",
+      noindex: hasCategorySlug(post, "techtips") ? "follow" : false,
     });
   },
   notFoundComponent: () => (
