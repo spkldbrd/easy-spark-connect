@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteShell } from "@/components/site/SiteShell";
 import { CinematicCTA } from "@/components/site/PageHero";
 import { buildSeo } from "@/lib/seo";
-import { fetchPostBySlug, featuredImage, stripHtml, formatDate } from "@/lib/wp";
+import { fetchPostBySlug, featuredImage, stripHtml, formatDate, hasCategorySlug } from "@/lib/wp";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }) => {
