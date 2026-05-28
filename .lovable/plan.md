@@ -1,25 +1,25 @@
-## Diagnosis
+## Plan: noindex syndicated posts (techtips category only)
 
-The source code already emits the correct canonical:
+### Changes
 
-- `src/lib/seo.ts` → `SITE.url = "https://digitalsolution.com"`
-- `buildSeo({ path: "/" })` → `<link rel="canonical" href="https://digitalsolution.com/">`
-- `src/routes/__root.tsx` has no canonical (correct — avoids duplicates).
-- No reference to `easy-spark-connect.lovable.app` exists anywhere in source (only in `docs/REBUILD_GUIDE.md`, which is documentation).
+**1. `src/lib/seo.ts`** — extend `buildSeo` to support `noindex: "follow"` so we can emit `noindex,follow` (currently `noindex` emits `noindex,nofollow`).
 
-GSC is reporting `User-declared canonical: https://easy-spark-connect.lovable.app/` because the **currently published deployment is stale** — it was built before `SITE.url` was switched to `digitalsolution.com`. The live HTML on the published URL still carries the old canonical.
+Add a new variant: accept `noindex?: boolean | "follow"`. When `"follow"`, push `{ name: "robots", content: "noindex, follow" }`. Keep existing `true` behavior unchanged.
 
-## Plan
+**2. `src/lib/wp.ts`** — pull category data alongside posts.
 
-1. **No code changes.** Current source is correct.
-2. **Republish the project** so the live deployment renders `<link rel="canonical" href="https://digitalsolution.com/">`.
-3. After republish, verify by opening view-source on:
-   - `https://digitalsolution.com/` — should show canonical → `https://digitalsolution.com/`
-   - `https://easy-spark-connect.lovable.app/` — same canonical (then the visitor-side redirect kicks in).
-4. In GSC, request re-indexing of `https://digitalsolution.com/` via URL Inspection → "Request indexing". Google will pick up the corrected canonical on the next crawl.
-5. Mark the GSC finding resolved.
+- Add `categories: number[]` and extend `_embedded` with `"wp:term"?: Array<Array<{ id: number; slug: string; taxonomy: string }>>` on `WPPost`.
+- Update `fetchPostBySlug` (and `fetchPosts` for consistency) to request `_embed=wp:featuredmedia,author,wp:term` so embedded terms include categories.
+- Add helper `hasCategorySlug(post, slug): boolean` that scans `_embedded["wp:term"]` flat arrays for a matching `taxonomy: "category"` with the given slug.
 
-## Technical notes
+**3. `src/routes/blog.$slug.tsx`** — apply noindex conditionally.
 
-- Canonical is hardcoded at build time from `SITE.url`. The only way the lovable.app canonical persists in the wild is a stale build — republishing replaces it.
-- GSC can take days to recrawl. "Request indexing" speeds it up but doesn't guarantee immediate update.
+In `head()`, after loading the post, compute `isSyndicated = hasCategorySlug(post, "techtips")` and pass `noindex: isSyndicated ? "follow" : false` to `buildSeo`. Canonical stays as-is (self-canonical to `/blog/<slug>`).
+
+### Untouched
+- `/blog` index — stays indexable (no change).
+- Non-techtips posts — stay indexable with self-canonical (no change).
+- `__root.tsx`, `robots.txt`, sitemap — no change.
+
+### Verification
+After republish, view-source on a techtips post should show `<meta name="robots" content="noindex, follow">`; a non-techtips post should have no robots meta.
