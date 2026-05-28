@@ -76,26 +76,14 @@ export const Route = createFileRoute("/locations/san-luis-obispo")({
       jsonLd: {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://digitalsolution.com/#business",
         name: "Digital Solution",
-        url: "https://digitalsolution.com/locations/san-luis-obispo",
-        telephone: "805-466-4722",
-        email: "hello@digitalsolution.com",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "7700 Santa Ynez Ave",
-          addressLocality: "Atascadero",
-          addressRegion: "CA",
-          postalCode: "93422",
-          addressCountry: "US",
-        },
+        url: "https://digitalsolution.com",
         areaServed: {
           "@type": "City",
           name: "San Luis Obispo",
           sameAs: "https://en.wikipedia.org/wiki/San_Luis_Obispo,_California",
         },
-        openingHours: "Mo-Fr 08:00-17:00",
-        description:
-          "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality operators since 2015.",
       },
     }),
   component: () => <CityPage city={city} />,
