@@ -266,7 +266,13 @@ function fmt(n: number) {
   return "$" + Math.round(n).toLocaleString();
 }
 
-function PricingCalculator({ onBackToMicro }: { onBackToMicro: () => void }) {
+function PricingCalculator({
+  onBackToMicro,
+  onSchedule,
+}: {
+  onBackToMicro: () => void;
+  onSchedule: (ctx: LeadContext) => void;
+}) {
   const [s, setS] = useState<CalcState>(INITIAL);
   const [step, setStep] = useState(1);
   const [showResults, setShowResults] = useState(false);
@@ -318,6 +324,7 @@ function PricingCalculator({ onBackToMicro }: { onBackToMicro: () => void }) {
         prices={{ basic: calcBasic, pro: calcPro, complete: calcComplete }}
         rec={rec}
         onReset={reset}
+        onSchedule={onSchedule}
       />
     );
   }
