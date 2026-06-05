@@ -170,7 +170,7 @@ function PricingPage() {
         meta={["Month-to-month", "No contracts", "Local team", "Since 2015"]}
       />
 
-      <section className="min-h-[80vh] bg-background">
+      <section className="bg-surface">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           {/* Gateway selector */}
           <div className="text-center">
@@ -183,10 +183,10 @@ function PricingPage() {
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
                 onClick={() => setView("micro")}
-                className={`min-w-[180px] rounded-xl border px-8 py-4 text-sm font-medium transition ${
+                className={`min-w-[180px] rounded-xl border-2 px-8 py-4 text-sm font-medium shadow-sm transition ${
                   view === "micro"
-                    ? "border-brand bg-brand text-white"
-                    : "border-border bg-background text-foreground hover:bg-surface"
+                    ? "border-brand bg-brand text-white shadow-md"
+                    : "border-border bg-background text-foreground hover:border-brand hover:shadow-md"
                 }`}
               >
                 1–4 People
@@ -196,10 +196,10 @@ function PricingPage() {
               </button>
               <button
                 onClick={() => setView("main")}
-                className={`min-w-[180px] rounded-xl border px-8 py-4 text-sm font-medium transition ${
+                className={`min-w-[180px] rounded-xl border-2 px-8 py-4 text-sm font-medium shadow-sm transition ${
                   view === "main"
-                    ? "border-brand bg-brand text-white"
-                    : "border-border bg-background text-foreground hover:bg-surface"
+                    ? "border-brand bg-brand text-white shadow-md"
+                    : "border-border bg-background text-foreground hover:border-brand hover:shadow-md"
                 }`}
               >
                 5 or More
@@ -209,6 +209,7 @@ function PricingPage() {
               </button>
             </div>
           </div>
+
 
           {/* Micro view */}
           {view === "micro" && (
