@@ -298,7 +298,7 @@ function PricingCalculator({
         : "basic";
 
   const adj = (key: "ws" | "srv" | "users", d: number) => {
-    const min = key === "srv" ? 0 : 1;
+    const min = key === "srv" ? 0 : 5;
     setS((p) => ({ ...p, [key]: Math.max(min, Math.min(500, p[key] + d)) }));
   };
 
