@@ -77,6 +77,7 @@ const microPlans = [
 
 function PricingPage() {
   const [view, setView] = useState<View>("none");
+  const [leadCtx, setLeadCtx] = useState<LeadContext | null>(null);
 
   return (
     <SiteShell overDark>
