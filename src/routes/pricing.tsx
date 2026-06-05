@@ -224,8 +224,8 @@ function PlanCard({ plan, onContact }: { plan: (typeof microPlans)[number]; onCo
       </ul>
 
       <div className="mt-5">
-        <Button asChild variant="outline" className="w-full">
-          <Link to="/contact">Contact us</Link>
+        <Button variant="outline" className="w-full" onClick={onContact}>
+          Contact us
         </Button>
       </div>
     </div>
