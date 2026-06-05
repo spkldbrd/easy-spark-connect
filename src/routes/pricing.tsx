@@ -280,12 +280,14 @@ function PricingCalculator({
   const [showResults, setShowResults] = useState(false);
 
   const totalSrv = s.srv + (s.m365 ? 1 : 0) + (s.google ? 1 : 0) + (s.otherCloud ? 1 : 0);
-  const calcBasic = s.ws * 18 + totalSrv * 150;
-  const calcPro =
+  const calcBasic = Math.max(250, s.ws * 18 + totalSrv * 150);
+  const calcPro = Math.max(
+    350,
     s.ws * 45 +
-    totalSrv * 150 +
-    (s.m365 || s.google ? s.users * 18 + s.users * 4 : 0) +
-    (s.bec || s.spoof ? s.users * 5 : 0);
+      totalSrv * 150 +
+      (s.m365 || s.google ? s.users * 18 + s.users * 4 : 0) +
+      (s.bec || s.spoof ? s.users * 5 : 0),
+  );
   const calcComplete = s.ws * 125 + totalSrv * 250 + s.users * 30;
 
   const rec: "basic" | "pro" | "complete" =
