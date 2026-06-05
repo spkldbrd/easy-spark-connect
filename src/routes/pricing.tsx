@@ -31,7 +31,7 @@ const microPlans = [
     features: [
       "Proactive device monitoring & alerts",
       "Antivirus & endpoint protection",
-      "Automatic security patching",
+      "Managed security patching",
       "Workstation backup & recovery",
       "Microsoft 365 Email + Apps",
       "Email & cloud data backup",
@@ -51,7 +51,7 @@ const microPlans = [
     features: [
       "Proactive device monitoring & alerts",
       "Antivirus & endpoint protection",
-      "Automatic security patching",
+      "Managed security patching",
       "Workstation backup & recovery",
       "Spam & phishing protection",
       "Website hosting (1 site)",
@@ -74,7 +74,7 @@ const mainPlans = [
     features: [
       { text: "Proactive device monitoring & alerts", highlight: false },
       { text: "Antivirus & endpoint protection", highlight: false },
-      { text: "Automatic security patching", highlight: false },
+      { text: "Managed security patching", highlight: false },
       { text: "Remote support tools & ticketing", highlight: false },
       { text: "Business-hours help desk support", highlight: false },
     ],
