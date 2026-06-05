@@ -882,7 +882,7 @@ function ResultsView({
         </Button>
       </div>
       <p className="mt-3 text-center text-[11px] text-muted-foreground">
-        Estimates based on standard pricing. Off-hours support billed at $250/hr.
+        Estimates based on entered information. Final price provided after network audit & review. Off-hours support billed at $250/hr.
       </p>
     </div>
   );
