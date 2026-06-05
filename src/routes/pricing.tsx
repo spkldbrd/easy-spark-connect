@@ -721,28 +721,43 @@ function ResultsView({
         </div>
       </div>
 
+      <div className="mb-3 text-center text-[11px] text-muted-foreground">
+        Click a plan to select it for your discovery call.
+      </div>
       <div className="mb-5 grid gap-3 lg:grid-cols-3">
         {(["basic", "pro", "complete"] as Tier[]).map((tier) => {
           const isRec = tier === rec;
+          const isSel = tier === selectedTier;
           const rows = buildRows(tier);
           return (
-            <div
+            <button
+              type="button"
               key={tier}
-              className={`flex flex-col rounded-2xl p-5 ${
-                isRec ? "border-2 border-brand bg-brand/5" : "border border-border"
+              onClick={() => setSelectedTier(tier)}
+              className={`flex flex-col rounded-2xl p-5 text-left transition ${
+                isSel
+                  ? "border-2 border-brand bg-brand/5 ring-2 ring-brand/20"
+                  : "border border-border hover:border-brand/60"
               }`}
             >
-              {isRec && (
-                <span className="mb-2 inline-block w-fit rounded-md bg-brand px-2 py-0.5 text-[10px] font-medium text-white">
-                  Recommended
-                </span>
-              )}
+              <div className="mb-2 flex flex-wrap gap-1">
+                {isRec && (
+                  <span className="inline-block w-fit rounded-md bg-brand px-2 py-0.5 text-[10px] font-medium text-white">
+                    Recommended
+                  </span>
+                )}
+                {isSel && (
+                  <span className="inline-block w-fit rounded-md border border-brand px-2 py-0.5 text-[10px] font-medium text-brand">
+                    ✓ Selected
+                  </span>
+                )}
+              </div>
               <div className="text-sm font-medium">{TIER_NAMES[tier]}</div>
               <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
                 {TIER_TAGS[tier]}
               </div>
               <div
-                className={`mt-3 font-display text-2xl font-semibold ${isRec ? "text-brand" : ""}`}
+                className={`mt-3 font-display text-2xl font-semibold ${isSel ? "text-brand" : ""}`}
               >
                 {fmt(prices[tier])}
               </div>
@@ -753,8 +768,8 @@ function ResultsView({
                     key={i}
                     className={`flex justify-between gap-2 py-0.5 text-[11px] ${
                       isTotal
-                        ? `mt-1 border-t border-border pt-2 font-semibold ${isRec ? "text-brand" : "text-foreground"}`
-                        : isRec
+                        ? `mt-1 border-t border-border pt-2 font-semibold ${isSel ? "text-brand" : "text-foreground"}`
+                        : isSel
                           ? "text-brand/80"
                           : "text-muted-foreground"
                     }`}
@@ -767,7 +782,7 @@ function ResultsView({
               <div className="mt-auto pt-3 text-[10px] leading-relaxed text-muted-foreground">
                 {TIER_NOTES[tier]}
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
