@@ -170,7 +170,7 @@ function PricingPage() {
         meta={["Month-to-month", "No contracts", "Local team", "Since 2015"]}
       />
 
-      <section className="bg-background">
+      <section className="min-h-[80vh] bg-background">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           {/* Gateway selector */}
           <div className="text-center">
