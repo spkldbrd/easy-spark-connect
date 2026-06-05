@@ -151,7 +151,11 @@ function PricingPage() {
 
               <div className="grid gap-4 md:grid-cols-2">
                 {microPlans.map((p) => (
-                  <PlanCard key={p.name} plan={p} />
+                  <PlanCard
+                    key={p.name}
+                    plan={p}
+                    onContact={() => setLeadCtx({ kind: "micro", plan: `${p.tier} — ${p.name}` })}
+                  />
                 ))}
               </div>
 
