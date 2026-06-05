@@ -646,13 +646,16 @@ function ResultsView({
   prices,
   rec,
   onReset,
+  onSchedule,
 }: {
   s: CalcState;
   totalSrv: number;
   prices: Record<Tier, number>;
   rec: Tier;
   onReset: () => void;
+  onSchedule: (ctx: LeadContext) => void;
 }) {
+  const [selectedTier, setSelectedTier] = useState<Tier>(rec);
   const cloudDesc = [s.m365 && "Microsoft 365", s.google && "Google Workspace"]
     .filter(Boolean)
     .join(" + ");
