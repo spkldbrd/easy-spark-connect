@@ -41,7 +41,7 @@ const microPlans = [
     tagline: "Everything you need, including your Microsoft 365 licensing and backup.",
     price: "$99",
     per: "/user/mo",
-    sub: "All-inclusive · billed monthly",
+    sub: "All-inclusive · billed monthly · 2-user minimum",
     features: [
       "Proactive device monitoring & alerts",
       "Antivirus & endpoint protection",
@@ -61,7 +61,7 @@ const microPlans = [
     tagline: "Full protection and backup — you manage your own Microsoft 365 licensing.",
     price: "$50",
     per: "/user/mo",
-    sub: "All-inclusive · billed monthly",
+    sub: "All-inclusive · billed monthly · 2-user minimum",
     features: [
       "Proactive device monitoring & alerts",
       "Antivirus & endpoint protection",
