@@ -811,8 +811,30 @@ function ResultsView({
       </div>
 
       <div className="flex gap-2">
-        <Button asChild className="flex-1">
-          <Link to="/contact">Schedule a discovery call →</Link>
+        <Button
+          className="flex-1"
+          onClick={() => {
+            const summary: string[] = [
+              `${s.ws} workstation${s.ws !== 1 ? "s" : ""}`,
+              `${s.srv} physical server${s.srv !== 1 ? "s" : ""}`,
+              `${s.users} user${s.users !== 1 ? "s" : ""}`,
+              `Cloud: ${cloudDesc || "none"}`,
+              `Business Email Compromise: ${s.bec ? "Yes" : s.bec === false ? "No" : "—"}`,
+              `Email spoofing protection: ${s.spoof ? "Yes" : s.spoof === false ? "No" : "—"}`,
+              `24/7 monitoring: ${s.monitor ? "Yes" : s.monitor === false ? "No" : "—"}`,
+              `No surprise hourly: ${s.unlimited ? "Yes" : s.unlimited === false ? "No" : "—"}`,
+              `Fully managed IT: ${s.managed ? "Yes" : s.managed === false ? "No" : "—"}`,
+              `Recommended tier: ${TIER_NAMES[rec]}`,
+            ];
+            onSchedule({
+              kind: "calc",
+              plan: TIER_NAMES[selectedTier],
+              monthlyEstimate: fmt(prices[selectedTier]),
+              summary,
+            });
+          }}
+        >
+          Schedule a discovery call →
         </Button>
         <Button variant="outline" onClick={onReset} className="flex-1">
           ← Start over
