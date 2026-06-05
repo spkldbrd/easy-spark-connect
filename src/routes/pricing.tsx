@@ -294,8 +294,7 @@ function PricingPage() {
                 </button>
               </div>
               <p className="mt-4 text-center text-xs text-muted-foreground">
-                All plans month-to-month · Onboarding fee = first month · Off-hours $250/hr · Most
-                clients invest $45–$125 per employee per month
+                All plans month-to-month · Onboarding fee = first month · Off-hours $250/hr
               </p>
             </div>
           )}
