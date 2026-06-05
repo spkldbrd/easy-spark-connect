@@ -240,6 +240,7 @@ type CalcState = {
   users: number;
   m365: boolean;
   google: boolean;
+  otherCloud: boolean;
   bec: boolean | null;
   spoof: boolean | null;
   monitor: boolean | null;
@@ -253,6 +254,7 @@ const INITIAL: CalcState = {
   users: 10,
   m365: false,
   google: false,
+  otherCloud: false,
   bec: null,
   spoof: null,
   monitor: null,
@@ -277,7 +279,7 @@ function PricingCalculator({
   const [step, setStep] = useState(1);
   const [showResults, setShowResults] = useState(false);
 
-  const totalSrv = s.srv + (s.m365 ? 1 : 0) + (s.google ? 1 : 0);
+  const totalSrv = s.srv + (s.m365 ? 1 : 0) + (s.google ? 1 : 0) + (s.otherCloud ? 1 : 0);
   const calcBasic = s.ws * 18 + totalSrv * 150;
   const calcPro =
     s.ws * 45 +
@@ -298,10 +300,10 @@ function PricingCalculator({
     setS((p) => ({ ...p, [key]: Math.max(min, Math.min(500, p[key] + d)) }));
   };
 
-  const toggleCloud = (t: "m365" | "google" | "none") => {
+  const toggleCloud = (t: "m365" | "google" | "otherCloud" | "none") => {
     setS((p) =>
       t === "none"
-        ? { ...p, m365: false, google: false }
+        ? { ...p, m365: false, google: false, otherCloud: false }
         : { ...p, [t]: !p[t] },
     );
   };
@@ -397,7 +399,7 @@ function PricingCalculator({
             Cloud environments like Microsoft 365 and Google Workspace require the same ongoing
             management as a physical server — we price them the same way.
           </p>
-          <div className="mb-3 grid gap-3 sm:grid-cols-3">
+          <div className="mb-3 grid gap-3 sm:grid-cols-2">
             <CloudCard
               icon={<Mail className="h-6 w-6" />}
               name="Microsoft 365"
@@ -412,11 +414,31 @@ function PricingCalculator({
               selected={s.google}
               onClick={() => toggleCloud("google")}
             />
+            <button
+              onClick={() => toggleCloud("otherCloud")}
+              className={`rounded-lg border p-4 text-center transition ${
+                s.otherCloud
+                  ? "border-2 border-brand bg-brand/5"
+                  : "border-border bg-surface hover:border-brand"
+              }`}
+            >
+              <div
+                className={`mx-auto mb-2 flex justify-center ${s.otherCloud ? "text-brand" : "text-muted-foreground"}`}
+              >
+                <Cloud className="h-6 w-6" />
+              </div>
+              <div className="text-sm font-medium text-foreground">Other Cloud</div>
+              <div className="mt-1.5 space-y-0.5 text-[10px] text-muted-foreground">
+                <div>Dropbox · Sharefile</div>
+                <div>Synology · Box</div>
+                <div>and more...</div>
+              </div>
+            </button>
             <CloudCard
               icon={<CloudOff className="h-6 w-6" />}
-              name="Neither"
+              name="None"
               hint="No cloud office suite"
-              selected={!s.m365 && !s.google}
+              selected={!s.m365 && !s.google && !s.otherCloud}
               onClick={() => toggleCloud("none")}
             />
           </div>
@@ -656,7 +678,7 @@ function ResultsView({
   onSchedule: (ctx: LeadContext) => void;
 }) {
   const [selectedTier, setSelectedTier] = useState<Tier>(rec);
-  const cloudDesc = [s.m365 && "Microsoft 365", s.google && "Google Workspace"]
+  const cloudDesc = [s.m365 && "Microsoft 365", s.google && "Google Workspace", s.otherCloud && "Other Cloud"]
     .filter(Boolean)
     .join(" + ");
 
