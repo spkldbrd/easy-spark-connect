@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
 import { Route as AboutRouteImport } from './routes/about'
@@ -23,6 +24,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/pricing'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/locations/atascadero'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/pricing'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/locations/atascadero'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/pricing'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/locations/atascadero'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AiSolutionsRoute: typeof AiSolutionsRoute
   ContactRoute: typeof ContactRoute
+  PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
   LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
@@ -167,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AiSolutionsRoute: AiSolutionsRoute,
   ContactRoute: ContactRoute,
+  PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
   LocationsAtascaderoRoute: LocationsAtascaderoRoute,
