@@ -176,7 +176,10 @@ function PricingPage() {
           {/* Calculator view */}
           {view === "calc" && (
             <div className="mt-14">
-              <PricingCalculator onBackToMicro={() => setView("micro")} />
+              <PricingCalculator
+                onBackToMicro={() => setView("micro")}
+                onSchedule={(ctx) => setLeadCtx(ctx)}
+              />
               <p className="mt-4 text-center text-xs text-muted-foreground">
                 All plans month-to-month · Onboarding fee = first month · Off-hours $250/hr
               </p>
@@ -184,11 +187,17 @@ function PricingPage() {
           )}
         </div>
       </section>
+
+      <PricingLeadModal
+        open={leadCtx !== null}
+        onOpenChange={(o) => !o && setLeadCtx(null)}
+        context={leadCtx}
+      />
     </SiteShell>
   );
 }
 
-function PlanCard({ plan }: { plan: (typeof microPlans)[number] }) {
+function PlanCard({ plan, onContact }: { plan: (typeof microPlans)[number]; onContact: () => void }) {
   return (
     <div className="flex flex-col rounded-2xl border border-border bg-background p-6">
       <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-muted-foreground">
