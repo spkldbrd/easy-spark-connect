@@ -1,40 +1,28 @@
-# Pricing Page Plan
+# Pricing Calculator (5+ view)
 
-## Route
-- New file: `src/routes/pricing.tsx` at URL `/pricing`
-- Single page with dynamic view switching (no separate routes). The selector toggles between "Micro" and "Main" views via React state — no URL change needed since the page isn't linked from nav and isn't indexed.
-- Not added to header/footer navigation.
+Replace the current static 3-card "Main" view on `/pricing` with the interactive calculator from the uploaded HTML, rebuilt in React + Tailwind using existing design tokens. The 1–4 (Micro) view and the gateway selector stay as-is.
 
-## SEO
-- `head()` sets:
-  - `title`: "Pricing — Digital Solution"
-  - `meta description`: short summary
-  - `<meta name="robots" content="noindex, nofollow">` so search engines won't index or follow.
-- Exclude `/pricing` from `sitemap.xml.ts`.
-- No JSON-LD.
+## Flow
+1. **Step 1 — Environment**: numeric +/- inputs for Workstations (min 1, default 10), Physical Servers (min 0, default 0), Users (min 1, default 10).
+2. **Step 2 — Cloud**: multi-select cards — Microsoft 365, Google Workspace, Neither. Each cloud suite counts as one extra "cloud/server unit."
+3. **Step 3 — Security priorities**: Yes/No on BEC, Email Spoofing, 24/7 Monitoring. Any "Yes" → at least Pro.
+4. **Step 4 — Support style**: Yes/No on "no surprise hourly" and "fully managed IT dept." Any "Yes" → Complete.
+5. **Results**: environment summary bar + three tier cards (Basic / Pro / Complete) with itemized line items and monthly totals; recommended tier highlighted with brand border + "Recommended" badge. Next-steps list + "Schedule a discovery call" (→ `/contact`) + "Start over."
 
-## Page structure
-Reuses site Header + Footer (same as other routes). Main content:
+## Pricing math (per month)
+- Basic: `ws × $18 + (servers + cloud suites) × $150`
+- Pro: `ws × $45 + (servers + cloud suites) × $150` + if any cloud suite: `users × $18 + users × $4` + if BEC or Spoof: `users × $5`
+- Complete: `ws × $125 + (servers + cloud suites) × $250 + users × $30`
+- Recommendation: any Step-4 yes → Complete; else any Step-3 yes → Pro; else Basic.
 
-1. **Gateway selector** (top, always visible)
-   - Heading: "How many people work in your office?"
-   - Two buttons: "1–4 People" / "5 or More"
-   - Active state styled with site primary color
-2. **Micro view** (1–4): intro callout + 2-card grid (With M365 $99, Without M365 $50) + "growing past 4?" link that switches to main view
-3. **Main view** (5+): 3-card grid (Basic $18, Pro $45 featured, Complete $125) + nudge callout + "Technologies powering your protection" 3-column block + "fewer than 5?" link back to micro
-4. Default view on load: nothing selected (selector only), OR default to Micro — see question below.
+## Implementation
+- All work in `src/routes/pricing.tsx`. No new routes, no backend.
+- New `PricingCalculator` component (same file or `src/components/site/PricingCalculator.tsx`) holding all state and step logic.
+- Progress bar (4 dots + connecting lines + labels Environment/Cloud/Security/Support), Back/Continue nav, results screen replaces steps.
+- Use `lucide-react` icons (Monitor, Cloud, Users, Check, Phone, ClipboardCheck, Calendar, Receipt, Mail, Shield, ShieldCheck) — no Tabler.
+- Use semantic tokens (`bg-surface`, `bg-background`, `border-border`, `text-brand`, `text-muted-foreground`, etc.). Recommended-tier highlight uses `border-brand` + a subtle brand-tinted background (e.g. `bg-brand/5`). No raw hex like `#185FA5`.
+- Keep the existing intro/selector + Micro view untouched. Drop the current static `mainPlans` cards, the tech-stack block, and the "Most businesses choose Pro" callout from the Main view — the calculator replaces them. Keep the footer note ("All plans month-to-month · Onboarding fee = first month · Off-hours $250/hr") under the results.
+- Discovery-call button is a `<Link to="/contact">` (no `sendPrompt`).
 
-All copy/prices/feature lists pulled verbatim from the uploaded HTML.
-
-## Styling
-- Rebuild using Tailwind + existing semantic design tokens from `src/styles.css` (no inline `<style>` block, no hardcoded hex colors like `#185FA5`). Map the uploaded design's blue accent to the site's existing primary token so it matches the rest of the site.
-- Check icons: replace Tabler (`ti ti-*`) with `lucide-react` icons already used in the project (Check, Star, Info).
-- Card/button components: use existing shadcn `Card`, `Button` where it fits cleanly; otherwise plain div with token classes.
-
-## CTAs
-The uploaded HTML has "Learn more ↗" buttons calling `sendPrompt(...)`. Since this page is for sharing (not chat-embedded), I'll change each card's CTA to a single "Contact us" button linking to `/contact`. Confirm below.
-
-## Questions
-1. **Default view on load**: show only the selector (user must click), or pre-select "5 or More" since it's the more common case?
-2. **Card CTA**: change all "Learn more ↗" buttons to a single "Contact us" link to `/contact`? Or remove the buttons entirely?
-3. **Off-hours/onboarding note text** at the bottom of each view — keep verbatim from the HTML?
+## Open question
+The original calculator references **$150/hr help desk** in the Basic/Pro notes but the current pricing page has been saying **off-hours $250/hr** with no general hourly rate. I'll use the calculator's wording as-is ($150/hr standard, $250/hr off-hours). Tell me if you want different rates.
