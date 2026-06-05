@@ -17,6 +17,7 @@ import {
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero } from "@/components/site/PageHero";
 import { Button } from "@/components/ui/button";
+import { PricingLeadModal, type LeadContext } from "@/components/site/PricingLeadModal";
 import { buildSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
