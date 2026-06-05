@@ -280,12 +280,14 @@ function PricingCalculator({
   const [showResults, setShowResults] = useState(false);
 
   const totalSrv = s.srv + (s.m365 ? 1 : 0) + (s.google ? 1 : 0) + (s.otherCloud ? 1 : 0);
-  const calcBasic = s.ws * 18 + totalSrv * 150;
-  const calcPro =
+  const calcBasic = Math.max(250, s.ws * 18 + totalSrv * 150);
+  const calcPro = Math.max(
+    350,
     s.ws * 45 +
-    totalSrv * 150 +
-    (s.m365 || s.google ? s.users * 18 + s.users * 4 : 0) +
-    (s.bec || s.spoof ? s.users * 5 : 0);
+      totalSrv * 150 +
+      (s.m365 || s.google ? s.users * 18 + s.users * 4 : 0) +
+      (s.bec || s.spoof ? s.users * 5 : 0),
+  );
   const calcComplete = s.ws * 125 + totalSrv * 250 + s.users * 30;
 
   const rec: "basic" | "pro" | "complete" =
@@ -686,27 +688,44 @@ function ResultsView({
     const rows: Array<[string, string, boolean]> = [];
     const srvLbl = (n: number) =>
       n === 1 ? "1 cloud/server unit" : `${n} cloud/server units`;
+    let shownTotal = 0;
     if (tier === "basic") {
       rows.push([`${s.ws} workstations × $18`, fmt(s.ws * 18), false]);
-      if (totalSrv > 0)
+      shownTotal += s.ws * 18;
+      if (totalSrv > 0) {
         rows.push([`${srvLbl(totalSrv)} × $150`, fmt(totalSrv * 150), false]);
+        shownTotal += totalSrv * 150;
+      }
     } else if (tier === "pro") {
       rows.push([`${s.ws} workstations × $45`, fmt(s.ws * 45), false]);
-      if (totalSrv > 0)
+      shownTotal += s.ws * 45;
+      if (totalSrv > 0) {
         rows.push([`${srvLbl(totalSrv)} × $150`, fmt(totalSrv * 150), false]);
+        shownTotal += totalSrv * 150;
+      }
       if (s.m365 || s.google) {
         rows.push([`${s.users} users — M365 licensing × $18`, fmt(s.users * 18), false]);
+        shownTotal += s.users * 18;
         rows.push([`${s.users} users — M365 backup × $4`, fmt(s.users * 4), false]);
+        shownTotal += s.users * 4;
       }
-      if (s.bec || s.spoof)
+      if (s.bec || s.spoof) {
         rows.push([`${s.users} users — email security × $5`, fmt(s.users * 5), false]);
+        shownTotal += s.users * 5;
+      }
     } else {
       rows.push([`${s.ws} workstations × $125`, fmt(s.ws * 125), false]);
-      if (totalSrv > 0)
+      shownTotal += s.ws * 125;
+      if (totalSrv > 0) {
         rows.push([`${srvLbl(totalSrv)} × $250`, fmt(totalSrv * 250), false]);
+        shownTotal += totalSrv * 250;
+      }
       rows.push([`${s.users} users × $30 (M365 + backup)`, fmt(s.users * 30), false]);
+      shownTotal += s.users * 30;
     }
-    rows.push(["Total estimate", fmt(prices[tier]), true]);
+    const min = tier === "basic" ? 250 : tier === "pro" ? 350 : 0;
+    const isMin = shownTotal < min;
+    rows.push([isMin ? "Minimum commitment" : "Total estimate", fmt(prices[tier]), true]);
     return rows;
   };
 
