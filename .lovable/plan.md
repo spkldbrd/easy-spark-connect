@@ -1,28 +1,40 @@
-# Pricing Calculator (5+ view)
+# Pricing page → lead-capture modal
 
-Replace the current static 3-card "Main" view on `/pricing` with the interactive calculator from the uploaded HTML, rebuilt in React + Tailwind using existing design tokens. The 1–4 (Micro) view and the gateway selector stay as-is.
+Replace the `Link to="/contact"` on both pricing surfaces with a modal that collects contact info and emails it to you using the existing SMTP2GO server function.
 
-## Flow
-1. **Step 1 — Environment**: numeric +/- inputs for Workstations (min 1, default 10), Physical Servers (min 0, default 0), Users (min 1, default 10).
-2. **Step 2 — Cloud**: multi-select cards — Microsoft 365, Google Workspace, Neither. Each cloud suite counts as one extra "cloud/server unit."
-3. **Step 3 — Security priorities**: Yes/No on BEC, Email Spoofing, 24/7 Monitoring. Any "Yes" → at least Pro.
-4. **Step 4 — Support style**: Yes/No on "no surprise hourly" and "fully managed IT dept." Any "Yes" → Complete.
-5. **Results**: environment summary bar + three tier cards (Basic / Pro / Complete) with itemized line items and monthly totals; recommended tier highlighted with brand border + "Recommended" badge. Next-steps list + "Schedule a discovery call" (→ `/contact`) + "Start over."
+## UX
 
-## Pricing math (per month)
-- Basic: `ws × $18 + (servers + cloud suites) × $150`
-- Pro: `ws × $45 + (servers + cloud suites) × $150` + if any cloud suite: `users × $18 + users × $4` + if BEC or Spoof: `users × $5`
-- Complete: `ws × $125 + (servers + cloud suites) × $250 + users × $30`
-- Recommendation: any Step-4 yes → Complete; else any Step-3 yes → Pro; else Basic.
+**Micro view (1–4)** — `PlanCard` "Contact us" button opens the modal pre-tagged with the chosen Micro plan ("Managed Micro — With Microsoft 365" or "Without Microsoft 365").
+
+**Calculator results** — "Schedule a discovery call →" opens the modal pre-tagged with:
+- Recommended tier (Basic / Pro / Complete) — selected by default
+- A tier selector so the user can change which plan they want to talk about
+- Read-only summary: workstations, physical servers, cloud (M365 / Google / neither), users, monthly estimate for the selected tier, and Yes/No answers from steps 3–4
+
+**Modal form fields** (all required except phone):
+- Name
+- Business name
+- Email
+- Phone (optional)
+- Optional message (short textarea)
+
+On submit: spinner → success state ("We'll be in touch within one business hour.") → close button. On error: inline message, same wording style as `/contact`.
 
 ## Implementation
-- All work in `src/routes/pricing.tsx`. No new routes, no backend.
-- New `PricingCalculator` component (same file or `src/components/site/PricingCalculator.tsx`) holding all state and step logic.
-- Progress bar (4 dots + connecting lines + labels Environment/Cloud/Security/Support), Back/Continue nav, results screen replaces steps.
-- Use `lucide-react` icons (Monitor, Cloud, Users, Check, Phone, ClipboardCheck, Calendar, Receipt, Mail, Shield, ShieldCheck) — no Tabler.
-- Use semantic tokens (`bg-surface`, `bg-background`, `border-border`, `text-brand`, `text-muted-foreground`, etc.). Recommended-tier highlight uses `border-brand` + a subtle brand-tinted background (e.g. `bg-brand/5`). No raw hex like `#185FA5`.
-- Keep the existing intro/selector + Micro view untouched. Drop the current static `mainPlans` cards, the tech-stack block, and the "Most businesses choose Pro" callout from the Main view — the calculator replaces them. Keep the footer note ("All plans month-to-month · Onboarding fee = first month · Off-hours $250/hr") under the results.
-- Discovery-call button is a `<Link to="/contact">` (no `sendPrompt`).
 
-## Open question
-The original calculator references **$150/hr help desk** in the Basic/Pro notes but the current pricing page has been saying **off-hours $250/hr** with no general hourly rate. I'll use the calculator's wording as-is ($150/hr standard, $250/hr off-hours). Tell me if you want different rates.
+- **New component** `src/components/site/PricingLeadModal.tsx` — uses shadcn `Dialog` (already in the project per `components.json`). Self-contained: form state, submit handler, success/error states. Props: `open`, `onOpenChange`, `context` (a discriminated union: `{ kind: "micro"; plan: string }` or `{ kind: "calc"; recommendedTier; selectedTier; setSelectedTier; calcState; totalSrv; prices }`).
+- **New server function** `src/lib/pricing-lead.functions.ts` — mirrors `sendContactMessage`:
+  - Zod schema: name, business, email, phone?, message?, recaptchaToken, plus a `lead` object with the calculator/micro context (all validated with length caps).
+  - Verifies reCAPTCHA v3 (action `"pricing_lead"`, score ≥ 0.5) using existing `RECAPTCHA_SECRET_KEY`.
+  - Sends via SMTP2GO using existing `SMTP2GO_API_KEY`, From `william@digitalsolution.com`, To `william@digitalsolution.com`, reply-to the lead's email. Subject: `New pricing lead from {name} ({business}) — {plan}`. Body includes formatted summary of all calculator inputs + chosen plan + monthly estimate, mirroring the on-screen breakdown.
+- **pricing.tsx changes**:
+  - Lift modal state into `PricingPage` (`leadOpen`, `leadContext`) so both Micro cards and Results can open it.
+  - Pass an `onContact(plan)` callback to `PlanCard`; replace its `Link` with a `Button onClick`.
+  - Pass an `onSchedule()` callback to `ResultsView`; replace the discovery-call `Link` with a `Button onClick`. Add `selectedTier` state inside `ResultsView` (init = `rec`) with a small tier toggle above the CTA so the user can pick which plan they want to discuss.
+  - Load the reCAPTCHA v3 script once on the pricing page (same pattern as `contact.tsx`).
+
+## Notes / assumptions
+
+- Reuses existing `SMTP2GO_API_KEY` and `RECAPTCHA_SECRET_KEY` — no new secrets.
+- "Sends it to me" = same inbox as the contact form (`william@digitalsolution.com`). Tell me if you want a different address.
+- Keeps `/contact` as-is; this is an additional, contextual capture point.

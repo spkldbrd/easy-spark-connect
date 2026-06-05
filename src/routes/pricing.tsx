@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   Check,
   Info,
@@ -17,6 +17,7 @@ import {
 import { SiteShell } from "@/components/site/SiteShell";
 import { PageHero } from "@/components/site/PageHero";
 import { Button } from "@/components/ui/button";
+import { PricingLeadModal, type LeadContext } from "@/components/site/PricingLeadModal";
 import { buildSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
@@ -76,6 +77,7 @@ const microPlans = [
 
 function PricingPage() {
   const [view, setView] = useState<View>("none");
+  const [leadCtx, setLeadCtx] = useState<LeadContext | null>(null);
 
   return (
     <SiteShell overDark>
@@ -149,7 +151,11 @@ function PricingPage() {
 
               <div className="grid gap-4 md:grid-cols-2">
                 {microPlans.map((p) => (
-                  <PlanCard key={p.name} plan={p} />
+                  <PlanCard
+                    key={p.name}
+                    plan={p}
+                    onContact={() => setLeadCtx({ kind: "micro", plan: `${p.tier} — ${p.name}` })}
+                  />
                 ))}
               </div>
 
@@ -170,7 +176,10 @@ function PricingPage() {
           {/* Calculator view */}
           {view === "calc" && (
             <div className="mt-14">
-              <PricingCalculator onBackToMicro={() => setView("micro")} />
+              <PricingCalculator
+                onBackToMicro={() => setView("micro")}
+                onSchedule={(ctx) => setLeadCtx(ctx)}
+              />
               <p className="mt-4 text-center text-xs text-muted-foreground">
                 All plans month-to-month · Onboarding fee = first month · Off-hours $250/hr
               </p>
@@ -178,11 +187,17 @@ function PricingPage() {
           )}
         </div>
       </section>
+
+      <PricingLeadModal
+        open={leadCtx !== null}
+        onOpenChange={(o) => !o && setLeadCtx(null)}
+        context={leadCtx}
+      />
     </SiteShell>
   );
 }
 
-function PlanCard({ plan }: { plan: (typeof microPlans)[number] }) {
+function PlanCard({ plan, onContact }: { plan: (typeof microPlans)[number]; onContact: () => void }) {
   return (
     <div className="flex flex-col rounded-2xl border border-border bg-background p-6">
       <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-muted-foreground">
@@ -209,8 +224,8 @@ function PlanCard({ plan }: { plan: (typeof microPlans)[number] }) {
       </ul>
 
       <div className="mt-5">
-        <Button asChild variant="outline" className="w-full">
-          <Link to="/contact">Contact us</Link>
+        <Button variant="outline" className="w-full" onClick={onContact}>
+          Contact us
         </Button>
       </div>
     </div>
@@ -251,7 +266,13 @@ function fmt(n: number) {
   return "$" + Math.round(n).toLocaleString();
 }
 
-function PricingCalculator({ onBackToMicro }: { onBackToMicro: () => void }) {
+function PricingCalculator({
+  onBackToMicro,
+  onSchedule,
+}: {
+  onBackToMicro: () => void;
+  onSchedule: (ctx: LeadContext) => void;
+}) {
   const [s, setS] = useState<CalcState>(INITIAL);
   const [step, setStep] = useState(1);
   const [showResults, setShowResults] = useState(false);
@@ -303,6 +324,7 @@ function PricingCalculator({ onBackToMicro }: { onBackToMicro: () => void }) {
         prices={{ basic: calcBasic, pro: calcPro, complete: calcComplete }}
         rec={rec}
         onReset={reset}
+        onSchedule={onSchedule}
       />
     );
   }
@@ -624,13 +646,16 @@ function ResultsView({
   prices,
   rec,
   onReset,
+  onSchedule,
 }: {
   s: CalcState;
   totalSrv: number;
   prices: Record<Tier, number>;
   rec: Tier;
   onReset: () => void;
+  onSchedule: (ctx: LeadContext) => void;
 }) {
+  const [selectedTier, setSelectedTier] = useState<Tier>(rec);
   const cloudDesc = [s.m365 && "Microsoft 365", s.google && "Google Workspace"]
     .filter(Boolean)
     .join(" + ");
@@ -696,28 +721,43 @@ function ResultsView({
         </div>
       </div>
 
+      <div className="mb-3 text-center text-[11px] text-muted-foreground">
+        Click a plan to select it for your discovery call.
+      </div>
       <div className="mb-5 grid gap-3 lg:grid-cols-3">
         {(["basic", "pro", "complete"] as Tier[]).map((tier) => {
           const isRec = tier === rec;
+          const isSel = tier === selectedTier;
           const rows = buildRows(tier);
           return (
-            <div
+            <button
+              type="button"
               key={tier}
-              className={`flex flex-col rounded-2xl p-5 ${
-                isRec ? "border-2 border-brand bg-brand/5" : "border border-border"
+              onClick={() => setSelectedTier(tier)}
+              className={`flex flex-col rounded-2xl p-5 text-left transition ${
+                isSel
+                  ? "border-2 border-brand bg-brand/5 ring-2 ring-brand/20"
+                  : "border border-border hover:border-brand/60"
               }`}
             >
-              {isRec && (
-                <span className="mb-2 inline-block w-fit rounded-md bg-brand px-2 py-0.5 text-[10px] font-medium text-white">
-                  Recommended
-                </span>
-              )}
+              <div className="mb-2 flex flex-wrap gap-1">
+                {isRec && (
+                  <span className="inline-block w-fit rounded-md bg-brand px-2 py-0.5 text-[10px] font-medium text-white">
+                    Recommended
+                  </span>
+                )}
+                {isSel && (
+                  <span className="inline-block w-fit rounded-md border border-brand px-2 py-0.5 text-[10px] font-medium text-brand">
+                    ✓ Selected
+                  </span>
+                )}
+              </div>
               <div className="text-sm font-medium">{TIER_NAMES[tier]}</div>
               <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
                 {TIER_TAGS[tier]}
               </div>
               <div
-                className={`mt-3 font-display text-2xl font-semibold ${isRec ? "text-brand" : ""}`}
+                className={`mt-3 font-display text-2xl font-semibold ${isSel ? "text-brand" : ""}`}
               >
                 {fmt(prices[tier])}
               </div>
@@ -728,8 +768,8 @@ function ResultsView({
                     key={i}
                     className={`flex justify-between gap-2 py-0.5 text-[11px] ${
                       isTotal
-                        ? `mt-1 border-t border-border pt-2 font-semibold ${isRec ? "text-brand" : "text-foreground"}`
-                        : isRec
+                        ? `mt-1 border-t border-border pt-2 font-semibold ${isSel ? "text-brand" : "text-foreground"}`
+                        : isSel
                           ? "text-brand/80"
                           : "text-muted-foreground"
                     }`}
@@ -742,7 +782,7 @@ function ResultsView({
               <div className="mt-auto pt-3 text-[10px] leading-relaxed text-muted-foreground">
                 {TIER_NOTES[tier]}
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
@@ -771,8 +811,30 @@ function ResultsView({
       </div>
 
       <div className="flex gap-2">
-        <Button asChild className="flex-1">
-          <Link to="/contact">Schedule a discovery call →</Link>
+        <Button
+          className="flex-1"
+          onClick={() => {
+            const summary: string[] = [
+              `${s.ws} workstation${s.ws !== 1 ? "s" : ""}`,
+              `${s.srv} physical server${s.srv !== 1 ? "s" : ""}`,
+              `${s.users} user${s.users !== 1 ? "s" : ""}`,
+              `Cloud: ${cloudDesc || "none"}`,
+              `Business Email Compromise: ${s.bec ? "Yes" : s.bec === false ? "No" : "—"}`,
+              `Email spoofing protection: ${s.spoof ? "Yes" : s.spoof === false ? "No" : "—"}`,
+              `24/7 monitoring: ${s.monitor ? "Yes" : s.monitor === false ? "No" : "—"}`,
+              `No surprise hourly: ${s.unlimited ? "Yes" : s.unlimited === false ? "No" : "—"}`,
+              `Fully managed IT: ${s.managed ? "Yes" : s.managed === false ? "No" : "—"}`,
+              `Recommended tier: ${TIER_NAMES[rec]}`,
+            ];
+            onSchedule({
+              kind: "calc",
+              plan: TIER_NAMES[selectedTier],
+              monthlyEstimate: fmt(prices[selectedTier]),
+              summary,
+            });
+          }}
+        >
+          Schedule a discovery call →
         </Button>
         <Button variant="outline" onClick={onReset} className="flex-1">
           ← Start over
