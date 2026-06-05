@@ -240,6 +240,7 @@ type CalcState = {
   users: number;
   m365: boolean;
   google: boolean;
+  otherCloud: boolean;
   bec: boolean | null;
   spoof: boolean | null;
   monitor: boolean | null;
@@ -253,6 +254,7 @@ const INITIAL: CalcState = {
   users: 10,
   m365: false,
   google: false,
+  otherCloud: false,
   bec: null,
   spoof: null,
   monitor: null,
@@ -277,7 +279,7 @@ function PricingCalculator({
   const [step, setStep] = useState(1);
   const [showResults, setShowResults] = useState(false);
 
-  const totalSrv = s.srv + (s.m365 ? 1 : 0) + (s.google ? 1 : 0);
+  const totalSrv = s.srv + (s.m365 ? 1 : 0) + (s.google ? 1 : 0) + (s.otherCloud ? 1 : 0);
   const calcBasic = s.ws * 18 + totalSrv * 150;
   const calcPro =
     s.ws * 45 +
@@ -298,10 +300,10 @@ function PricingCalculator({
     setS((p) => ({ ...p, [key]: Math.max(min, Math.min(500, p[key] + d)) }));
   };
 
-  const toggleCloud = (t: "m365" | "google" | "none") => {
+  const toggleCloud = (t: "m365" | "google" | "otherCloud" | "none") => {
     setS((p) =>
       t === "none"
-        ? { ...p, m365: false, google: false }
+        ? { ...p, m365: false, google: false, otherCloud: false }
         : { ...p, [t]: !p[t] },
     );
   };
