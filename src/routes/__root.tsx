@@ -1,5 +1,7 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
 import { useEffect } from "react";
+
+const GA_MEASUREMENT_ID = "G-XVRBS8W3QK";
 import { NotFoundPage } from "@/components/NotFoundPage";
 
 const PRIMARY_ORIGIN = "https://digitalsolution.com";
@@ -39,6 +41,12 @@ export const Route = createRootRoute({
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
+    scripts: [
+      { src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`, async: true },
+      {
+        children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });`,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -77,6 +85,19 @@ function RootComponent() {
     const { pathname, search, hash } = window.location;
     window.location.replace(PRIMARY_ORIGIN + pathname + search + hash);
   }, []);
+
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const search = useRouterState({ select: (s) => s.location.searchStr });
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+    if (typeof w.gtag !== "function") return;
+    w.gtag("event", "page_view", {
+      page_path: pathname + (search ? `?${search}` : ""),
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }, [pathname, search]);
 
   return <Outlet />;
 }
