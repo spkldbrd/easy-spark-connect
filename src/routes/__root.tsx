@@ -86,5 +86,18 @@ function RootComponent() {
     window.location.replace(PRIMARY_ORIGIN + pathname + search + hash);
   }, []);
 
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const search = useRouterState({ select: (s) => s.location.searchStr });
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+    if (typeof w.gtag !== "function") return;
+    w.gtag("event", "page_view", {
+      page_path: pathname + (search ? `?${search}` : ""),
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }, [pathname, search]);
+
   return <Outlet />;
 }
