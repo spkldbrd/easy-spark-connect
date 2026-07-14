@@ -1,5 +1,7 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
 import { useEffect } from "react";
+
+const GA_MEASUREMENT_ID = "G-XVRBS8W3QK";
 import { NotFoundPage } from "@/components/NotFoundPage";
 
 const PRIMARY_ORIGIN = "https://digitalsolution.com";
