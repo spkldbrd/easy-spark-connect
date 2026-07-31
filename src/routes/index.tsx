@@ -15,7 +15,16 @@ import svcBackup from "@/assets/svc-backup.jpg";
 import svcVoip from "@/assets/svc-voip.webp";
 import svcAi from "@/assets/svc-ai.jpg";
 
-const serviceTabs = [
+const serviceTabs: Array<{
+  key: string;
+  label: string;
+  image: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  bullets: string[];
+  learnMore?: "/managed-it-services" | "/ai-solutions";
+}> = [
   {
     key: "managed",
     label: "Managed IT",
@@ -24,6 +33,7 @@ const serviceTabs = [
     title: "An IT department that never sleeps.",
     body: "24/7 monitoring, proactive patching, and a help desk that picks up before the second ring. Your team stays productive — we handle the rest.",
     bullets: ["24/7 helpdesk + on-call", "Endpoint management", "Quarterly business reviews"],
+    learnMore: "/managed-it-services",
   },
   {
     key: "security",
