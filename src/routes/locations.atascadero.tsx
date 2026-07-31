@@ -10,17 +10,20 @@ const city: CityPageData = {
   intro: (
     <>
       <p>
-        Digital Solution is headquartered right here in Atascadero. When your
-        network goes down, you're not waiting on someone driving up from L.A.
-        or Bakersfield — you're waiting on a neighbor.
+        Digital Solution delivers managed IT services in Atascadero from an
+        office right here in town. When your network goes down, you're not
+        waiting on someone driving up from L.A. or Bakersfield — you're
+        waiting on a neighbor.
       </p>
       <p>
-        We've been the IT team behind dozens of Atascadero businesses for over
-        a decade. Family-owned, local-staffed, and the same crew who answer
-        the phone are the ones who show up at your door.
+        Flat-rate managed IT support, cybersecurity, cloud, and helpdesk for
+        dozens of Atascadero businesses for over a decade. Family-owned,
+        local-staffed, and the same crew who answer the phone are the ones who
+        show up at your door.
       </p>
     </>
   ),
+
   highlights: [
     {
       label: "On-site, same hour",
