@@ -12,7 +12,7 @@ const city: CityPageData = {
       <p>
         SLO is a town built on professional services, healthcare, education,
         and tourism — and every one of those industries lives or dies by its
-        IT. We've spent years supporting downtown SLO businesses, Higuera
+        IT. We've spent years delivering managed IT services to downtown SLO businesses, Higuera
         Street retail, the offices clustered around Cal Poly, and businesses
         around the airport.
       </p>
@@ -68,9 +68,9 @@ const city: CityPageData = {
 export const Route = createFileRoute("/locations/san-luis-obispo")({
   head: () =>
     buildSeo({
-      title: "IT Support in San Luis Obispo, CA",
+      title: "Managed IT Services in San Luis Obispo, CA",
       description:
-        "Managed IT, cybersecurity, and on-site support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality since 2015.",
+        "Managed IT services, cybersecurity, and on-site IT support for San Luis Obispo businesses. Trusted by SLO law firms, medical practices, and hospitality since 2015.",
       path: "/locations/san-luis-obispo",
       image: "https://digitalsolution.com/og-image.jpg",
       jsonLd: {

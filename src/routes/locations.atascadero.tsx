@@ -69,9 +69,9 @@ const city: CityPageData = {
 export const Route = createFileRoute("/locations/atascadero")({
   head: () =>
     buildSeo({
-      title: "IT Support in Atascadero, CA",
+      title: "Managed IT Services in Atascadero, CA",
       description:
-        "Atascadero's local IT partner since 2015. Managed IT, cybersecurity, cloud, and on-site support — same-hour response from a team that lives where you do.",
+        "Managed IT services and IT support for Atascadero businesses since 2015. Cybersecurity, cloud, and same-hour on-site response from a team that lives where you do.",
       path: "/locations/atascadero",
       image: "https://digitalsolution.com/og-image.jpg",
       jsonLd: {
