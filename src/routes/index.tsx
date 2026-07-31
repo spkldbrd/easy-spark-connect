@@ -79,6 +79,7 @@ const serviceTabs: Array<{
     title: "AI your team will actually use.",
     body: "Microsoft Copilot rollouts, custom assistants, and workflow automation that ships value in weeks — not quarters.",
     bullets: ["Copilot adoption", "Custom GPT assistants", "Process automation"],
+    learnMore: "/ai-solutions",
   },
 ];
 
