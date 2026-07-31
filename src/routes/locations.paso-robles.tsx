@@ -11,7 +11,7 @@ const city: CityPageData = {
     <>
       <p>
         Paso isn't a market we cover from a call center. It's where we eat
-        lunch. We've spent years supporting wineries, tasting rooms, and
+        lunch. We've delivered managed IT services to wineries, tasting rooms, and
         professional offices throughout Paso Robles, and we know how much a
         network outage costs at 4pm on a Saturday.
       </p>
@@ -65,9 +65,9 @@ const city: CityPageData = {
 export const Route = createFileRoute("/locations/paso-robles")({
   head: () =>
     buildSeo({
-      title: "IT Support in Paso Robles, CA",
+      title: "Managed IT Services in Paso Robles, CA",
       description:
-        "IT support for Paso Robles wineries, restaurants, and professional offices. Same-day on-site from a North County team serving the area since 2015.",
+        "Managed IT services and IT support for Paso Robles wineries, restaurants, and offices. Same-day on-site from a North County team serving the area since 2015.",
       image: "https://digitalsolution.com/og-image.jpg",
       path: "/locations/paso-robles",
       jsonLd: {

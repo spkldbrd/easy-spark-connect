@@ -5,6 +5,7 @@ import logoWordmark from "@/assets/logo-wordmark.png";
 import logoIcon from "@/assets/logo-icon.png";
 
 const nav = [
+  { to: "/managed-it-services", label: "Managed IT" },
   { to: "/ai-solutions", label: "AI Solutions" },
   
   { to: "/about", label: "Our Story" },

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ManagedItServicesRouteImport } from './routes/managed-it-services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
 import { Route as AboutRouteImport } from './routes/about'
@@ -29,6 +30,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManagedItServicesRoute = ManagedItServicesRouteImport.update({
+  id: '/managed-it-services',
+  path: '/managed-it-services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/managed-it-services': typeof ManagedItServicesRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/managed-it-services': typeof ManagedItServicesRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
+  '/managed-it-services': typeof ManagedItServicesRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/managed-it-services'
     | '/pricing'
     | '/sitemap.xml'
     | '/blog/$slug'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/managed-it-services'
     | '/pricing'
     | '/sitemap.xml'
     | '/blog/$slug'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-solutions'
     | '/contact'
+    | '/managed-it-services'
     | '/pricing'
     | '/sitemap.xml'
     | '/blog/$slug'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AiSolutionsRoute: typeof AiSolutionsRoute
   ContactRoute: typeof ContactRoute
+  ManagedItServicesRoute: typeof ManagedItServicesRoute
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/managed-it-services': {
+      id: '/managed-it-services'
+      path: '/managed-it-services'
+      fullPath: '/managed-it-services'
+      preLoaderRoute: typeof ManagedItServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AiSolutionsRoute: AiSolutionsRoute,
   ContactRoute: ContactRoute,
+  ManagedItServicesRoute: ManagedItServicesRoute,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   BlogSlugRoute: BlogSlugRoute,
@@ -271,12 +292,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

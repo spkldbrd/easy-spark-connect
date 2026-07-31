@@ -48,9 +48,9 @@ export function CityPage({ city }: { city: CityPageData }) {
           </div>
 
           <h1 className="mt-10 max-w-5xl font-display text-[clamp(2.5rem,7vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.05em]">
-            IT support
+            Managed IT
             <br />
-            <span className="text-white/55">in</span>{" "}
+            <span className="text-white/55">services in</span>{" "}
             <span className="italic text-cyan">{city.name}.</span>
             <br />
             <span className="text-white/55">{city.tagline}</span>
@@ -68,6 +68,12 @@ export function CityPage({ city }: { city: CityPageData }) {
               Start a conversation
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </Link>
+            <Link
+              to="/managed-it-services"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white/85 transition hover:border-white hover:text-white"
+            >
+              What's included
+            </Link>
             <a
               href="tel:+18054664722"
               className="inline-flex items-center gap-2 text-sm font-semibold text-white/85 hover:text-white"
@@ -76,6 +82,7 @@ export function CityPage({ city }: { city: CityPageData }) {
               Or just call · 805-466-4722
             </a>
           </div>
+
         </div>
       </section>
 

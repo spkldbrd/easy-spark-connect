@@ -7,6 +7,7 @@ Digital Solution is a local managed service provider (MSP) headquartered in Atas
 ## Pages
 
 - [Home](/): Overview of Digital Solution's services, team, and Central Coast coverage.
+- [Managed IT Services](/managed-it-services): Flat-rate managed IT, cybersecurity, cloud, backup, and vCIO services for SLO County businesses — what is included, pricing ranges, and FAQs.
 - [About](/about): Company history since 2015, team bios, and local roots.
 - [AI Solutions](/ai-solutions): AI implementation and consulting — automation, workflow integration, and practical AI for small businesses.
 - [Contact](/contact): Phone, email, hours, address, and contact form.
