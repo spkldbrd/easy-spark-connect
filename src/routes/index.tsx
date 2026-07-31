@@ -485,7 +485,7 @@ function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-10">
+                <div className="mt-10 flex flex-wrap items-center gap-3">
                   <Link
                     to="/contact"
                     className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-cyan"
@@ -493,7 +493,17 @@ function HomePage() {
                     Talk to us about this
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                   </Link>
+                  {currentService.learnMore && (
+                    <Link
+                      to={currentService.learnMore}
+                      className="group inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+                    >
+                      Learn more
+                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                    </Link>
+                  )}
                 </div>
+
               </div>
             </div>
           </div>
