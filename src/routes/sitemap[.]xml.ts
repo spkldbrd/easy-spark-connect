@@ -13,6 +13,7 @@ interface SitemapEntry {
 
 const STATIC_ENTRIES: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/managed-it-services", changefreq: "monthly", priority: "0.9" },
   { path: "/about", changefreq: "monthly", priority: "0.8" },
   { path: "/ai-solutions", changefreq: "monthly", priority: "0.8" },
   { path: "/contact", changefreq: "monthly", priority: "0.7" },
