@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SplashtopRouteImport } from './routes/splashtop'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ManagedItServicesRouteImport } from './routes/managed-it-services'
@@ -22,6 +23,11 @@ import { Route as LocationsPasoRoblesRouteImport } from './routes/locations.paso
 import { Route as LocationsAtascaderoRouteImport } from './routes/locations.atascadero'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const SplashtopRoute = SplashtopRouteImport.update({
+  id: '/splashtop',
+  path: '/splashtop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/managed-it-services': typeof ManagedItServicesRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/splashtop': typeof SplashtopRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/managed-it-services': typeof ManagedItServicesRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/splashtop': typeof SplashtopRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/managed-it-services': typeof ManagedItServicesRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/splashtop': typeof SplashtopRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/locations/atascadero': typeof LocationsAtascaderoRoute
   '/locations/paso-robles': typeof LocationsPasoRoblesRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/managed-it-services'
     | '/pricing'
     | '/sitemap.xml'
+    | '/splashtop'
     | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/managed-it-services'
     | '/pricing'
     | '/sitemap.xml'
+    | '/splashtop'
     | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/managed-it-services'
     | '/pricing'
     | '/sitemap.xml'
+    | '/splashtop'
     | '/blog/$slug'
     | '/locations/atascadero'
     | '/locations/paso-robles'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   ManagedItServicesRoute: typeof ManagedItServicesRoute
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SplashtopRoute: typeof SplashtopRoute
   BlogSlugRoute: typeof BlogSlugRoute
   LocationsAtascaderoRoute: typeof LocationsAtascaderoRoute
   LocationsPasoRoblesRoute: typeof LocationsPasoRoblesRoute
@@ -188,6 +201,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/splashtop': {
+      id: '/splashtop'
+      path: '/splashtop'
+      fullPath: '/splashtop'
+      preLoaderRoute: typeof SplashtopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   ManagedItServicesRoute: ManagedItServicesRoute,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SplashtopRoute: SplashtopRoute,
   BlogSlugRoute: BlogSlugRoute,
   LocationsAtascaderoRoute: LocationsAtascaderoRoute,
   LocationsPasoRoblesRoute: LocationsPasoRoblesRoute,
@@ -292,3 +313,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
