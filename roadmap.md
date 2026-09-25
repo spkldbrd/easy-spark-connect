@@ -4,4 +4,4 @@ roadmap.md
 - [x] Pricing page + calculator + lead modal
 - [x] /managed-it-services hub page + city page updates
 - [x] /splashtop redirect page
-- [ ] /pay page with PayPal button (no menu item) — in progress
+- [x] /pay page with PayPal button (no menu item)

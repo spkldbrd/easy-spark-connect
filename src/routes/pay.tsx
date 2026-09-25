@@ -17,11 +17,12 @@ export const Route = createFileRoute("/pay")({
 
 function PayPage() {
   return (
-    <SiteShell>
+    <SiteShell overDark>
       <PageHero
         eyebrow="Client payments"
         title="Pay your invoice"
         subtitle="Secure checkout through PayPal — the safer, easier way to pay online. No account required to pay with a credit or debit card."
+        meta={["Secure checkout", "Encrypted payment", "Card details stay private", "PayPal protected"]}
       />
 
       <section className="mx-auto w-full max-w-2xl px-6 py-16 sm:py-24">
