@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SplashtopRouteImport } from './routes/splashtop'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PayRouteImport } from './routes/pay'
 import { Route as ManagedItServicesRouteImport } from './routes/managed-it-services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
@@ -36,6 +37,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayRoute = PayRouteImport.update({
+  id: '/pay',
+  path: '/pay',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ManagedItServicesRoute = ManagedItServicesRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
   '/managed-it-services': typeof ManagedItServicesRoute
+  '/pay': typeof PayRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/splashtop': typeof SplashtopRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
   '/managed-it-services': typeof ManagedItServicesRoute
+  '/pay': typeof PayRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/splashtop': typeof SplashtopRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/ai-solutions': typeof AiSolutionsRoute
   '/contact': typeof ContactRoute
   '/managed-it-services': typeof ManagedItServicesRoute
+  '/pay': typeof PayRoute
   '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/splashtop': typeof SplashtopRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/ai-solutions'
     | '/contact'
     | '/managed-it-services'
+    | '/pay'
     | '/pricing'
     | '/sitemap.xml'
     | '/splashtop'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/ai-solutions'
     | '/contact'
     | '/managed-it-services'
+    | '/pay'
     | '/pricing'
     | '/sitemap.xml'
     | '/splashtop'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/ai-solutions'
     | '/contact'
     | '/managed-it-services'
+    | '/pay'
     | '/pricing'
     | '/sitemap.xml'
     | '/splashtop'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   AiSolutionsRoute: typeof AiSolutionsRoute
   ContactRoute: typeof ContactRoute
   ManagedItServicesRoute: typeof ManagedItServicesRoute
+  PayRoute: typeof PayRoute
   PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SplashtopRoute: typeof SplashtopRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pay': {
+      id: '/pay'
+      path: '/pay'
+      fullPath: '/pay'
+      preLoaderRoute: typeof PayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/managed-it-services': {
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiSolutionsRoute: AiSolutionsRoute,
   ContactRoute: ContactRoute,
   ManagedItServicesRoute: ManagedItServicesRoute,
+  PayRoute: PayRoute,
   PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SplashtopRoute: SplashtopRoute,
